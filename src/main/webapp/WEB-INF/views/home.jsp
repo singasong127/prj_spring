@@ -77,8 +77,8 @@
         <p><strong>같이 식사할 사람?</strong></p>
       </div>
       <div class="container d-flex justify-content-center" id="project">
-        <div class="goTo"><a href="#"><p>USER</p></a></div>
-        <div class="goTo"><a href="#"><p>ADMIN</p></a></div>
+        <div class="goTo"><a href="/user"><p>USER</p></a></div>
+        <div class="goTo"><a href="/loginXdmin"><p>ADMIN</p></a></div>
       </div>
     </div>
   </section><!-- End Hero -->
