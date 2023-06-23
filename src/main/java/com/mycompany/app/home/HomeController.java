@@ -47,11 +47,11 @@ public class HomeController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/memberlist")
-	public ModelAndView memberlist() {
+	@RequestMapping(value="/datatable")
+	public ModelAndView dataTable() {
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("app/memberList");
+		mav.setViewName("app/dataTable");
 		
 		return mav;
 	}
