@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface CodeGroupService {
 	
-	public List<CodeGroup> selectList();
+	public List<CodeGroup> selectList(CodeGroupVo vo);
+	
+	public CodeGroup selectOne(CodeGroupVo vo);
 	
 }

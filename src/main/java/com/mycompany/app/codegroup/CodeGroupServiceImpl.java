@@ -12,11 +12,17 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 	CodeGroupDao dao;
 	
 	@Override
-	public List<CodeGroup> selectList() {
+	public List<CodeGroup> selectList(CodeGroupVo vo) {
 		
-		List<CodeGroup> aaa = dao.selectList();
+		List<CodeGroup> aaa = dao.selectList(vo);
 		
 		return aaa;
+	}
+
+	@Override
+	public CodeGroup selectOne(CodeGroupVo vo) {
+		
+		return dao.selectOne(vo);
 	}
 	
 }

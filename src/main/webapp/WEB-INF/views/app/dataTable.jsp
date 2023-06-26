@@ -73,7 +73,7 @@
                                 </span>
                                 <div class="dropdown-menu p-0 m-0">
                                     <form>
-                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                    	<input class="form-control" type="search" placeholder="Search" aria-label="검색">
                                     </form>
                                 </div>
                             </div>
@@ -323,6 +323,16 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
+                                	<div id="example_length" class="dataTables_length">
+                            			<label>
+                            				Name: 
+                            				<select name="example_length" aria-controls="example">
+                            					<option selected>이름/직급</option>
+                            					<option value="1">이름</option>
+                            					<option value="2">직급</option>
+                            				</select>
+                            			</label>
+                            		</div>
                                     <table id="example" class="display" style="min-width: 845px">
                                         <thead>
                                             <tr>

@@ -17,6 +17,15 @@
     		, cgName
     	FROM
     		codeGroup
+    	WHERE cgName LIKE CONCAT('%',#{shKey},'%')
+    </select>
+    
+    <select id="selectOne" resultMap="resultMapObj">
+    	SELECT *
+    	FROM
+    		codeGroup
+    	WHERE
+    		cgSeq = #{cgSeq}
     </select>
     
 </mapper>    
