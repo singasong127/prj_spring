@@ -18,6 +18,7 @@
     	FROM
     		codeGroup
     	WHERE cgName LIKE CONCAT('%',#{shKey},'%')
+    		AND delNy = 0
     </select>
     
     <select id="selectOne" resultMap="resultMapObj">
@@ -27,5 +28,38 @@
     	WHERE
     		cgSeq = #{cgSeq}
     </select>
+    
+    <update id="update">
+    	UPDATE codeGroup
+    	SET
+    		cgName = #{cgName}
+    	WHERE
+    		cgSeq = #{cgSeq} 
+    </update>
+    
+    <update id="uelete">
+    	UPDATE codeGroup
+    	SET
+    		delNy = 1
+    	WHERE
+    		cgSeq = #{cgSeq} 
+    </update>
+    
+    <delete id="delete">
+    	DELETE 
+    	FROM codeGroup
+    	WHERE
+    		cgSeq = #{cgSeq}
+    </delete>
+    
+    <insert id="insert">
+    	INSERT INTO codeGroup (
+    		cgName
+    		, delNy
+    	) VALUES (
+    		#{cgName}
+    		, 0
+    	)
+    </insert>
     
 </mapper>    
