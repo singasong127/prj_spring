@@ -6,24 +6,12 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>관리자 메인</title>
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="">
+	<title>관리자 리스트</title>
     <!-- Datatable -->
     <link href="/resources/admin/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <!-- Custom Stylesheet -->
     <link href="/resources/admin/css/style.css" rel="stylesheet">
 
-</head>
-
-<body>
 
     <!--*******************
         Preloader start
@@ -324,66 +312,20 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
-                                	<form name="formList">
-	                                	<div class="col-6 p-3">
-	                            			<label>
-	                            				<select name="shOption" class="form-select">
-	                            					<option value="0" selected>--선택하세요--</option>
-	                            					<option value="1">이름</option>
-	                            					<option value="2">직급</option>
-	                            				</select>
-	                            			</label>
-	                            		</div>
-	                            		<div class="col-6 p-3">
-                                            <input type="text" class="form-control" id="shKey" name="shKey" placeholder="">
+                                	<form name="form" method="post">
+	                            		<div class="col-lg-6">
+		                            		<div class="row">
+		                            			<input type="text" class="form-control mb-3 mx-3 w-25" name="cgSeq" id="cgSeq" value="<c:out value="${item.cgSeq }"/>">
+												<input type="text" class="form-control mb-3 w-25" name="cgName" id="cgName" value="<c:out value="${item.cgName }"/>">
+	                                        </div>
                                         </div>
-                                        <div class="col-6 p-3">
-                                            <button type="button" class="btn btn-primary" id="btn">조회</button>
-                                        </div>
+                                        <div class="col-lg-6 mb-4">
+	                                        <button type="button" class="btn btn-danger me-3" id="btnDelete">삭제</button>
+											<button type="button" class="btn btn-danger me-3" id="btnUelete">Uelete</button>
+											<button type="button" class="btn btn-success me-3" id="btnInsert">등록</button>
+											<button type="button" class="btn btn-primary" id="btnUpdate">저장</button>
+	                                    </div>
                             		</form>
-                                    <table class="display" style="min-width: 845px">
-                                        <thead>
-                                            <tr>
-                                                <th>SEQ</th>
-                                                <th>NAME</th>
-                                        </thead>
-                                        <tbody>
-                                        	<tr>
-                                        		<th>
-                                        			<c:choose>
-														<c:when test="${fn:length(list) eq 0}">
-															<tr>
-																<td class="text-center" colspan="9">There is no data!</td>
-															</tr>	
-														</c:when>
-														<c:otherwise> <%-- ${list} 자바에서 넘겨준 객체 이름 --%> <!-- var="list" jstl 블럭에서 사용할 변수 이름 -->
-															<c:forEach items="${list}" var="list" varStatus="status">
-																<a href="/cgform?cgSeq=<c:out value="${list.cgSeq}"></c:out>">
-																	<c:out value="${list.cgSeq}"></c:out>
-																</a>
-																<br>
-															</c:forEach>
-														</c:otherwise>
-													</c:choose>
-												</th>
-                                        		<th>
-                                        			<c:choose>
-                                        				<c:when test="${fn:length(list) eq 0}"></c:when>
-														<c:otherwise> <%-- ${list} 자바에서 넘겨준 객체 이름 --%> <!-- var="list" jstl 블럭에서 사용할 변수 이름 -->
-															<c:forEach items="${list}" var="list" varStatus="status">
-																<a href="/cgform?cgSeq=<c:out value="${list.cgSeq}"></c:out>">
-																	<c:out value="${list.cgName}"></c:out>
-																</a>
-																<br>
-															</c:forEach>
-														</c:otherwise>
-													</c:choose>
-                                        		</th>
-                                        	</tr>
-                                        </tbody>
-                                        <tfoot>
-                                        </tfoot>
-                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -437,19 +379,31 @@
     <script src="/resources/admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="/resources/admin/js/plugins-init/datatables.init.js"></script>
     
-    <script type="text/javascript">
+ 	<script type="text/javascript">
 
-		$("#btn").on("click", function() {
-			// 자기 자신을 다시 한 번 호출해준다.
-			$("form[name=formList]").attr("method", "post");
-			$("form[name=formList]").attr("action", "/cglist").submit();
-			
-			
-			/* alert("adada"); */
+		$("#btnUpdate").on("click", function() {
+		
+			$("form[name=form]").attr("action", "/cgupdate").submit();
+		
 		});
 	
+		$("#btnUelete").on("click", function() {
+		
+			$("form[name=form]").attr("action", "/cguelect").submit();
+		
+		});
+	
+		$("#btnDelete").on("click", function() {
+		
+			$("form[name=form]").attr("action", "/cgdelete").submit();
+		
+		});
+	
+		$("#btnInsert").on("click", function() {
+		
+			$("form[name=form]").attr("action", "/cginsert").submit();
+		
+		});
+
 	</script>
 
-</body>
-
-</html>

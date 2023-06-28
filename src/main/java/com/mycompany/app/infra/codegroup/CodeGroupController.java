@@ -1,4 +1,4 @@
-package com.mycompany.app.codegroup;
+package com.mycompany.app.infra.codegroup;
 
 import java.util.List;
 
@@ -14,14 +14,14 @@ public class CodeGroupController {
 	CodeGroupServiceImpl service;
 	
 	@RequestMapping(value="/cglist")
-	public String dataTable(CodeGroupVo vo, Model model) {
+	public String codeGroupList(CodeGroupVo vo, Model model) {
 		
 		List<CodeGroup> list = service.selectList(vo);
 		
 //		왼쪽의 list는 jsp에서 사용할 변수명
 		model.addAttribute("list", list);
 		
-		return "app/dataTable";
+		return "xdm/infra/codegroup/codeGroupXdmList";
 	}
 	
 	@RequestMapping(value="/cgform")
@@ -30,7 +30,7 @@ public class CodeGroupController {
 		
 		model.addAttribute("item", codeGroup);
 		
-		return "app/codeGroupForm";
+		return "xdm/infra/codegroup/codeGroupForm";
 	}
 	
 	@RequestMapping(value="/cgupdate")

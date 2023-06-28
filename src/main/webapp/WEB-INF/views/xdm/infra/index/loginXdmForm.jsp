@@ -24,7 +24,7 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
                                     <h4 class="text-center mb-4">관리자 로그인</h4>
-                                    <form action="/datatable">
+                                    <form action="/cglist">
                                         <div class="form-group">
                                             <label><strong>Email</strong></label>
                                             <input type="email" class="form-control" value="hello@example.com">
@@ -45,7 +45,7 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary btn-block" onclick="location.href='/datatable'">로그인</button>
+                                            <button type="submit" class="btn btn-primary btn-block" onclick="location.href='/codegroup/codeGroupForm'">로그인</button>
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">

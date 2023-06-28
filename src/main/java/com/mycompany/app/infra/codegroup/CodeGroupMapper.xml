@@ -6,18 +6,24 @@
     <!-- 전체 매퍼 중에서 유일한 값을 사용하여야 한다.
     해서 관계적으로 해당 파일의 패스와 파일이름(확장자 제외)
     그리고 dao에서 namespace와 일치하여야 한다. -->
-<mapper namespace="com.mycompany.app.codegroup.CodeGroupMapper">
+<mapper namespace="com.mycompany.app.infra.codegroup.CodeGroupMapper">
 
 											<!-- select 결과를 받을 객체 -->
-    <resultMap id="resultMapObj" type="com.mycompany.app.codegroup.CodeGroup"></resultMap>
+    <resultMap id="resultMapObj" type="com.mycompany.app.infra.codegroup.CodeGroup"></resultMap>
+    
+    <sql id="sqlSelectList">
+    	cgSeq
+    	, cgName
+    	, delNy
+    </sql>
     
     <select id="selectList" resultMap="resultMapObj">
     	SELECT
-    		cgSeq
-    		, cgName
+    		<include refid="sqlSelectList" />
     	FROM
     		codeGroup
-    	WHERE cgName LIKE CONCAT('%',#{shKey},'%')
+    	WHERE 1=1 
+    		<if test="shKey != null and !shKey.equals('')">AND cgName LIKE CONCAT('%',#{shKey},'%')</if>
     		AND delNy = 0
     </select>
     

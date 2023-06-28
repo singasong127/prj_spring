@@ -1,11 +1,11 @@
-package com.mycompany.app.home;
+package com.mycompany.app.infra.index;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class HomeController {
+public class IndexController {
 	
 	/*
 	 * @RequestMapping(value="/") public String home(String href) {
@@ -33,7 +33,7 @@ public class HomeController {
 	public ModelAndView user() {
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("app/userPage");
+		mav.setViewName("usr/index/userPage");
 		
 		return mav;
 	}
@@ -42,18 +42,12 @@ public class HomeController {
 	public ModelAndView loginXdmin() {
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("app/loginForm");
+		mav.setViewName("xdm/infra/index/loginXdmForm");
 		
 		return mav;
 	}
 	
-	@RequestMapping(value="/datatable")
-	public ModelAndView dataTable() {
-		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("app/dataTable");
-		
-		return mav;
-	}
 	
 }
+
+
