@@ -278,7 +278,7 @@
 										
 									</tfoot>
 								</table>
-								<div class="col-lg-6 d-flex">
+								<div class="row mx-auto d-flex justify-content-end">
 									<button type="button" class="btn btn-primary" id="btnInsert">추가</button>
 								</div>
 							</div>

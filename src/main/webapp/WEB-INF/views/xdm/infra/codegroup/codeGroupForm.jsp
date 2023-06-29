@@ -201,7 +201,7 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>데이터 추가</h4>
+                            <h4>시스템 관리</h4>
                         </div>
                     </div>
                 </div>

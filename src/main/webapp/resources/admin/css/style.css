@@ -7656,7 +7656,7 @@ a.text-dark:hover, a.text-dark:focus {
   color: #1f1f1f !important; }
 
 .text-body {
-  color: #BDBDC7 !important; }
+  color: #000 !important; }
 
 .text-muted {
   color: #666666 !important; }
@@ -7850,7 +7850,7 @@ li {
   list-style: none; }
 
 a {
-  color: #BDBDC7; }
+  color: #000; }
   a:hover, a:focus, a.active {
     color: #593bdb;
     text-decoration: none; }
