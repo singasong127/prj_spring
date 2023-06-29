@@ -179,12 +179,12 @@
 				<li>
 					<a class="has-arrow" href="javascript:void()"
 					aria-expanded="false"><i class="icon icon-app-store"></i><span
-						class="nav-text">데이터</span>
+						class="nav-text">시스템</span>
 					</a>
 					<ul aria-expanded="false">
-						<li><a href="/cglist">데이터 검색</a></li>
+						<li><a href="/cglist">코드 그룹 리스트</a></li>
 						<li>
-							<a href="/cgform" aria-expanded="false">데이터 추가</a>
+							<a href="/cgform" aria-expanded="false">코드 그룹 관리</a>
 						</li>
 					</ul>
 				</li>

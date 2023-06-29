@@ -179,11 +179,11 @@
 				<li>
 					<a class="has-arrow" href="javascript:void()"
 					aria-expanded="false"><i class="icon icon-app-store"></i><span
-						class="nav-text">데이터</span>
+						class="nav-text">시스템</span>
 					</a>
 					<ul aria-expanded="false">
-						<li><a href="/cglist">데이터 검색</a></li>
-						<li><a href="/cgform" aria-expanded="false">데이터 추가</a></li>
+						<li><a href="/cglist">코드 그룹 리스트</a></li>
+						<li><a href="/cgform" aria-expanded="false">코드 그룹 관리</a></li>
 					</ul>
 					</li>
 				</ul>
@@ -215,15 +215,35 @@
                                 	<form name="form" method="post">
 	                            		<div class="col-lg-6">
 		                            		<div class="row">
-		                            			<input type="text" class="form-control mb-3 mx-3 w-25" name="cgSeq" id="cgSeq" value="<c:out value="${item.cgSeq }"/>" disabled readonly>
-												<input type="text" class="form-control mb-3 w-25" name="cgName" id="cgName" value="<c:out value="${item.cgName }"/>">
+		                            			<%-- <input type="text" class="form-control mb-3 mx-3 w-25" name="cgSeq" id="cgSeq" value="<c:out value="${item.cgSeq }"/>" disabled readonly>
+												<input type="text" class="form-control mb-3 w-25" name="cgName" id="cgName" value="<c:out value="${item.cgName }"/>"> --%>
+		                            			<c:choose>
+		                            				<c:when test="${empty item.cgSeq }">
+		                            					<input type="text" class="form-control mb-3 mx-3 w-25" name="cgSeq" id="cgSeq" value="<c:out value="${item.cgSeq }"/>" placeholder="자동 생성" readonly style="background-color: #ccc">
+														<input type="text" class="form-control mb-3 w-25" name="cgName" id="cgName" value="<c:out value="${item.cgName }"/>">
+		                            				</c:when>
+		                            				<c:otherwise>
+		                            					<input type="text" class="form-control mb-3 mx-3 w-25" name="cgSeq" id="cgSeq" value="<c:out value="${item.cgSeq }"/>" readonly>
+														<input type="text" class="form-control mb-3 w-25" name="cgName" id="cgName" value="<c:out value="${item.cgName }"/>">
+		                            				</c:otherwise>
+		                            			</c:choose>
 	                                        </div>
                                         </div>
                                         <div class="col-lg-6 mb-4">
-	                                        <button type="button" class="btn btn-danger me-3" id="btnDelete">삭제</button>
+                                        	<!-- <button type="button" class="btn btn-success me-3" id="btnInsert">등록</button>
+                                        	<button type="button" class="btn btn-danger me-3" id="btnDelete">삭제</button>
 											<button type="button" class="btn btn-danger me-3" id="btnUelete">Uelete</button>
-											<button type="button" class="btn btn-success me-3" id="btnInsert">등록</button>
-											<button type="button" class="btn btn-primary" id="btnUpdate">저장</button>
+											<button type="button" class="btn btn-primary" id="btnUpdate">저장</button> -->
+                                        	<c:choose>
+                                        		<c:when test="${empty item.cgSeq }">
+                                        			<button type="button" class="btn btn-success me-3" id="btnInsert">등록</button>
+                                        		</c:when>
+                                        		<c:otherwise>
+                                        			<button type="button" class="btn btn-danger me-3" id="btnDelete">삭제</button>
+													<button type="button" class="btn btn-danger me-3" id="btnUelete">Uelete</button>
+													<button type="button" class="btn btn-primary" id="btnUpdate">저장</button>
+                                        		</c:otherwise>
+                                        	</c:choose>
 	                                    </div>
                             		</form>
                                 </div>

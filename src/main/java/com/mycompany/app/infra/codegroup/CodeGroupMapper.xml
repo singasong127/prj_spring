@@ -22,13 +22,14 @@
     		<include refid="sqlSelectList" />
     	FROM
     		codeGroup
-    	WHERE 1=1 
+    	WHERE 1=1
+			AND delNy = 0
     		<if test="shKey != null and !shKey.equals('')">AND cgName LIKE CONCAT('%',#{shKey},'%')</if>
-    		AND delNy = 0
     </select>
     
     <select id="selectOne" resultMap="resultMapObj">
-    	SELECT *
+    	SELECT
+    		<include refid="sqlSelectList"></include>
     	FROM
     		codeGroup
     	WHERE

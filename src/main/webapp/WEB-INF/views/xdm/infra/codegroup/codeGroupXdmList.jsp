@@ -179,12 +179,12 @@
 				<li>
 					<a class="has-arrow" href="javascript:void()"
 					aria-expanded="false"><i class="icon icon-app-store"></i><span
-						class="nav-text">데이터</span>
+						class="nav-text">시스템</span>
 					</a>
 					<ul aria-expanded="false">
-						<li><a href="/cglist">데이터 검색</a></li>
+						<li><a href="/cglist">코드 그룹 리스트</a></li>
 						<li>
-							<a href="/cgform" aria-expanded="false">데이터 추가</a>
+							<a href="/cgform" aria-expanded="false">코드 그룹 관리</a>
 						</li>
 					</ul>
 				</li>
@@ -203,7 +203,7 @@
 			<div class="row page-titles mx-0">
 				<div class="col-sm-6 p-md-0">
 					<div class="welcome-text">
-						<h4>데이터 관리</h4>
+						<h4>시스템 관리</h4>
 					</div>
 				</div>
 			</div>
@@ -211,13 +211,16 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
+						<div class="card-header">
+							
+                        </div>
 						<div class="card-body">
 							<div class="table-responsive">
 								<form name="formList">
 									<div class="row w-50">
 										<div class="col-lg-6">
 											<select name="shOption" class="form-control">
-												<option value="0" selected>--선택하세요--</option>
+												<option value="" selected>--선택하세요--</option>
 												<option value="1">1</option>
 												<option value="2">2</option>
 												<option value="3">3</option>
@@ -227,17 +230,23 @@
 											<input type="text" class="form-control" id="shKey"
 												name="shKey" placeholder="">
 										</div>
-									</div>
-									<div class="col-lg-6 mb-4">
-										<button type="button" class="btn btn-primary" id="btn">검색</button>
+										<div class="col-lg-6 mb-2">
+											<button type="button" class="btn btn-primary" id="btn">검색</button>
+										</div>
 									</div>
 								</form>
-								<table class="table primary-table-bordered"
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table primary-table-bordered display"
 									style="min-width: 845px">
 									<thead class="mb-2 thead-primary">
 										<tr>
 											<th>#</th>
-											<th>NAME</th>
+											<th>CODEGROUPNAME</th>
 										</tr>
 									</thead>
 									<tbody class="mb-3">
@@ -266,9 +275,12 @@
 										</c:choose>
 									</tbody>
 									<tfoot>
-
+										
 									</tfoot>
 								</table>
+								<div class="col-lg-6 d-flex">
+									<button type="button" class="btn btn-primary" id="btnInsert">추가</button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -324,5 +336,23 @@
 <script
 	src="/resources/admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
 <script src="/resources/admin/js/plugins-init/datatables.init.js"></script>
+
+
+<script type="text/javascript">
+	
+	$("#btn").on("click", function(){
+	
+	// 	$("form[name=formList]").attr("method","get");
+		$("form[name=formList]").attr("action", "/cglist").submit();
+	
+	});
+	
+	$("#btnInsert").on("click", function() {
+		
+		location.href = "/cgform";
+				
+	});
+	
+</script>
 
 
