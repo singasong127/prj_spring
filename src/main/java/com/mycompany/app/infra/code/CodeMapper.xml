@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.mycompany.app.infra.code.CodeMapper">
+
+	<resultMap id="resultMapObj" type="com.mycompany.app.infra.code.Code"></resultMap>
+	
+	<sql id="sqlCodeAll">
+		cdSeq
+		, cdName
+		, (select 
+			cgName
+			FROM codeGroup as g
+        	where g.cgSeq = c.codeGroup_cgSeq
+        	) as cgName
+		, delNy	
+	</sql>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT
+			<include refid="sqlCodeAll" />
+		FROM 
+			code as c
+		WHERE 1=1
+			AND delNy = 0
+			<if test="shKeyCd != null and !shKeyCd.equals('')">AND cdName LIKE CONCAT('%',#{shKeyCd},'%')</if>
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+    	SELECT
+    		cdSeq
+    		, cdName
+    		, (select
+    			cgSeq
+    			FROM codeGroup AS g
+    			WHERE g.cgSeq = c.codeGroup_cgSeq) AS cgNameOne
+    		, delNy
+    	FROM
+    		code as c
+    	WHERE
+    		cdSeq = #{cdSeq}
+    </select>
+    
+    <update id="update">
+    	UPDATE code
+    	SET
+    		cdName = #{cdName}
+    	WHERE
+    		cdSeq = #{cdSeq} 
+    </update>
+    
+    <update id="uelete">
+    	UPDATE code
+    	SET
+    		delNy = 1
+    	WHERE
+    		cdSeq = #{cdSeq} 
+    </update>
+    
+    <delete id="delete">
+    	DELETE 
+    	FROM code
+    	WHERE
+    		cdSeq = #{cdSeq}
+    </delete>
+    
+    <insert id="insert">
+    	INSERT INTO code (
+    		cdName
+    		, codeGroup_cgSeq
+    		, delNy
+    	) VALUES (
+    		#{cdName}
+    		, #{codeGroup_cgSeq}
+    		, 0
+    	)
+    </insert>
+
+</mapper>

@@ -7,7 +7,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 
 
-<title>관리자 리스트</title>
+<title>코드 그룹 리스트</title>
 <!-- Datatable -->
 <link
 	href="/resources/admin/vendor/datatables/css/jquery.dataTables.min.css"
@@ -186,6 +186,9 @@
 						<li>
 							<a href="/cgform" aria-expanded="false">코드 그룹 관리</a>
 						</li>
+						<li>
+							<a href="/cdlist" aria-expanded="false">코드 리스트</a>
+						</li>
 					</ul>
 				</li>
 			</ul>
@@ -217,8 +220,8 @@
 						<div class="card-body">
 							<div class="table-responsive">
 								<form name="formList">
-									<div class="row w-50">
-										<div class="col-lg-6">
+									<div class="form-row w-75">
+										<div class="form-group col-md-3">
 											<select name="shOption" class="form-control">
 												<option value="" selected>--선택하세요--</option>
 												<option value="1">1</option>
@@ -226,11 +229,19 @@
 												<option value="3">3</option>
 											</select>
 										</div>
-										<div class="col-lg-6 mb-2 w-25">
+										<div class="form-group col-md-3">
 											<input type="text" class="form-control" id="shKey"
-												name="shKey" placeholder="">
+												name="shKey" placeholder="코드 그룹명">
 										</div>
-										<div class="col-lg-6 mb-2">
+										<div class="form-group col-md-3">
+											<input type="text" class="form-control" id=""
+												name="" placeholder="">
+										</div>
+										<div class="form-group col-md-3">
+											<input type="text" class="form-control" id=""
+												name="" placeholder="">
+										</div>
+										<div class="form-group col-md-3">
 											<button type="button" class="btn btn-primary" id="btn">검색</button>
 										</div>
 									</div>
