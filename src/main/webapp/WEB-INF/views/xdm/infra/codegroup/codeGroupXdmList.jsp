@@ -231,7 +231,7 @@
 										</div>
 										<div class="form-group col-md-3">
 											<input type="text" class="form-control" id="shKey"
-												name="shKey" placeholder="코드 그룹명">
+												name="shKey" value="<c:out value="${vo.shKey }"/>" placeholder="코드 그룹명">
 										</div>
 										<div class="form-group col-md-3">
 											<input type="text" class="form-control" id=""
@@ -243,6 +243,7 @@
 										</div>
 										<div class="form-group col-md-3">
 											<button type="button" class="btn btn-primary" id="btn">검색</button>
+											<button type="button" class="btn btn-primary" id="btnInit">Init</button>
 										</div>
 									</div>
 								</form>

@@ -48,8 +48,8 @@
 											</select>
 										</div>
 										<div class="form-group col-md-3">
-											<input type="text" class="form-control" id="shKey"
-												name="shKeyCd" placeholder="코드명">
+											<input type="text" class="form-control" id="shKeyCd"
+												name="shKeyCd" value="<c:out value="${vo.shKeyCd }" />" placeholder="코드명">
 										</div>
 										<div class="form-group col-md-3">
 											<input type="text" class="form-control" id=""
