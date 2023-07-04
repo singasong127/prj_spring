@@ -28,16 +28,30 @@ public class CodeGroupController {
 	@RequestMapping(value="/cglist")
 	public String codeGroupList(@ModelAttribute("vo") CodeGroupVo vo, Model model) {
 		
-		vo.setShKey(vo.getShKey() == null ? "email" : vo.getShKey());
+		vo.setShKey(vo.getShKey() == null ? "" : vo.getShKey());
 		
-		List<CodeGroup> list = service.selectList(vo);
+		vo.setParamsPaging(service.selectOneCount(vo));
 		
-//		왼쪽의 list는 jsp에서 사용할 변수명
-		model.addAttribute("list", list);
-//		model.addAttribute("vo", vo);
+		if(vo.getTotalRows() > 0) {
+			List<CodeGroup> list = service.selectList(vo);
+			model.addAttribute("list", list);
+//			model.addAttribute("vo", vo);
+		} else {
+//			by pass
+		}
 		
 		return "xdm/infra/codegroup/codeGroupXdmList";
 	}
+	
+//	vo.setShKey(vo.getShKey() == null ? "email" : vo.getShKey());
+//	
+//	List<CodeGroup> list = service.selectList(vo);
+//	
+////	왼쪽의 list는 jsp에서 사용할 변수명
+//	model.addAttribute("list", list);
+////	model.addAttribute("vo", vo);
+//	
+//	return "xdm/infra/codegroup/codeGroupXdmList";
 	
 	@RequestMapping(value="/cgform")
 	public String codeGroupForm(CodeGroupVo vo, Model model) {

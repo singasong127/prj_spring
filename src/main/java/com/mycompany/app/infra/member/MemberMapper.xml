@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycompany.app.infra.member.MemberMapper">
+
+	<resultMap id="resultMapObj" type="com.mycompany.app.infra.member.Member"></resultMap>
+	
+	<sql id="selectAll">
+		seq
+		, id
+		, password
+		, nickname
+		, emailAccount
+		, emailDomain
+		, gender
+		, age
+		, agreeDT
+		, delNy
+	</sql>
+	
+	<sql id="selectDom">
+		(SELECT
+			CASE
+				WHEN emailDomain = 1 THEN 'naver.com'
+				WHEN emailDomain = 2 THEN 'gmail.com'
+				WHEN emailDomain = 3 THEN 'daum.net'
+			END
+			FROM user AS m
+			WHERE 1=1
+				AND m.emailDomain = #{emain}
+			) AS emain
+	</sql>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		
+		SELECT
+			<include refid="selectAll"></include>
+			
+		FROM
+			user AS m
+		WHERE 1=1
+			AND delNy = 0
+			<if test="shKey != null and !shKey.equals('')">AND cgName LIKE CONCAT('%',#{shKey},'%')</if>
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+    </select>
+
+</mapper>    
+    

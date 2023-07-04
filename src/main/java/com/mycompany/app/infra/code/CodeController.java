@@ -23,15 +23,26 @@ public class CodeController {
 	@RequestMapping(value="/cdlist")
 	public String cdList(@ModelAttribute("vo") CodeVo vo, Model model) {
 		
-		vo.setShKeyCd(vo.getShKeyCd() == null ? "email" : vo.getShKeyCd());
+		vo.setShKeyCd(vo.getShKeyCd() == null ? "" : vo.getShKeyCd());
 		
-		List<Code> list = service.selectList(vo);
+		vo.setParamsPaging(service.selectOneCount(vo));
 		
-		model.addAttribute("list", list);
-//		model.addAttribute("vo", vo);
+		if(vo.getTotalRows() > 0) {
+			List<Code> list = service.selectList(vo);
+			model.addAttribute("list", list);
+		} else {
+//			by pass
+		}
 		
 		return "xdm/infra/code/codeXdmList";
 	}
+	
+//	List<Code> list = service.selectList(vo);
+//	
+//	model.addAttribute("list", list);
+////	model.addAttribute("vo", vo);
+//	
+//	return "xdm/infra/code/codeXdmList";
 	
 	@RequestMapping(value="/cdform")
 	public String codeForm(CodeVo vo, Model model, CodeGroupVo groupvo, Model groupModel) {

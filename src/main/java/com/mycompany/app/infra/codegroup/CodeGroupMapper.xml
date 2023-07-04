@@ -17,15 +17,28 @@
     	, delNy
     </sql>
     
-    <select id="selectList" resultMap="resultMapObj">
-    	SELECT
-    		<include refid="sqlSelectList" />
-    	FROM
-    		codeGroup
-    	WHERE 1=1
+    <sql id ="selectCommon">
+   		FROM    
+	    	codeGroup
+		WHERE 1=1
 			AND delNy = 0
-    		<if test="shKey != null and !shKey.equals('')">AND cgName LIKE CONCAT('%',#{shKey},'%')</if>
-    </select>
+			<if test="shKey != null and !shKey.equals('')">AND cgName LIKE CONCAT('%',#{shKey},'%')</if>
+    </sql>
+
+   	<select id="selectOneCount" resultType="Integer">
+		SELECT count(*)
+		<include refid="selectCommon" />
+	</select>
+
+   	<select id="selectList" resultMap="resultMapObj">
+		SELECT 
+			aa.* FROM (   	
+	   		SELECT
+				<include refid="sqlSelectList" />
+	   			<include refid="selectCommon" />
+		) aa
+		LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}	   			
+   	</select>
     
     <select id="selectOne" resultMap="resultMapObj">
     	SELECT

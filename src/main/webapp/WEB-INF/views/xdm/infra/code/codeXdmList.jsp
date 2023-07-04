@@ -1,23 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
-
-
 <title>코드 리스트</title>
-<!-- Datatable -->
-<link
-	href="/resources/admin/vendor/datatables/css/jquery.dataTables.min.css"
-	rel="stylesheet">
-<!-- Custom Stylesheet -->
-<link href="/resources/admin/css/style.css" rel="stylesheet">
-
-<%@ include file="../../include/includeLink.jsp" %>
 
 <%@ include file="../../include/includeElement.jsp" %>
+<%@ include file="../../include/includeLink.jsp" %>
+
 
 	<!--**********************************
             Content body start
@@ -38,8 +26,10 @@
 						<div class="card-body">
 							<div class="table-responsive">
 								<form name="formList">
+									<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+									<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 									<div class="form-row w-75">
-										<div class="form-group">
+										<div class="form-group col-md-3">
 											<select name="shOptionCd" class="form-control">
 												<option value="" selected>--선택하세요--</option>
 												<option value="1">1</option>
@@ -52,8 +42,8 @@
 												name="shKeyCd" value="<c:out value="${vo.shKeyCd }" />" placeholder="코드명">
 										</div>
 										<div class="form-group col-md-3">
-											<input type="text" class="form-control" id=""
-												name="" placeholder="코드 그룹">
+											<input type="text" class="form-control" id="cgName"
+												name="cgName" value="<c:out value="${vo.cgName }" />" placeholder="코드 그룹">
 										</div>
 										<div class="form-group col-md-3">
 											<input type="text" class="form-control" id=""
@@ -115,6 +105,33 @@
 										
 									</tfoot>
 								</table>
+								<div class="container-fluid px-0 mt-2">
+								    <div class="row mx-auto">
+								        <div class="col">
+								            <!-- <ul class="pagination pagination-sm justify-content-center mb-0"> -->
+								            <ul class="pagination justify-content-center mb-0">
+								                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-left"></i></a></li> -->
+												<c:if test="${vo.startPage gt vo.pageNumToShow}">
+								                	<li class="page-item"><a class="page-link" href="javascript:goList(${vo.startPage - 1})"><i class="fa-solid fa-angle-left"></i></a></li>
+												</c:if>
+												<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+													<c:choose>
+														<c:when test="${i.index eq vo.thisPage}">
+								                			<li class="page-item active"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+														</c:when>
+														<c:otherwise>             
+												                <li class="page-item"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+														</c:otherwise>
+													</c:choose>
+												</c:forEach>                
+												<c:if test="${vo.endPage ne vo.totalPages}">                
+									                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})"><i class="fa-solid fa-angle-right"></i></a></li>
+												</c:if>
+								                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-right"></i></a></li> -->
+								            </ul>
+								        </div>
+								    </div>
+								</div>
 								<div class="row mx-auto d-flex justify-content-end">
 									<button type="button" class="btn btn-primary" id="btnInsert">추가</button>
 								</div>
@@ -154,7 +171,6 @@
         ***********************************-->
 
 
-</div>
 <!--**********************************
         Main wrapper end
     ***********************************-->
@@ -175,6 +191,11 @@
 		location.href = "/cdform";
 				
 	});
+	
+	goList = function(thisPage) {
+		$("input:hidden[name=thisPage]").val(thisPage);
+		$("form[name=formList]").attr("action", "cdlist").submit();
+	}
 	
 </script>
 

@@ -30,7 +30,7 @@
                             <div class="card-body">
                                 <div class="table-responsive">
                                 	<form name="form" method="post">
-	                            		<div class="form-row w-95">
+	                            		<div class="form-row w-75">
 		                            			<%-- <input type="text" class="form-control mb-3 mx-3 w-25" name="cgSeq" id="cgSeq" value="<c:out value="${item.cgSeq }"/>" disabled readonly>
 												<input type="text" class="form-control mb-3 w-25" name="cgName" id="cgName" value="<c:out value="${item.cgName }"/>"> --%>
 		                            			<c:choose>
@@ -56,7 +56,7 @@
 		                            				</c:otherwise>
 		                            			</c:choose>
                                         </div>
-                                        <div class="col-lg-6 mb-4">
+                                        <div class="form-group col-md-3">
                                         	<!-- <button type="button" class="btn btn-success me-3" id="btnInsert">등록</button>
                                         	<button type="button" class="btn btn-danger me-3" id="btnDelete">삭제</button>
 											<button type="button" class="btn btn-danger me-3" id="btnUelete">Uelete</button>

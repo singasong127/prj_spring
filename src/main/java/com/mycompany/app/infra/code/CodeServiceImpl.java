@@ -13,6 +13,12 @@ public class CodeServiceImpl implements CodeService {
 	CodeDao dao;
 
 	@Override
+	public int selectOneCount(CodeVo vo) {
+		
+		return dao.selectOneCount(vo);
+	}
+	
+	@Override
 	public List<Code> selectList(CodeVo vo) {
 		
 		List<Code> bbb = dao.selectList(vo);
@@ -44,6 +50,7 @@ public class CodeServiceImpl implements CodeService {
 	public int insert(Code dto) {
 		return dao.insert(dto);
 	}
+
 	
 	
 

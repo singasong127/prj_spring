@@ -17,6 +17,7 @@ public class CodeGroupDao {
 	
 	private static String namespace = "com.mycompany.app.infra.codegroup.CodeGroupMapper";
 	
+	public int selectOneCount(CodeGroupVo vo) { return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
 	public List<CodeGroup> selectList(CodeGroupVo vo){ return sqlSession.selectList(namespace + ".selectList", vo); }
 	
 	public CodeGroup selectOne(CodeGroupVo vo) {
