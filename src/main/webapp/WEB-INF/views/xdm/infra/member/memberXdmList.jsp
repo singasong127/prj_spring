@@ -29,19 +29,19 @@
 										name="shKey" value="<c:out value="${vo.shKey }"/>" placeholder="">
 								</div>
 								<div class="form-group col-md-3">
-									<input type="text" class="form-control" id=""
-										name="" placeholder="">
+									<input type="text" class="form-control" id="emain"
+										name="emain" value="<c:out value="${vo.emain }"/>" placeholder="도메인">
 								</div>
 								<div class="form-group col-md-3">
 									<input type="text" class="form-control" id=""
 										name="" placeholder="">
 								</div>
 								<div class="form-group col-md-3">
-									<select name="shOption" class="form-control">
+									<select name="shGen" class="form-control">
 										<option value="" selected>--성별--</option>
-										<option value="1">남성</option>
-										<option value="2">여성</option>
-										<option value="3">기타</option>
+										<option value="4">남성</option>
+										<option value="5">여성</option>
+										<option value="6">기타</option>
 									</select>
 								</div>
 								<div class="form-group col-md-3">
@@ -68,7 +68,7 @@
 									<th>이메일 도메인</th>
 									<th>성별</th>
 									<th>나이</th>
-									<th>개인정보 동의</th>
+									<th>개인정보 동의 날짜</th>
 									<th>삭제 여부</th>
 								</tr>
 							</thead>

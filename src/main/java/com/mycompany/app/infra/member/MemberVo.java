@@ -1,42 +1,58 @@
 package com.mycompany.app.infra.member;
 
 public class MemberVo {
-	private String shKey;
-	private String shOption;
-	private String seq;
-	private String id;
-	private int emain;
+	private String shId;
+	private String shPwd;
+	private String shNick;
+	private String shEmid;
+	private String shEmain;
+	private String shGen;
+	private String shDel;
 	
-	public String getShKey() {
-		return shKey;
+	public String getShId() {
+		return shId;
 	}
-	public void setShKey(String shKey) {
-		this.shKey = shKey;
+	public void setShId(String shId) {
+		this.shId = shId;
 	}
-	public String getShOption() {
-		return shOption;
+	public String getShPwd() {
+		return shPwd;
 	}
-	public void setShOption(String shOption) {
-		this.shOption = shOption;
+	public void setShPwd(String shPwd) {
+		this.shPwd = shPwd;
 	}
-	public String getSeq() {
-		return seq;
+	public String getShNick() {
+		return shNick;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setShNick(String shNick) {
+		this.shNick = shNick;
 	}
-	public String getId() {
-		return id;
+	public String getShEmid() {
+		return shEmid;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setShEmid(String shEmid) {
+		this.shEmid = shEmid;
 	}
-	public int getEmain() {
-		return emain;
+	public String getShEmain() {
+		return shEmain;
 	}
-	public void setEmain(int emain) {
-		this.emain = emain;
+	public void setShEmain(String shEmain) {
+		this.shEmain = shEmain;
 	}
+	public String getShGen() {
+		return shGen;
+	}
+	public void setShGen(String shGen) {
+		this.shGen = shGen;
+	}
+	public String getShDel() {
+		return shDel;
+	}
+	public void setShDel(String shDel) {
+		this.shDel = shDel;
+	}
+	
+	
 	
 	
 	

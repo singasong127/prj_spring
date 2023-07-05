@@ -12,7 +12,6 @@ public class Member {
 	private String age;
 	private String agreeDT;
 	private String delNy;
-	private int emain;
 	
 	public String getSeq() {
 		return seq;
@@ -74,12 +73,7 @@ public class Member {
 	public void setDelNy(String delNy) {
 		this.delNy = delNy;
 	}
-	public int getEmain() {
-		return emain;
-	}
-	public void setEmain(int emain) {
-		this.emain = emain;
-	}
+	
 	
 	
 	
