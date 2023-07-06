@@ -25,7 +25,7 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="table-responsive">
-								<form name="formList">
+								<form name="formList" method="post">
 									<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 									<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 									<div class="form-row w-75">
@@ -73,7 +73,7 @@
 										<c:choose>
 											<c:when test="${fn:length(list) eq 0}">
 												<tr>
-													<td class="text-center" colspan="9">There is no data!</td>
+													<td class="text-center" colspan="9">데이터가 없습니다!</td>
 												</tr>
 											</c:when>
 											<c:otherwise>

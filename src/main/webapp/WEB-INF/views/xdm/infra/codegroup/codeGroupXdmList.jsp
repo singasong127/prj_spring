@@ -74,7 +74,7 @@
 										<c:choose>
 											<c:when test="${fn:length(list) eq 0}">
 												<tr>
-													<td class="text-center" colspan="9">There is no data!</td>
+													<td class="text-center" colspan="9">데이터가 없습니다!</td>
 												</tr>
 											</c:when>
 											<c:otherwise>
@@ -106,7 +106,7 @@
 								            <ul class="pagination justify-content-center mb-0">
 								                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-left"></i></a></li> -->
 												<c:if test="${vo.startPage gt vo.pageNumToShow}">
-								                	<li class="page-item"><a class="page-link" href="javascript:goList(${vo.startPage - 1})"><i class="fa-solid fa-angle-left"></i></a></li>
+								                	<li class="page-item"><a class="page-link" href="javascript:goList(${vo.startPage - 1})">prev</a></li>
 												</c:if>
 												<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
 													<c:choose>
@@ -119,7 +119,7 @@
 													</c:choose>
 												</c:forEach>                
 												<c:if test="${vo.endPage ne vo.totalPages}">                
-									                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})"><i class="fa-solid fa-angle-right"></i></a></li>
+									                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})">next</a></li>
 												</c:if>
 								                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-right"></i></a></li> -->
 								            </ul>
