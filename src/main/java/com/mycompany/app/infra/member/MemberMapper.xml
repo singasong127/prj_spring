@@ -37,7 +37,9 @@
 		WHERE 1=1
 		AND emailDomain = m.emailDomain
 		AND gender = m.gender
-		<if test="id != null and !id.equals('')">AND id LIKE CONCAT('%',#{id},'%')</if>
+		<if test="shId != null and !shId.equals('')">AND id LIKE CONCAT('%',#{shId},'%')</if>
+		<if test="shNick != null and !shNick.equals('')">AND nickname LIKE CONCAT('%',#{shNick},'%')</if>
+		<if test="shEmaccount != null and !shEmaccount.equals('')">AND emailAccount LIKE CONCAT('%',#{shEmaccount},'%')</if>
     </sql>
 	
 	<select id="selectOneCount" resultType="Integer">
@@ -56,10 +58,11 @@
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
 		<include refid="selectAll"></include>
 		FROM user AS m
 		WHERE 1=1
-		AND seq = #{seq}
+		AND seq = #{shSeq}
 	</select>
 
 	<select id="insert" resultMap="resultMapObj">
@@ -74,13 +77,13 @@
 		, agreeDT
 		, delNy
 		) values (
-		#{id}
-		, #{password}
-		, #{nickname}
-		, #{emailAccount}
-		, #{emailDomain}
-		, #{gender}
-		, #{age}
+		#{shId}
+		, #{shPwd}
+		, #{shNick}
+		, #{shEmaccount}
+		, #{shEmain}
+		, #{shGen}
+		, #{shAge}
 		, date_format(now(), '%Y%m%d%H%i%s')
 		, 0
 		)

@@ -18,7 +18,7 @@ public class MemberController {
 	@RequestMapping(value = "/member")
 	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) {
 		
-		vo.setId(vo.getId() == null ? "" : vo.getId());
+		vo.setShId(vo.getShId() == null ? "" : vo.getShId());
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
 		
@@ -29,8 +29,11 @@ public class MemberController {
 //			by pass
 		}
 		
+		System.out.println("emain: " + vo.getShEmain());
+		
 		return "xdm/infra/member/memberXdmList";
 	}
+	
 	
 	@RequestMapping(value="/signup")
 	public String signUp(MemberVo vo, Model model) {

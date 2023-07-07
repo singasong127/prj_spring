@@ -174,10 +174,9 @@
 						class="nav-text">시스템</span>
 					</a>
 					<ul aria-expanded="false">
-						<li><a href="/cglist">코드 그룹 리스트</a></li>
-						<li><a href="/cgform">코드 그룹 관리</a></li>
-						<li><a href="/cdlist">코드 리스트</a></li>
-						<li><a href="/member">회원 리스트</a></li>
+						<li><a href="/cglist">코드 그룹 관리</a></li>
+						<li><a href="/cdlist">코드 관리</a></li>
+						<li><a href="/member">회원 관리</a></li>
 					</ul>
 				</li>
 			</ul>

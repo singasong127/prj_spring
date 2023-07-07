@@ -27,34 +27,38 @@
 								<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 								<div class="form-row">
 									<div class="form-group col-md-3">
-										<input type="text" class="form-control" id="id"
-											name="id" value="<c:out value="${vo.id }"/>"
+										<input type="text" class="form-control" id="shId"
+											name="shId" value="<c:out value="${vo.shId }"/>"
 											placeholder="아이디">
 									</div>
 									<div class="form-group col-md-3">
-										<input type="text" class="form-control" id="nickname"
-											name="nickname" value="<c:out value="${vo.nickname }"/>"
+										<input type="text" class="form-control" id="shNick"
+											name="shNick" value="<c:out value="${vo.shNick }"/>"
 											placeholder="닉네임">
 									</div>
 									<div class="form-group col-md-3">
-										<input type="text" class="form-control" id="emailAccount" name="emailAccount"
+										<input type="text" class="form-control" id="shEmaccount"
+											name="shEmaccount" value="<c:out value="${vo.shEmaccount }"/>"
 											placeholder="이메일 계정">
 									</div>
 									<div class="form-group col-md-3">
-										<input type="text" class="form-control" id="emailDomain"
-											name="emailDomain" value="<c:out value="${vo.emailDomain }"/>"
-											placeholder="도메인">
-									</div>
-									<div class="form-group col-md-3">
-										<select name="gender" class="form-control">
-											<option value="" selected>--성별--</option>
-											<option value="4">남성</option>
-											<option value="5">여성</option>
-											<option value="6">기타</option>
+										<select name="shEmain" class="form-control" id="shEmain">
+											<option value="" selected>--이메일 도메인--</option>
+											<option value="<c:out value="${vo.shEmain }" default="1"/>">네이버</option>
+											<option value="<c:out value="${vo.shEmain }" default="2"/>">구글</option>
+											<option value="<c:out value="${vo.shEmain }" default="3"/>">다음</option>
 										</select>
 									</div>
 									<div class="form-group col-md-3">
-										<button type="button" class="btn btn-primary" id="btn">검색</button>
+										<select name="shGen" class="form-control" id="shGen">
+											<option value="" selected>--성별--</option>
+											<option value="<c:out value="${vo.shGen }"/>">남성</option>
+											<option value="<c:out value="${vo.shGen }"/>">여성</option>
+											<option value="<c:out value="${vo.shGen }"/>">기타</option>
+										</select>
+									</div>
+									<div class="form-group col-md-3">
+										<button type="button" class="btn btn-primary" id="btnSh">검색</button>
 										<button type="button" class="btn btn-primary" id="btnInit">Init</button>
 									</div>
 								</div>
@@ -219,9 +223,9 @@
 <%@ include file="../../include/includeScript.jsp"%>
 
 <script type="text/javascript">
-	$("#btn").on("click", function() {
+	$("#btnSh").on("click", function() {
 
-		$("form[name='formMem']").attr("action", "/member");
+		$("form[name=formMem]").attr("action", "/member").submit();
 
 	});
 	

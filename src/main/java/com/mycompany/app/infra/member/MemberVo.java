@@ -1,14 +1,14 @@
 package com.mycompany.app.infra.member;
 
 public class MemberVo {
-	private String seq;
-	private String id;
-	private String password;
-	private String nickname;
-	private String emailAccount;
-	private String emailDomain;
-	private String gender;
-	private String age;
+	private String shSeq;
+	private String shId;
+	private String shPwd;
+	private String shNick;
+	private String shEmaccount;
+	private String shEmain;
+	private String shGen;
+	private String shAge;
 	
 	private int thisPage = 1;									// 현재 페이지
 //	private int rowNumToShow = Constants.ROW_NUM_TO_SHOW;		// 화면에 보여줄 데이터 줄 갯수 - 오라클
@@ -28,53 +28,54 @@ public class MemberVo {
 
 	private int startRnumForMysql = 0;
 	
-	public String getSeq() {
-		return seq;
+	
+	public String getShSeq() {
+		return shSeq;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setShSeq(String shSeq) {
+		this.shSeq = shSeq;
 	}
-	public String getId() {
-		return id;
+	public String getShId() {
+		return shId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setShId(String shId) {
+		this.shId = shId;
 	}
-	public String getPassword() {
-		return password;
+	public String getShPwd() {
+		return shPwd;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setShPwd(String shPwd) {
+		this.shPwd = shPwd;
 	}
-	public String getNickname() {
-		return nickname;
+	public String getShNick() {
+		return shNick;
 	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setShNick(String shNick) {
+		this.shNick = shNick;
 	}
-	public String getEmailAccount() {
-		return emailAccount;
+	public String getShEmaccount() {
+		return shEmaccount;
 	}
-	public void setEmailAccount(String emailAccount) {
-		this.emailAccount = emailAccount;
+	public void setShEmaccount(String shEmaccount) {
+		this.shEmaccount = shEmaccount;
 	}
-	public String getEmailDomain() {
-		return emailDomain;
+	public String getShEmain() {
+		return shEmain;
 	}
-	public void setEmailDomain(String emailDomain) {
-		this.emailDomain = emailDomain;
+	public void setShEmain(String shEmain) {
+		this.shEmain = shEmain;
 	}
-	public String getGender() {
-		return gender;
+	public String getShGen() {
+		return shGen;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setShGen(String shGen) {
+		this.shGen = shGen;
 	}
-	public String getAge() {
-		return age;
+	public String getShAge() {
+		return shAge;
 	}
-	public void setAge(String age) {
-		this.age = age;
+	public void setShAge(String shAge) {
+		this.shAge = shAge;
 	}
 	public int getThisPage() {
 		return thisPage;

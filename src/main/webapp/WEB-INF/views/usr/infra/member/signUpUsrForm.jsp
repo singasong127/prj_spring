@@ -3,6 +3,8 @@
 
 <%@ include file="../../include/includeLink.jsp"%>
 
+<title>회원가입</title>
+
 <!--*******************
         Preloader start
     ********************-->
@@ -19,16 +21,16 @@
 
 <div class="row">
 	<div class="col-lg-12">
-			<div class="card">
-				<div class="card-header">
-					<h4 class="card-title">회원가입</h4>
+			<div class="card w-75 mx-auto">
+				<div class="card-header justify-content-center">
+					<h3 class="card-title">회원가입</h3>
 				</div>
 				<div class="card-body">
 					<div class="form-validation">
 						<form name="formSu" method="post">
-							<div class="row">
-								<div class="col-xl-6">
-									<div class="form-group row">
+							<div class="row w-75 mx-auto">
+								<div class="w-100 mx-auto">
+									<div class="form-group row w-50">
 										<label class="col-lg-4 col-form-label" for="val-username">아이디
 											<span class="text-danger">*</span>
 										</label>
@@ -37,7 +39,7 @@
 												name="id" value="<c:out value='${item.id }'/>" placeholder="아이디를 입력하세요.">
 										</div>
 									</div>
-									<div class="form-group row">
+									<div class="form-group row w-50">
 										<label class="col-lg-4 col-form-label" for="val-password">비밀번호
 											<span class="text-danger">*</span>
 										</label>
@@ -46,7 +48,7 @@
 												name="password" value="<c:out value='${item.password }'/>" placeholder="최소 6자 이상">
 										</div>
 									</div>
-									<div class="form-group row">
+									<div class="form-group row w-50">
 										<label class="col-lg-4 col-form-label"
 											for="val-confirm-password">비밀번호 확인 <span
 											class="text-danger">*</span>
@@ -58,7 +60,7 @@
 												placeholder="">
 										</div>
 									</div>
-									<div class="form-group row">
+									<div class="form-group row w-50">
 										<label class="col-lg-4 col-form-label"
 											for="nickname">닉네임 <span
 											class="text-danger">*</span>
@@ -70,7 +72,7 @@
 												placeholder="">
 										</div>
 									</div>
-									<div class="form-group row">
+									<div class="form-group row justify-content-start flex-nowrap w-50">
 										<label class="col-lg-4 col-form-label" for="val-email">이메일
 											<span class="text-danger">*</span>
 										</label>
@@ -79,10 +81,8 @@
 												value="<c:out value='${item.email }'/>"
 												name="emailAccount" placeholder="">
 										</div>
-										<div class="col-lg-6">
 											<span>@</span>
-										</div>
-										<div class="col-lg-6">
+										<div class="col-lg-6 w-50">
 											<select class="form-control" id="emailDomain" name="emailDomain">
 												<option value="">--선택하세요--</option>
 												<option value="<c:out value='${item.emailDomain} = 1'/>">naver.com</option>
@@ -91,7 +91,7 @@
 											</select>
 										</div>
 									</div>
-									<div class="form-group row">
+									<div class="form-group row w-50">
 										<label class="col-lg-4 col-form-label" for="gender">성별
 											<span class="text-danger">*</span>
 										</label>
@@ -104,9 +104,7 @@
 											</select>
 										</div>
 									</div>
-								</div>
-								<div class="col-xl-6">
-									<div class="form-group row">
+									<div class="form-group row w-50">
 										<label class="css-control css-control-primary css-checkbox"
 												for="val-terms"> <input type="checkbox"
 												class="css-control-input mr-2" id="val-terms"
@@ -140,9 +138,9 @@
 <script src="/resources/admin/js/plugins-init/jquery.validate-init.js"></script>
 
 <script type="text/javascript">
-	$("btnSu").on("click", function() {
+	$("#btnSu").on("click", function() {
 		
-		$("form[name=formSu]").attr("action", '/signup').submit();
+		$("form[name=formSu]").attr("action", '/signupIns').submit();
 	
 	});
 	
