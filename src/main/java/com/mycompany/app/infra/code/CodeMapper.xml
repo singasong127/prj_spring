@@ -86,7 +86,7 @@
     		, delNy
     	) VALUES (
     		#{cdName}
-    		, #{codeGroup_cgSeq}
+    		, #{cgName}
     		, 0
     	)
     </insert>

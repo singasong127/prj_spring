@@ -36,7 +36,7 @@
 										</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" id="id"
-												name="id" value="<c:out value='${item.id }'/>" placeholder="아이디를 입력하세요.">
+												name="id" value="<c:out value='${item.id}'/>" placeholder="아이디를 입력하세요.">
 										</div>
 									</div>
 									<div class="form-group row w-50">
@@ -45,7 +45,7 @@
 										</label>
 										<div class="col-lg-6">
 											<input type="password" class="form-control" id="password"
-												name="password" value="<c:out value='${item.password }'/>" placeholder="최소 6자 이상">
+												name="password" value="<c:out value='${item.password}'/>" placeholder="최소 6자 이상">
 										</div>
 									</div>
 									<div class="form-group row w-50">
@@ -56,7 +56,7 @@
 										<div class="col-lg-6">
 											<input type="password" class="form-control"
 												id="val-confirm-password" name="val-confirm-password"
-												value="<c:out value='${item.password }'/>"
+												value="<c:out value='${item.password}'/>"
 												placeholder="">
 										</div>
 									</div>
@@ -68,7 +68,7 @@
 										<div class="col-lg-6">
 											<input type="text" class="form-control"
 												id="nickname" name="nickname"
-												value="<c:out value='${item.nickname }'/>"
+												value="<c:out value='${item.nickname}'/>"
 												placeholder="">
 										</div>
 									</div>
@@ -78,16 +78,16 @@
 										</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" id="emailAccount"
-												value="<c:out value='${item.email }'/>"
+												value="<c:out value='${item.emailAccount}'/>"
 												name="emailAccount" placeholder="">
 										</div>
 											<span>@</span>
 										<div class="col-lg-6 w-50">
 											<select class="form-control" id="emailDomain" name="emailDomain">
 												<option value="">--선택하세요--</option>
-												<option value="<c:out value='${item.emailDomain} = 1'/>">naver.com</option>
-												<option value="<c:out value='${item.emailDomain} = 2'/>">gmail.com</option>
-												<option value="<c:out value='${item.emailDomain} = 3'/>">daum.net</option>
+												<option value="<c:out value='${item.emailDomain}' default='1'/>">naver.com</option>
+												<option value="<c:out value='${item.emailDomain}' default='2'/>">gmail.com</option>
+												<option value="<c:out value='${item.emailDomain}' default='3'/>">daum.net</option>
 											</select>
 										</div>
 									</div>
@@ -98,9 +98,9 @@
 										<div class="col-lg-6">
 											<select class="form-control" id="gender" name="gender">
 												<option value="">--선택하세요--</option>
-												<option value="<c:out value='${item.gender} = 4'/>">남성</option>
-												<option value="<c:out value='${item.gender} = 5'/>">여성</option>
-												<option value="<c:out value='${item.gender} = 6'/>">기타</option>
+												<option value="<c:out value='${item.gender}' default='4'/>">남성</option>
+												<option value="<c:out value='${item.gender}' default='5'/>">여성</option>
+												<option value="<c:out value='${item.gender}' default='6'/>">기타</option>
 											</select>
 										</div>
 									</div>
@@ -140,7 +140,7 @@
 <script type="text/javascript">
 	$("#btnSu").on("click", function() {
 		
-		$("form[name=formSu]").attr("action", '/signupIns').submit();
+		$("form[name=formSu]").attr("action", '/member').submit();
 	
 	});
 	

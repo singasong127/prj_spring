@@ -52,9 +52,9 @@
 									<div class="form-group col-md-3">
 										<select name="shGen" class="form-control" id="shGen">
 											<option value="" selected>--성별--</option>
-											<option value="<c:out value="${vo.shGen }"/>">남성</option>
-											<option value="<c:out value="${vo.shGen }"/>">여성</option>
-											<option value="<c:out value="${vo.shGen }"/>">기타</option>
+											<option value="<c:out value="${vo.shGen }" default="4"/>">남성</option>
+											<option value="<c:out value="${vo.shGen }" default="5"/>">여성</option>
+											<option value="<c:out value="${vo.shGen }" default="6"/>">기타</option>
 										</select>
 									</div>
 									<div class="form-group col-md-3">

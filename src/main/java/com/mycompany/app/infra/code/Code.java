@@ -6,7 +6,6 @@ public class Code {
 	private String cdName;
 	private String codeGroup_cgSeq;
 	private int delNy;
-	private String cgName;
 	
 	public String getCdSeq() {
 		return cdSeq;
@@ -31,12 +30,6 @@ public class Code {
 	}
 	public void setDelNy(int delNy) {
 		this.delNy = delNy;
-	}
-	public String getCgName() {
-		return cgName;
-	}
-	public void setCgName(String cgName) {
-		this.cgName = cgName;
 	}
 	
 	

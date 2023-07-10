@@ -46,10 +46,6 @@
 												name="cgName" value="<c:out value="${vo.cgName }" />" placeholder="코드 그룹">
 										</div>
 										<div class="form-group col-md-3">
-											<input type="text" class="form-control" id=""
-												name="" placeholder="">
-										</div>
-										<div class="form-group col-md-3">
 											<button type="button" class="btn btn-primary" id="btn">검색</button>
 										</div>
 									</div>

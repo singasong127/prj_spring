@@ -2,11 +2,10 @@ package com.mycompany.app.infra.code;
 
 public class CodeVo {
 	
-	private Integer shOptionCd;
 	private String shKeyCd;
 	private String cdSeq;
 	private String cgName;
-	private Integer insOptionCg;
+	private int insOptionCg;
 	
 	private int thisPage = 1;									// 현재 페이지
 //	private int rowNumToShow = Constants.ROW_NUM_TO_SHOW;		// 화면에 보여줄 데이터 줄 갯수 - 오라클
@@ -26,12 +25,6 @@ public class CodeVo {
 
 	private int startRnumForMysql = 0;	
 	
-	public Integer getShOptionCd() {
-		return shOptionCd;
-	}
-	public void setShOptionCd(Integer shOptionCd) {
-		this.shOptionCd = shOptionCd;
-	}
 	public String getShKeyCd() {
 		return shKeyCd;
 	}
@@ -50,10 +43,10 @@ public class CodeVo {
 	public void setCgName(String cgName) {
 		this.cgName = cgName;
 	}
-	public Integer getInsOptionCg() {
+	public int getInsOptionCg() {
 		return insOptionCg;
 	}
-	public void setInsOptionCg(Integer insOptionCg) {
+	public void setInsOptionCg(int insOptionCg) {
 		this.insOptionCg = insOptionCg;
 	}
 	public int getThisPage() {

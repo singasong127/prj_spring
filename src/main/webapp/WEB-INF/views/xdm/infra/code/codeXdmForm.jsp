@@ -27,30 +27,28 @@
                                 <div class="table-responsive">
                                 	<form name="form" method="post">
 	                            		<div class="form-row w-75">
-		                            			<%-- <input type="text" class="form-control mb-3 mx-3 w-25" name="cgSeq" id="cgSeq" value="<c:out value="${item.cgSeq }"/>" disabled readonly>
-												<input type="text" class="form-control mb-3 w-25" name="cgName" id="cgName" value="<c:out value="${item.cgName }"/>"> --%>
-		                            			<c:choose>
-		                            				<c:when test="${empty item.cdSeq }">
-		                            					<div class="form-group col-md-3">
-		                            						<input type="text" class="form-control" name="cdSeq" id="cdSeq" value="<c:out value="${item.cdSeq }"/>" placeholder="자동 생성" readonly style="background-color: #ccc">
-		                            					</div>
-		                            					<div class="form-group col-md-3">
-		                            						<input type="text" class="form-control" name="cdName" id="cdName" value="<c:out value="${item.cdName }"/>">
-		                            					</div>
-		                            					<div class="form-group col-md-3">
-															<select name="insOptionCg" class="form-control">
-																<c:forEach items="${grouplist}" var="group" varStatus="status">
-																	<option value="<c:out value="${group.cgSeq }"/>"><c:out value="${group.cgName }"/></option>
-																</c:forEach>
-															</select>		                            					
-		                            					</div>
-		                            				</c:when>
-		                            				<c:otherwise>
-		                            					<input type="text" class="form-control col-md-3" name="cdSeq" id="cdSeq" value="<c:out value="${item.cdSeq }"/>" readonly>
-														<input type="text" class="form-control col-md-3" name="cdName" id="cdName" value="<c:out value="${item.cdName }"/>">
-														<input type="text" class="form-control col-md-3" name="cgName" id="cgName" value="<c:out value="${item.codeGroup_cgSeq }"/>">
-		                            				</c:otherwise>
-		                            			</c:choose>
+	                            			<c:choose>
+	                            				<c:when test="${empty item.cdSeq }">
+	                            					<div class="form-group col-md-3">
+	                            						<input type="text" class="form-control" name="cdSeq" id="cdSeq" value="<c:out value="${item.cdSeq}"/>" placeholder="자동 생성" readonly style="background-color: #ccc">
+	                            					</div>
+	                            					<div class="form-group col-md-3">
+	                            						<input type="text" class="form-control" name="cdName" id="cdName" value="<c:out value="${item.cdName}"/>">
+	                            					</div>
+	                            					<div class="form-group col-md-3">
+														<select name="insOptionCg" class="form-control">
+															<c:forEach items="${list}" var="list" varStatus="status">
+																<option value="<c:out value="${list.cgSeq }"/>"><c:out value="${list.cgName}"/></option>
+															</c:forEach>
+														</select>		                            					
+	                            					</div>
+	                            				</c:when>
+	                            				<c:otherwise>
+	                            					<input type="text" class="form-control col-md-3" name="cdSeq" id="cdSeq" value="<c:out value="${item.cdSeq}"/>" readonly>
+													<input type="text" class="form-control col-md-3" name="cdName" id="cdName" value="<c:out value="${item.cdName}"/>">
+													<input type="text" class="form-control col-md-3" name="cgName" id="cgName" value="<c:out value="${item.cgName}"/>">
+	                            				</c:otherwise>
+	                            			</c:choose>
                                         </div>
                                         <div class="form-group col-md-3">
                                         	<!-- <button type="button" class="btn btn-success me-3" id="btnInsert">등록</button>
@@ -103,7 +101,6 @@
         ***********************************-->
 
         
-    </div>
     <!--**********************************
         Main wrapper end
     ***********************************-->
@@ -114,6 +111,8 @@
     <!-- Required vendors -->
    	
    	<%@ include file="../../include/includeScript.jsp" %>
+   	
+   	<script src="/resources/js/validation.js"></script>
     
  	<script type="text/javascript">
 
@@ -136,8 +135,14 @@
 		});
 	
 		$("#btnInsert").on("click", function() {
+			
+			if($.trim($("#cdName").val()) == "" || $.trim($("#cdName").val()) == null) {
+				alert("코드 이름을 입력해주세요.");
+				$("#cdName").focus();
+			} else {
+				$("form[name=form]").attr("action", "/cdinsert").submit();
+			}
 		
-			$("form[name=form]").attr("action", "/cdinsert").submit();
 		
 		});
 

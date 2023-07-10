@@ -92,7 +92,6 @@
         ***********************************-->
 
         
-    </div>
     <!--**********************************
         Main wrapper end
     ***********************************-->
@@ -111,10 +110,42 @@
     <script src="/resources/admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="/resources/admin/js/plugins-init/datatables.init.js"></script>
     
+    <script src="/resources/js/validation.js"></script>
+    
  	<script type="text/javascript">
+ 	
+ 		validationInst = function() {
+ 			if(validationUpdt() == false) return false;
+ 		}
+ 		
+ 		validationUpdt = function() {
+ 			/* if($.trim($("#cgName").val()) == "" || $.trim($("#cgName").val()) == null) {
+				alert("데이터를 입력해주세요!");
+				$("#cgName").focus();
+				return false;
+ 			} else {
+ 				// by pass
+ 			} */
+ 			
+ 			// 공백없는 숫자와 대소문자
+ 			/* myRe = /^[a-zA-Z0-9]*$/;
+ 			
+ 			if(myRe.test($.trim($('#cgName').val())) == false || !null) {
+ 				alert("공백없는 숫자와 대소문자");
+				$("#cgName").focus();
+				return false;
+			} else {
+				// by pass
+			}  */
+ 			
+			if(check($.trim($('#cgName').val())) == false || !null) return false;
+			
+ 		}
 
 		$("#btnUpdate").on("click", function() {
-		
+			
+			if(validationUpdt() == false) return false;
+			
 			$("form[name=form]").attr("action", "/cgupdate").submit();
 		
 		});
@@ -132,8 +163,18 @@
 		});
 	
 		$("#btnInsert").on("click", function() {
-		
+			
+			if(validationInst() == false) return false;
+			
 			$("form[name=form]").attr("action", "/cginsert").submit();
+			
+			/* if($.trim($("#cgName").val()) == "" || $.trim($("#cgName").val()) == null) {
+				alert("데이터를 입력해주세요!");
+				$("#cgName").focus();
+			} else {
+				$("form[name=form]").attr("action", "/cginsert").submit();
+			} */
+				
 		
 		});
 

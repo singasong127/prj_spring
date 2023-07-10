@@ -51,7 +51,7 @@ public class CodeController {
 		
 		List<CodeGroup> list = groupService.selectList(groupvo);
 		
-		groupModel.addAttribute("grouplist", list);
+		groupModel.addAttribute("list", list);
 		
 		return "xdm/infra/code/codeXdmForm";
 	}

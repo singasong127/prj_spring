@@ -30,6 +30,7 @@ public class MemberController {
 		}
 		
 		System.out.println("emain: " + vo.getShEmain());
+		System.out.println("gender: " + vo.getShGen());
 		
 		return "xdm/infra/member/memberXdmList";
 	}
@@ -48,6 +49,8 @@ public class MemberController {
 	public String signUpIns(Member dto) {
 		
 		service.insert(dto);
+		
+		System.out.println("inserted");
 		
 		return "redirect:/member";
 	}
