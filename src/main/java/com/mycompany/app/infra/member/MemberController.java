@@ -36,16 +36,18 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping(value="/signup")
-	public String signUp(MemberVo vo, Model model) {
-		Member member = service.selectOne(vo); 
-		
-		model.addAttribute("item", member);
-		
-		return "usr/infra/member/signUpUsrForm";
-	}
 	
-	@RequestMapping(value="/signupIns")
+	@RequestMapping(value="/signup")
+  	public String signUp(MemberVo vo, Model model) { 
+		Member member = service.selectOne(vo);
+  
+		model.addAttribute("item", member);
+  
+		return "usr/infra/member/signUpUsrForm"; 
+	}
+	 
+	
+	@RequestMapping(value="/signupins")
 	public String signUpIns(Member dto) {
 		
 		service.insert(dto);

@@ -30,20 +30,16 @@
 									<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 									<div class="form-row w-75">
 										<div class="form-group col-md-3">
-											<select name="shOptionCd" class="form-control">
-												<option value="" selected>--선택하세요--</option>
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-											</select>
-										</div>
-										<div class="form-group col-md-3">
 											<input type="text" class="form-control" id="shKeyCd"
 												name="shKeyCd" value="<c:out value="${vo.shKeyCd }" />" placeholder="코드명">
 										</div>
 										<div class="form-group col-md-3">
-											<input type="text" class="form-control" id="cgName"
-												name="cgName" value="<c:out value="${vo.cgName }" />" placeholder="코드 그룹">
+											<select name="shOptionCd" class="form-control" id="shOptionCd">
+												<option value="" selected>-- 코드 그룹 --</option>
+												<option value="<c:out value="${vo.cgName}" default='1'/>">1</option>
+												<option value="<c:out value="${vo.cgName}" default='2'/>">2</option>
+												<option value="<c:out value="${vo.cgName}" default='3'/>">3</option>
+											</select>
 										</div>
 										<div class="form-group col-md-3">
 											<button type="button" class="btn btn-primary" id="btn">검색</button>
@@ -88,8 +84,8 @@
 															</a>
 														</td>
 														<td>
-															<a href="/cdform?cdSeq=<c:out value="${list.cgName}"></c:out>">
-																<c:out value="${list.cgName}"></c:out>
+															<a href="/cdform?cdSeq=<c:out value="${list.cdSeq}"></c:out>">
+																<c:out value="${list.codeGroup_cgSeq}"></c:out>
 															</a>
 														</td>
 													</tr>

@@ -3,7 +3,6 @@ package com.mycompany.app.infra.code;
 public class CodeVo {
 	
 	private String shKeyCd;
-	private String cdSeq;
 	private String cgName;
 	private int insOptionCg;
 	
@@ -30,12 +29,6 @@ public class CodeVo {
 	}
 	public void setShKeyCd(String shKeyCd) {
 		this.shKeyCd = shKeyCd;
-	}
-	public String getCdSeq() {
-		return cdSeq;
-	}
-	public void setCdSeq(String cdSeq) {
-		this.cdSeq = cdSeq;
 	}
 	public String getCgName() {
 		return cgName;

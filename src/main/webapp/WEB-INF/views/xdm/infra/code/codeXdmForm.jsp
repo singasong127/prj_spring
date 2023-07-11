@@ -37,8 +37,8 @@
 	                            					</div>
 	                            					<div class="form-group col-md-3">
 														<select name="insOptionCg" class="form-control">
-															<c:forEach items="${list}" var="list" varStatus="status">
-																<option value="<c:out value="${list.cgSeq }"/>"><c:out value="${list.cgName}"/></option>
+															<c:forEach items="${group}" var="group" varStatus="status">
+																<option value="<c:out value="${group.cgSeq }"/>"><c:out value="${group.cgName}"/></option>
 															</c:forEach>
 														</select>		                            					
 	                            					</div>
@@ -115,9 +115,20 @@
    	<script src="/resources/js/validation.js"></script>
     
  	<script type="text/javascript">
-
-		$("#btnUpdate").on("click", function() {
+ 	
+ 		var objName = $("#cdName");
+ 		
+ 		validationInst = function() {
+ 			if(validationUpdt() == false) return false;
+ 		}
 		
+ 		validationUpdt = function() {
+ 			if(check(objName) == false) return false;
+ 		}
+ 		
+		$("#btnUpdate").on("click", function() {
+			
+			if(validationUpdt() == false) return false;
 			$("form[name=form]").attr("action", "/cdupdate").submit();
 		
 		});
@@ -136,14 +147,9 @@
 	
 		$("#btnInsert").on("click", function() {
 			
-			if($.trim($("#cdName").val()) == "" || $.trim($("#cdName").val()) == null) {
-				alert("코드 이름을 입력해주세요.");
-				$("#cdName").focus();
-			} else {
-				$("form[name=form]").attr("action", "/cdinsert").submit();
-			}
-		
-		
+			if(validationInst() == false) return false;
+			$("form[name=form]").attr("action", "/cdinsert").submit();
+			
 		});
 
 	</script>

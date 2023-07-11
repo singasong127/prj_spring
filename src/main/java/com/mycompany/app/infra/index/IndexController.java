@@ -38,7 +38,7 @@ public class IndexController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/loginXdmin")
+	@RequestMapping(value="/loginxdmin")
 	public ModelAndView loginXdmin() {
 		ModelAndView mav = new ModelAndView();
 		

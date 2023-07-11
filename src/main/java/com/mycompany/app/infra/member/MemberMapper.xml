@@ -26,7 +26,9 @@
 		END
 		FROM code AS d
 		WHERE d.cdSeq = m.gender) AS gender
-		, age
+		, dob
+		, (SELECT 
+			 truncate( ( to_days( now() ) - to_days(dob) ) / 365, 0) ) ) AS age 	
 		, agreeDT
 		, delNy
 	</sql>
@@ -73,18 +75,18 @@
 		, emailAccount
 		, emailDomain
 		, gender
-		, age
+		, dob
 		, agreeDT
 		, delNy
 		) values (
-		#{shId}
-		, #{shPwd}
-		, #{shNick}
-		, #{shEmaccount}
-		, #{shEmain}
-		, #{shGen}
-		, #{shAge}
-		, date_format(now(), '%Y%m%d%H%i%s')
+		#{id}
+		, #{password}
+		, #{nickname}
+		, #{emailAccount}
+		, #{emailDomain}
+		, #{gender}
+		, #{dob}
+		, now()
 		, 0
 		)
 	</select>

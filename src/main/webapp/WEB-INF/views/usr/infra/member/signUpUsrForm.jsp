@@ -36,7 +36,7 @@
 										</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" id="id"
-												name="id" value="<c:out value='${item.id}'/>" placeholder="아이디를 입력하세요.">
+												name="id" value="<c:out value='${vo.id}'/>" placeholder="아이디를 입력하세요.">
 										</div>
 									</div>
 									<div class="form-group row w-50">
@@ -50,13 +50,13 @@
 									</div>
 									<div class="form-group row w-50">
 										<label class="col-lg-4 col-form-label"
-											for="val-confirm-password">비밀번호 확인 <span
+											for="confirmPwd">비밀번호 확인 <span
 											class="text-danger">*</span>
 										</label>
 										<div class="col-lg-6">
 											<input type="password" class="form-control"
-												id="val-confirm-password" name="val-confirm-password"
-												value="<c:out value='${item.password}'/>"
+												id="confirmPwd" name="confirmPwd"
+												value=""
 												placeholder="">
 										</div>
 									</div>
@@ -85,9 +85,9 @@
 										<div class="col-lg-6 w-50">
 											<select class="form-control" id="emailDomain" name="emailDomain">
 												<option value="">--선택하세요--</option>
-												<option value="<c:out value='${item.emailDomain}' default='1'/>">naver.com</option>
-												<option value="<c:out value='${item.emailDomain}' default='2'/>">gmail.com</option>
-												<option value="<c:out value='${item.emailDomain}' default='3'/>">daum.net</option>
+												<option value="<c:out value='1'/>">naver.com</option>
+												<option value="<c:out value='2'/>">gmail.com</option>
+												<option value="<c:out value='3'/>">daum.net</option>
 											</select>
 										</div>
 									</div>
@@ -98,17 +98,17 @@
 										<div class="col-lg-6">
 											<select class="form-control" id="gender" name="gender">
 												<option value="">--선택하세요--</option>
-												<option value="<c:out value='${item.gender}' default='4'/>">남성</option>
-												<option value="<c:out value='${item.gender}' default='5'/>">여성</option>
-												<option value="<c:out value='${item.gender}' default='6'/>">기타</option>
+												<option value="<c:out value='4'/>">남성</option>
+												<option value="<c:out value='5'/>">여성</option>
+												<option value="<c:out value='6'/>">기타</option>
 											</select>
 										</div>
 									</div>
 									<div class="form-group row w-50">
 										<label class="css-control css-control-primary css-checkbox"
-												for="val-terms"> <input type="checkbox"
-												class="css-control-input mr-2" id="val-terms"
-												name="val-terms" value="1"> <span
+												for="agreeCheck"> <input type="checkbox"
+												class="css-control-input mr-2" id="agreeCheck"
+												name="agreeCheck" value="1"> <span
 												class="css-control-indicator"></span> 개인정보 수집 동의
 										</label>
 									</div>
@@ -136,11 +136,37 @@
 <script src="/resources/admin/vendor/jquery-validation/jquery.validate.min.js"></script>
 <!-- Form validate init -->
 <script src="/resources/admin/js/plugins-init/jquery.validate-init.js"></script>
+<script src="/resources/js/validation.js"></script>
 
 <script type="text/javascript">
+	
+	var objId = $("#id");
+	var objPw = $("#password");
+	var objCfPw = $("confirmPwd"); 
+	var objNick = $("#nickname");
+	var objEa = $("#emailAccount");
+	var objEd = $("#emailDomain");
+	var objGen = $("#gender");
+	var objCheck = $("agreeCheck").is(':checked');
+	
+	
+	validationInst = function() {
+		if( check(objId) == false || !null ) return false;
+		if( check(objPw) == false || !null ) return false;
+		if( check(objPw) != objCfPw || !null ) return false;
+		if( check(objNick) == false || !null ) return false;
+		if( check(objEa) == false || !null ) return false;
+		if( check(objEd) == false || !null ) return false;
+		if( check(objGen) == false || !null ) return false;
+		if( check(objCheck) == false) return false;
+	}
+
 	$("#btnSu").on("click", function() {
-		
-		$("form[name=formSu]").attr("action", '/member').submit();
+		if( validationInst() == false) {
+			return false;
+		} else {
+			$("form[name=formSu]").attr("action", '/signupins').submit();
+		}
 	
 	});
 	

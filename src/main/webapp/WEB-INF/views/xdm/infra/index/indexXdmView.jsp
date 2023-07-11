@@ -6,6 +6,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <!-- <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=npvr0xaizp"></script> -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54c60ae7f8e07cf5112b5b1d3980bd2d"></script>
+
 
 <title>관리자 리스트</title>
 <!-- Datatable -->
@@ -261,12 +267,13 @@
                     <div class="col-xl-8 col-lg-8 col-md-8">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Sales Overview</h4>
+                                <h4 class="card-title">지도</h4>
                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-xl-12 col-lg-8">
-                                        <div id="morris-bar-chart"></div>
+                                        <!-- <div id="map" style="width:100%;height:400px;"></div> -->
+                                        <div id="map" style="width:500px;height:400px;"></div>
                                     </div>
                                 </div>
                             </div>
@@ -819,6 +826,21 @@
 
 <script type="text/javascript">
 
+	/* var mapOptions = {
+	    center: new naver.maps.LatLng(37.3595704, 127.105399),
+	    zoom: 10
+	};
+
+	var map = new naver.maps.Map('map', mapOptions); */
+
+	var container = document.getElementById('map');
+	var options = {
+		center: new kakao.maps.LatLng(33.450701, 126.570667),
+		level: 3
+	};
+
+	var map = new kakao.maps.Map(container, options);
+	
 		$("#btn").on("click", function() {
 			// 자기 자신을 다시 한 번 호출해준다.
 			$("form[name=formList]").attr("method", "post");
@@ -828,5 +850,5 @@
 			/* alert("adada"); */
 		});
 	
-	</script>
+</script>
 

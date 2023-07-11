@@ -44,17 +44,17 @@
 									<div class="form-group col-md-3">
 										<select name="shEmain" class="form-control" id="shEmain">
 											<option value="" selected>--이메일 도메인--</option>
-											<option value="<c:out value="${vo.shEmain }" default="1"/>">네이버</option>
-											<option value="<c:out value="${vo.shEmain }" default="2"/>">구글</option>
-											<option value="<c:out value="${vo.shEmain }" default="3"/>">다음</option>
+											<option value="1">네이버</option>
+											<option value="2">구글</option>
+											<option value="3">다음</option>
 										</select>
 									</div>
 									<div class="form-group col-md-3">
 										<select name="shGen" class="form-control" id="shGen">
 											<option value="" selected>--성별--</option>
-											<option value="<c:out value="${vo.shGen }" default="4"/>">남성</option>
-											<option value="<c:out value="${vo.shGen }" default="5"/>">여성</option>
-											<option value="<c:out value="${vo.shGen }" default="6"/>">기타</option>
+											<option value="4">남성</option>
+											<option value="5">여성</option>
+											<option value="6">기타</option>
 										</select>
 									</div>
 									<div class="form-group col-md-3">

@@ -113,32 +113,16 @@
     <script src="/resources/js/validation.js"></script>
     
  	<script type="text/javascript">
- 	
+ 		
+ 		var objName = $('#cgName');
+ 		
  		validationInst = function() {
  			if(validationUpdt() == false) return false;
  		}
  		
  		validationUpdt = function() {
- 			/* if($.trim($("#cgName").val()) == "" || $.trim($("#cgName").val()) == null) {
-				alert("데이터를 입력해주세요!");
-				$("#cgName").focus();
-				return false;
- 			} else {
- 				// by pass
- 			} */
  			
- 			// 공백없는 숫자와 대소문자
- 			/* myRe = /^[a-zA-Z0-9]*$/;
- 			
- 			if(myRe.test($.trim($('#cgName').val())) == false || !null) {
- 				alert("공백없는 숫자와 대소문자");
-				$("#cgName").focus();
-				return false;
-			} else {
-				// by pass
-			}  */
- 			
-			if(check($.trim($('#cgName').val())) == false || !null) return false;
+			if(check(objName) == false || !null) return false;
 			
  		}
 

@@ -9,6 +9,7 @@ public class Member {
 	private String emailAccount;
 	private String emailDomain;
 	private String gender;
+	private String dob;
 	private String age;
 	private String agreeDT;
 	private String delNy;
@@ -54,6 +55,12 @@ public class Member {
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	public String getDob() {
+		return dob;
+	}
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
 	public String getAge() {
 		return age;

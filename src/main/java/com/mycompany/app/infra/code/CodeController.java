@@ -49,9 +49,9 @@ public class CodeController {
 		Code code = service.selectOne(vo);
 		model.addAttribute("item", code);
 		
-		List<CodeGroup> list = groupService.selectList(groupvo);
+		List<CodeGroup> groupList = groupService.selectList(groupvo);
 		
-		groupModel.addAttribute("list", list);
+		groupModel.addAttribute("group", groupList);
 		
 		return "xdm/infra/code/codeXdmForm";
 	}

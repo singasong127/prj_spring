@@ -49,7 +49,7 @@
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
-                                        <p>계정이 없으신가요? <a class="text-primary" href="./page-register.html">회원가입</a></p>
+                                        <p>계정이 없으신가요? <a class="text-primary" href="/signup">회원가입</a></p>
                                     </div>
                                 </div>
                             </div>

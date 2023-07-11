@@ -2,13 +2,13 @@
 		alert("test");
 	}
 	
-	check = function(param) {
+	check = function(obj) {
 		
 		myRe = /^[a-zA-Z0-9]*$/;
  			
-		if(myRe.test($.trim(param)) == false || !null) {
-			alert("공백없는 숫자와 대소문자");
-			$("#cgName").focus();
+		if(myRe.test($.trim(obj.val())) == false || !null) {
+			alert("빠짐없이 입력해주세요!");
+			obj.focus();
 			return false;
 		} else {
 			// by pass
