@@ -26,18 +26,18 @@
                                     <h4 class="text-center mb-4">관리자 로그인</h4>
                                     <form action="/xdmindex">
                                         <div class="form-group">
-                                            <label><strong>Email</strong></label>
-                                            <input type="email" class="form-control" value="hello@example.com">
+                                            <label><strong>아이디</strong></label>
+                                            <input type="text" class="form-control" value="${vo.id }" name="id" id="id">
                                         </div>
                                         <div class="form-group">
-                                            <label><strong>Password</strong></label>
-                                            <input type="password" class="form-control" value="Password">
+                                            <label><strong>비밀번호</strong></label>
+                                            <input type="password" class="form-control" value="${vo.password }" name="password" id="password">
                                         </div>
                                         <div class="form-row d-flex justify-content-between mt-4 mb-2">
                                             <div class="form-group">
                                                 <div class="form-check ml-2">
                                                     <input class="form-check-input" type="checkbox" id="basic_checkbox_1">
-                                                    <label class="form-check-label" for="basic_checkbox_1">Remember me</label>
+                                                    <label class="form-check-label" for="basic_checkbox_1">아이디 저장</label>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -45,7 +45,7 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary btn-block">로그인</button>
+                                            <button type="button" class="btn btn-primary btn-block" id="btnLogin">로그인</button>
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
@@ -68,6 +68,41 @@
     <script src="/resources/admin/vendor/global/global.min.js"></script>
     <script src="/resources/admin/js/quixnav-init.js"></script>
     <script src="/resources/admin/js/custom.min.js"></script>
+    
+    <script type="text/javascript">
+	    $("#btnLogin").on("click", function(){
+	    	
+	    	if(validation() == false) return false;
+	    	
+	    	$.ajax({
+	    		async: true 
+	    		,cache: false
+	    		,type: "post"
+	    		/* ,dataType:"json" */
+	    		,url: "/loginProc"
+	    		/* ,data : $("#formLogin").serialize() */
+	    		,data : { "id" : $("#id").val(),
+	    			"password" : $("#password").val()}
+	    		,success: function(response) {
+	    			if(response.rt == "success") {
+	    				alert(response.rtMember.nickname);
+	    				location.href = "/xdmindex";
+	    			} else {
+	    				alert("그런 회원 없습니다.");
+	    			}
+	    		}
+	    		,error : function(jqXHR, textStatus, errorThrown){
+	    			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+	    		}
+	    	});
+	    });
+	
+	
+	    validation = function() {
+	    	// if(!checkNull($("#ifmmId"), $.trim($("#ifmmId").val()), "아이디를 입력해 주세요!")) return false;
+	    	// if(!checkNull($("#ifmmPassword"), $.trim($("#ifmmPassword").val()), "비밀번호를 입력해 주세요!")) return false;
+	    }
+    </script>
     
 </body>
 

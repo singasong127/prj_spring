@@ -1,14 +1,15 @@
 package com.mycompany.app.infra.member;
 
 public class MemberVo {
-	private String shSeq;
-	private String shId;
-	private String shPwd;
-	private String shNick;
-	private String shEmaccount;
-	private String shEmain;
-	private String shGen;
-	private String shAge;
+	private String seq;
+	private String id;
+	private String password;
+	private String nickname;
+	private String emailAccount;
+	private String emailDomain;
+	private String gender;
+	private String dob;
+	private String delNy;
 	
 	private int thisPage = 1;									// 현재 페이지
 //	private int rowNumToShow = Constants.ROW_NUM_TO_SHOW;		// 화면에 보여줄 데이터 줄 갯수 - 오라클
@@ -29,121 +30,329 @@ public class MemberVo {
 	private int startRnumForMysql = 0;
 	
 	
-	public String getShSeq() {
-		return shSeq;
+
+
+
+public String getSeq() {
+		return seq;
 	}
-	public void setShSeq(String shSeq) {
-		this.shSeq = shSeq;
+
+
+
+
+
+	public void setSeq(String seq) {
+		this.seq = seq;
 	}
-	public String getShId() {
-		return shId;
+
+
+
+
+
+	public String getId() {
+		return id;
 	}
-	public void setShId(String shId) {
-		this.shId = shId;
+
+
+
+
+
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getShPwd() {
-		return shPwd;
+
+
+
+
+
+	public String getPassword() {
+		return password;
 	}
-	public void setShPwd(String shPwd) {
-		this.shPwd = shPwd;
+
+
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getShNick() {
-		return shNick;
+
+
+
+
+
+	public String getNickname() {
+		return nickname;
 	}
-	public void setShNick(String shNick) {
-		this.shNick = shNick;
+
+
+
+
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
-	public String getShEmaccount() {
-		return shEmaccount;
+
+
+
+
+
+	public String getEmailAccount() {
+		return emailAccount;
 	}
-	public void setShEmaccount(String shEmaccount) {
-		this.shEmaccount = shEmaccount;
+
+
+
+
+
+	public void setEmailAccount(String emailAccount) {
+		this.emailAccount = emailAccount;
 	}
-	public String getShEmain() {
-		return shEmain;
+
+
+
+
+
+	public String getEmailDomain() {
+		return emailDomain;
 	}
-	public void setShEmain(String shEmain) {
-		this.shEmain = shEmain;
+
+
+
+
+
+	public void setEmailDomain(String emailDomain) {
+		this.emailDomain = emailDomain;
 	}
-	public String getShGen() {
-		return shGen;
+
+
+
+
+
+	public String getGender() {
+		return gender;
 	}
-	public void setShGen(String shGen) {
-		this.shGen = shGen;
+
+
+
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
-	public String getShAge() {
-		return shAge;
+
+
+
+
+
+	public String getDob() {
+		return dob;
 	}
-	public void setShAge(String shAge) {
-		this.shAge = shAge;
+
+
+
+
+
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
+
+
+
+
+
+	public String getDelNy() {
+		return delNy;
+	}
+
+
+
+
+
+	public void setDelNy(String delNy) {
+		this.delNy = delNy;
+	}
+
+
+
+
+
 	public int getThisPage() {
 		return thisPage;
 	}
+
+
+
+
+
 	public void setThisPage(int thisPage) {
 		this.thisPage = thisPage;
 	}
+
+
+
+
+
 	public int getRowNumToShow() {
 		return rowNumToShow;
 	}
+
+
+
+
+
 	public void setRowNumToShow(int rowNumToShow) {
 		this.rowNumToShow = rowNumToShow;
 	}
+
+
+
+
+
 	public int getPageNumToShow() {
 		return pageNumToShow;
 	}
+
+
+
+
+
 	public void setPageNumToShow(int pageNumToShow) {
 		this.pageNumToShow = pageNumToShow;
 	}
+
+
+
+
+
 	public int getTotalRows() {
 		return totalRows;
 	}
+
+
+
+
+
 	public void setTotalRows(int totalRows) {
 		this.totalRows = totalRows;
 	}
+
+
+
+
+
 	public int getTotalPages() {
 		return totalPages;
 	}
+
+
+
+
+
 	public void setTotalPages(int totalPages) {
 		this.totalPages = totalPages;
 	}
+
+
+
+
+
 	public int getStartPage() {
 		return startPage;
 	}
+
+
+
+
+
 	public void setStartPage(int startPage) {
 		this.startPage = startPage;
 	}
+
+
+
+
+
 	public int getEndPage() {
 		return endPage;
 	}
+
+
+
+
+
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
 	}
+
+
+
+
+
 	public int getStartRnumForOracle() {
 		return startRnumForOracle;
 	}
+
+
+
+
+
 	public void setStartRnumForOracle(int startRnumForOracle) {
 		this.startRnumForOracle = startRnumForOracle;
 	}
+
+
+
+
+
 	public int getEndRnumForOracle() {
 		return endRnumForOracle;
 	}
+
+
+
+
+
 	public void setEndRnumForOracle(int endRnumForOracle) {
 		this.endRnumForOracle = endRnumForOracle;
 	}
+
+
+
+
+
 	public Integer getRNUM() {
 		return RNUM;
 	}
+
+
+
+
+
 	public void setRNUM(Integer rNUM) {
 		RNUM = rNUM;
 	}
+
+
+
+
+
 	public int getStartRnumForMysql() {
 		return startRnumForMysql;
 	}
+
+
+
+
+
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
 	}
-	
+
+
+
+
+
 public void setParamsPaging(int totalRows) {
 		
 //		setThisPage(3);

@@ -5,19 +5,6 @@
 
 <title>회원가입</title>
 
-<!--*******************
-        Preloader start
-    ********************-->
-<div id="preloader">
-	<div class="sk-three-bounce">
-		<div class="sk-child sk-bounce1"></div>
-		<div class="sk-child sk-bounce2"></div>
-		<div class="sk-child sk-bounce3"></div>
-	</div>
-</div>
-<!--*******************
-        Preloader end
-    ********************-->
 
 <div class="row">
 	<div class="col-lg-12">
@@ -31,16 +18,16 @@
 							<div class="row w-75 mx-auto">
 								<div class="w-100 mx-auto">
 									<div class="form-group row w-50">
-										<label class="col-lg-4 col-form-label" for="val-username">아이디
+										<label class="col-lg-4 col-form-label" for="id">아이디
 											<span class="text-danger">*</span>
 										</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" id="id"
-												name="id" value="<c:out value='${vo.id}'/>" placeholder="아이디를 입력하세요.">
+												name="id" value="<c:out value='${item.id}'/>" placeholder="아이디를 입력하세요.">
 										</div>
 									</div>
 									<div class="form-group row w-50">
-										<label class="col-lg-4 col-form-label" for="val-password">비밀번호
+										<label class="col-lg-4 col-form-label" for="password">비밀번호
 											<span class="text-danger">*</span>
 										</label>
 										<div class="col-lg-6">
@@ -73,7 +60,7 @@
 										</div>
 									</div>
 									<div class="form-group row justify-content-start flex-nowrap w-50">
-										<label class="col-lg-4 col-form-label" for="val-email">이메일
+										<label class="col-lg-4 col-form-label" for="emailAccount">이메일
 											<span class="text-danger">*</span>
 										</label>
 										<div class="col-lg-6">
@@ -142,32 +129,31 @@
 	
 	var objId = $("#id");
 	var objPw = $("#password");
-	var objCfPw = $("confirmPwd"); 
+	var objCfPw = $("#confirmPwd"); 
 	var objNick = $("#nickname");
 	var objEa = $("#emailAccount");
-	var objEd = $("#emailDomain");
-	var objGen = $("#gender");
-	var objCheck = $("agreeCheck").is(':checked');
+	var objEd = $("#shEmain");
+	var objGen = $("#shGen");
+	var objCheck = $("#agreeCheck").is(':checked');
 	
 	
 	validationInst = function() {
-		if( check(objId) == false || !null ) return false;
-		if( check(objPw) == false || !null ) return false;
-		if( check(objPw) != objCfPw || !null ) return false;
-		if( check(objNick) == false || !null ) return false;
-		if( check(objEa) == false || !null ) return false;
-		if( check(objEd) == false || !null ) return false;
-		if( check(objGen) == false || !null ) return false;
-		if( check(objCheck) == false) return false;
+		if( check(objId) == false) return false;
+		/* if( check(objPw) == false) return false;
+		if( check(objCfPw) == false) return false;
+		if( check(objNick) == false) return false;
+		if( check(objEa) == false) return false;
+		if( check(objEd) == false) return false;
+		if( check(objGen) == false) return false;
+		if( check(objCheck) == false) return false; */
 	}
 
 	$("#btnSu").on("click", function() {
-		if( validationInst() == false) {
-			return false;
-		} else {
-			$("form[name=formSu]").attr("action", '/signupins').submit();
-		}
-	
+		
+		if(validationInst() == false) return false;
+		
+		$("form[name=formSu]").attr("action", '/signupins').submit();
+		
 	});
 	
 </script>

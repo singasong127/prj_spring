@@ -27,22 +27,22 @@
 								<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 								<div class="form-row">
 									<div class="form-group col-md-3">
-										<input type="text" class="form-control" id="shId"
-											name="shId" value="<c:out value="${vo.shId }"/>"
+										<input type="text" class="form-control" id="id"
+											name="id" value="<c:out value="${vo.id }"/>"
 											placeholder="아이디">
 									</div>
 									<div class="form-group col-md-3">
-										<input type="text" class="form-control" id="shNick"
-											name="shNick" value="<c:out value="${vo.shNick }"/>"
+										<input type="text" class="form-control" id="nickname"
+											name="nickname" value="<c:out value="${vo.nickname }"/>"
 											placeholder="닉네임">
 									</div>
 									<div class="form-group col-md-3">
-										<input type="text" class="form-control" id="shEmaccount"
-											name="shEmaccount" value="<c:out value="${vo.shEmaccount }"/>"
+										<input type="text" class="form-control" id="emailAccount"
+											name="emailAccount" value="<c:out value="${vo.emailAccount }"/>"
 											placeholder="이메일 계정">
 									</div>
 									<div class="form-group col-md-3">
-										<select name="shEmain" class="form-control" id="shEmain">
+										<select name="emailDomain" class="form-control" id="emailDomain">
 											<option value="" selected>--이메일 도메인--</option>
 											<option value="1">네이버</option>
 											<option value="2">구글</option>
@@ -50,7 +50,7 @@
 										</select>
 									</div>
 									<div class="form-group col-md-3">
-										<select name="shGen" class="form-control" id="shGen">
+										<select name="gender" class="form-control" id="gender">
 											<option value="" selected>--성별--</option>
 											<option value="4">남성</option>
 											<option value="5">여성</option>
@@ -80,7 +80,7 @@
 										<th>이메일 계정</th>
 										<th>이메일 도메인</th>
 										<th>성별</th>
-										<th>나이</th>
+										<th>생년월일</th>
 										<th>개인정보 동의 날짜</th>
 										<th>삭제 여부</th>
 									</tr>
@@ -127,7 +127,7 @@
 													</a></td>
 													<td><a
 														href="/member?age=<c:out value="${list.seq}"></c:out>">
-															<c:out value="${list.age}"></c:out>
+															<c:out value="${list.dob}"></c:out>
 													</a></td>
 													<td><a
 														href="/member?agreeDT=<c:out value="${list.seq}"></c:out>">

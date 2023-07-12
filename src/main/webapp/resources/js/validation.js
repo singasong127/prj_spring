@@ -6,7 +6,7 @@
 		
 		myRe = /^[a-zA-Z0-9]*$/;
  			
-		if(myRe.test($.trim(obj.val())) == false || !null) {
+		if(myRe.test($.trim(obj.val())) == false) {
 			alert("빠짐없이 입력해주세요!");
 			obj.focus();
 			return false;

@@ -37,5 +37,11 @@ public class MemberServiceImpl implements MemberService {
 		return dao.insert(dto);
 	}
 
+	@Override
+	public Member selectOneLogin(MemberVo vo) {
+		
+		return dao.selectOneLogin(vo);
+	}
+
 
 }

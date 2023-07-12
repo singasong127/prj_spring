@@ -78,7 +78,7 @@
       </div>
       <div class="container d-flex justify-content-center" id="project">
         <div class="goTo"><a href="/user"><p>USER</p></a></div>
-        <div class="goTo"><a href="/loginXdmin"><p>ADMIN</p></a></div>
+        <div class="goTo"><a href="/loginxdmin"><p>ADMIN</p></a></div>
       </div>
     </div>
   </section><!-- End Hero -->

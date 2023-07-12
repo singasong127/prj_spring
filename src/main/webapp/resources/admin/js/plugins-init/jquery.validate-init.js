@@ -1,34 +1,36 @@
 jQuery(".form-valide").validate({
     rules: {
-        "val-username": {
+        "id": {
             required: !0,
-            minlength: 3
+            minlength: 4
         },
-        "val-email": {
+        "password": {
             required: !0,
-            email: !0
+            minlength: 6
         },
-        "val-password": {
+        "confirmPwd": {
             required: !0,
-            minlength: 5
+            equalTo: "#password"
         },
-        "val-confirm-password": {
-            required: !0,
-            equalTo: "#val-password"
-        },
-        "val-select2": {
+        "nickname": {
             required: !0
         },
-        "val-select2-multiple": {
+        "emailAccount": {
             required: !0,
-            minlength: 2
+            // email: !0
+        },
+        "emailDomain": {
+            required: !0
+        },
+        "gender": {
+            required: !0
+        },
+        "agreeCheck": {
+            required: !0
         },
         "val-suggestions": {
             required: !0,
             minlength: 5
-        },
-        "val-skill": {
-            required: !0
         },
         "val-currency": {
             required: !0,
@@ -53,37 +55,34 @@ jQuery(".form-valide").validate({
         "val-range": {
             required: !0,
             range: [1, 5]
-        },
-        "val-terms": {
-            required: !0
         }
     },
     messages: {
-        "val-username": {
-            required: "Please enter a username",
-            minlength: "Your username must consist of at least 3 characters"
+        "id": {
+            required: "아이디를 입력해주세요.",
+            minlength: "4자 이상 입력해주세요."
         },
-        "val-email": "Please enter a valid email address",
-        "val-password": {
-            required: "Please provide a password",
-            minlength: "Your password must be at least 5 characters long"
+        "password": {
+            required: "비밀번호를 입력해주세요.",
+            minlength: "비밀번호는 6자 이상 입력해주세요."
         },
         "val-confirm-password": {
-            required: "Please provide a password",
-            minlength: "Your password must be at least 5 characters long",
-            equalTo: "Please enter the same password as above"
+            required: "비밀번호를 입력해주세요.",
+            minlength: "비밀번호는 6자 이상 입력해주세요.",
+            equalTo: "비밀번호가 일치하지 않습니다"
         },
-        "val-select2": "Please select a value!",
-        "val-select2-multiple": "Please select at least 2 values!",
+        "nickname": "사용하실 닉네임을 입력해주세요.",
+        "emailAccount": "이메일을 입력해주세요.",
+        "emailDomain": "이메일 도메인을 선택해주세요.",
+        "gender": "성별을 선택해주세요.",
+        "agreeCheck": "You must agree to the service terms!",
         "val-suggestions": "What can we do to become better?",
-        "val-skill": "Please select a skill!",
         "val-currency": "Please enter a price!",
         "val-website": "Please enter your website!",
         "val-phoneus": "Please enter a US phone!",
         "val-digits": "Please enter only digits!",
         "val-number": "Please enter a number!",
-        "val-range": "Please enter a number between 1 and 5!",
-        "val-terms": "You must agree to the service terms!"
+        "val-range": "Please enter a number between 1 and 5!"
     },
 
     ignore: [],
@@ -103,23 +102,23 @@ jQuery(".form-valide").validate({
 
 jQuery(".form-valide-with-icon").validate({
     rules: {
-        "val-username": {
+        "id": {
             required: !0,
-            minlength: 3
+            minlength: 4
         },
-        "val-password": {
+        "password": {
             required: !0,
-            minlength: 5
+            minlength: 6
         }
     },
     messages: {
-        "val-username": {
-            required: "Please enter a username",
-            minlength: "Your username must consist of at least 3 characters"
+        "id": {
+            required: "아이디를 입력해주세요.",
+            minlength: "4자 이상 입력해주세요."
         },
-        "val-password": {
-            required: "Please provide a password",
-            minlength: "Your password must be at least 5 characters long"
+        "password": {
+            required: "비밀번호를 입력해주세요.",
+            minlength: "비밀번호는 6자 이상 입력해주세요."
         }
     },
 

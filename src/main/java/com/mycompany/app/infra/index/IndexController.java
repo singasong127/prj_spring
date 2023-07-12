@@ -42,7 +42,7 @@ public class IndexController {
 	public ModelAndView loginXdmin() {
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("xdm/infra/index/loginXdmForm");
+		mav.setViewName("xdm/infra/member/loginXdmForm");
 		
 		return mav;
 	}

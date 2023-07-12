@@ -9,6 +9,8 @@ public interface MemberService {
 	
 	public Member selectOne(MemberVo vo);
 	
+	public Member selectOneLogin(MemberVo vo);
+	
 	public int insert(Member dto);
 
 }
