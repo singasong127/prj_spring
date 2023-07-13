@@ -38,15 +38,23 @@ public class IndexController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/loginxdmin")
-	public ModelAndView loginXdmin() {
+	/*
+	 * @RequestMapping(value="/loginxdmin") public ModelAndView loginXdmin() {
+	 * ModelAndView mav = new ModelAndView();
+	 * 
+	 * mav.setViewName("xdm/infra/member/loginXdmForm");
+	 * 
+	 * return mav; }
+	 */
+	
+	@RequestMapping("/team")
+	public ModelAndView team() {
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("xdm/infra/member/loginXdmForm");
+		mav.setViewName("team/usr/index/indexUsrView");
 		
 		return mav;
 	}
-	
 	
 }
 

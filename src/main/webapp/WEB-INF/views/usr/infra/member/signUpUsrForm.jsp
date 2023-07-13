@@ -5,6 +5,10 @@
 
 <title>회원가입</title>
 
+<style>
+	.id_ok {color: #008000;}
+	.id_already {color: #cc5500;}
+</style>
 
 <div class="row">
 	<div class="col-lg-12">
@@ -22,8 +26,10 @@
 											<span class="text-danger">*</span>
 										</label>
 										<div class="col-lg-6">
-											<input type="text" class="form-control" id="id"
+											<input type="text" class="form-control" id="id" oninput = "checkId()"
 												name="id" value="<c:out value='${item.id}'/>" placeholder="아이디를 입력하세요.">
+											<span class="id_ok" style="display: none">사용 가능한 아이디입니다.</span>
+											<span class="id_already" style="display: none">중복된 아이디입니다.</span>
 										</div>
 									</div>
 									<div class="form-group row w-50">
@@ -155,6 +161,27 @@
 		$("form[name=formSu]").attr("action", '/signupins').submit();
 		
 	});
+	
+	checkId = function() {
+		var id = $("#id").val();
+		$.ajax({
+			async: true,
+			cache: false,
+			url: '/signup/idCheck',
+			type: 'post',
+			data: {"id": id},
+			success: function(response) {
+				if(response.rt == "available") {
+					$('.id_ok').css("display", 'inline-block');
+					$('.id_already').css("display", "none");
+				} else {
+					$('.id_ok').css("display", 'none');
+					$('.id_already').css("display", "inline-block");
+				}
+			}, error: function() { $("#id").focus(); }
+		});
+	}
+	
 	
 </script>
 

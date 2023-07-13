@@ -43,5 +43,11 @@ public class MemberServiceImpl implements MemberService {
 		return dao.selectOneLogin(vo);
 	}
 
+	@Override
+	public int idCheck(MemberVo vo) {
+		
+		return dao.idCheck(vo);
+	}
+
 
 }
