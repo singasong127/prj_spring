@@ -36,7 +36,7 @@
 	                            						<input type="text" class="form-control" name="cdName" id="cdName" value="<c:out value="${item.cdName}"/>">
 	                            					</div>
 	                            					<div class="form-group col-md-3">
-														<select name="insOptionCg" class="form-control">
+														<select name="codeGroup_cgSeq" class="form-control">
 															<c:forEach items="${group}" var="group" varStatus="status">
 																<option value="<c:out value="${group.cgSeq }"/>"><c:out value="${group.cgName}"/></option>
 															</c:forEach>
@@ -46,7 +46,7 @@
 	                            				<c:otherwise>
 	                            					<input type="text" class="form-control col-md-3" name="cdSeq" id="cdSeq" value="<c:out value="${item.cdSeq}"/>" readonly>
 													<input type="text" class="form-control col-md-3" name="cdName" id="cdName" value="<c:out value="${item.cdName}"/>">
-													<input type="text" class="form-control col-md-3" name="cgName" id="cgName" value="<c:out value="${item.cgName}"/>">
+													<input type="text" class="form-control col-md-3" name="codeGroup_cgSeq" id="codeGroup_cgSeq" value="<c:out value="${item.codeGroup_cgSeq}"/>">
 	                            				</c:otherwise>
 	                            			</c:choose>
                                         </div>

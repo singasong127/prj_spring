@@ -30,15 +30,15 @@
 									<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 									<div class="form-row w-75">
 										<div class="form-group col-md-3">
-											<input type="text" class="form-control" id="shKeyCd"
-												name="shKeyCd" value="<c:out value="${vo.shKeyCd }" />" placeholder="코드명">
+											<input type="text" class="form-control" id="cdName"
+												name="cdName" value="<c:out value="${vo.cdName }" />" placeholder="코드명">
 										</div>
 										<div class="form-group col-md-3">
-											<select name="shOptionCd" class="form-control" id="shOptionCd">
+											<select name="codeGroup_cgSeq" class="form-control" id="codeGroup_cgSeq">
 												<option value="" selected>-- 코드 그룹 --</option>
-												<option value="<c:out value="${vo.cgName}" default='1'/>">1</option>
-												<option value="<c:out value="${vo.cgName}" default='2'/>">2</option>
-												<option value="<c:out value="${vo.cgName}" default='3'/>">3</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
 											</select>
 										</div>
 										<div class="form-group col-md-3">

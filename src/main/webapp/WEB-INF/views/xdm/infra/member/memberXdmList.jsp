@@ -44,9 +44,9 @@
 									<div class="form-group col-md-3">
 										<select name="emailDomain" class="form-control" id="emailDomain">
 											<option value="" selected>--이메일 도메인--</option>
-											<option value="1">네이버</option>
-											<option value="2">구글</option>
-											<option value="3">다음</option>
+											<option value="<c:out value="${vo.emailDomain }" default="1"/>">네이버</option>
+											<option value="<c:out value="${vo.emailDomain }" default="2"/>">구글</option>
+											<option value="<c:out value="${vo.emailDomain }" default="3"/>">다음</option>
 										</select>
 									</div>
 									<div class="form-group col-md-3">

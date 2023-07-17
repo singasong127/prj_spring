@@ -23,7 +23,7 @@
 	    	code AS c
 		WHERE 1=1
 			AND delNy = 0
-			<if test="shKeyCd != null and !shKeyCd.equals('')">AND cdName LIKE CONCAT('%',#{shKeyCd},'%')</if>
+			<if test="cdName != null and !cdName.equals('')">AND cdName LIKE CONCAT('%',#{cdName},'%')</if>
     </sql>
     
     <select id="selectOneCount" resultType="Integer">

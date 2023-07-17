@@ -23,7 +23,7 @@ public class CodeController {
 	@RequestMapping(value="/cdlist")
 	public String cdList(@ModelAttribute("vo") CodeVo vo, Model model) {
 		
-		vo.setShKeyCd(vo.getShKeyCd() == null ? "" : vo.getShKeyCd());
+		vo.setCdName(vo.getCdName() == null ? "" : vo.getCdName());
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
 		

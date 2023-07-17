@@ -29,6 +29,13 @@
 		, dob	
 		, agreeDT
 		, delNy
+		<!-- , (SELECT
+		CASE
+		WHEN delNy = 1 THEN 'Y'
+		ELSE 'N'
+		END
+		FROM user AS m
+		WHERE seq = 1) -->
 	</sql>
 	
 	<sql id ="selectCommon">

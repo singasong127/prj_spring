@@ -33,7 +33,7 @@ public class IndexController {
 	public ModelAndView user() {
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("usr/index/userPage");
+		mav.setViewName("usr/infra/index/indexUsrView");
 		
 		return mav;
 	}
