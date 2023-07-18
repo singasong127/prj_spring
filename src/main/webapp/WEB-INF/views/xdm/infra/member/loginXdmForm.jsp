@@ -27,11 +27,11 @@
                                     <form action="/xdmindex">
                                         <div class="form-group">
                                             <label><strong>아이디</strong></label>
-                                            <input type="text" class="form-control" value="${vo.id }" name="id" id="id">
+                                            <input type="text" class="form-control" value="xdmin" name="id" id="id">
                                         </div>
                                         <div class="form-group">
                                             <label><strong>비밀번호</strong></label>
-                                            <input type="password" class="form-control" value="${vo.password }" name="password" id="password">
+                                            <input type="password" class="form-control" value="000000" name="password" id="password">
                                         </div>
                                         <div class="form-row d-flex justify-content-between mt-4 mb-2">
                                             <div class="form-group">

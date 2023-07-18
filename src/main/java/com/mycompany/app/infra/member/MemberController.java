@@ -98,8 +98,19 @@ public class MemberController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/logoutXdmProc")
+	@RequestMapping("/logoutUsrProc")
 	public Map<String, Object> logoutUsrProc(MemberVo vo, HttpSession httpSession) {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		httpSession.invalidate();
+		returnMap.put("rt", "success");
+		
+		return returnMap;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/logoutXdmProc")
+	public Map<String, Object> logoutXdmProc(MemberVo vo, HttpSession httpSession) {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		httpSession.invalidate();

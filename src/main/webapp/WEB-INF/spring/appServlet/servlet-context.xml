@@ -23,4 +23,25 @@
 	
 	<context:component-scan base-package="com.mycompany.app" />
 	
+	<!-- session interceptor s 2023.07.18 for logincheck -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/resources/**" />
+			<exclude-mapping path="/" />
+			<exclude-mapping path="/user" />
+			<exclude-mapping path="/xdmindex" />
+			<exclude-mapping path="/cglist" />
+			<exclude-mapping path="/cgform" />
+			<exclude-mapping path="/cdlist" />
+			<exclude-mapping path="/cdform" />
+			<exclude-mapping path="/member" />
+			<exclude-mapping path="/loginusr" />
+			<exclude-mapping path="/loginxdm" />
+			<exclude-mapping path="/loginProc" />
+			<exclude-mapping path="/logoutXdmProc" />
+			<beans:bean id="checkLoginSessionInterception" class="com.mycompany.app.common.interceptor.CheckLoginSessionInterception"/>
+		</interceptor>
+	</interceptors>	
+	
 </beans:beans>
