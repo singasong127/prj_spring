@@ -18,14 +18,15 @@
 		cdName
 		FROM code AS d
 		WHERE d.cdSeq = m.emailDomain) AS emailDomain
-		, (SELECT
+		, gender
+		<!-- , (SELECT
 		CASE
 		WHEN gender = 4 THEN '남성'
 		WHEN gender = 5 THEN '여성'
 		ELSE '기타'
 		END
 		FROM code AS d
-		WHERE d.cdSeq = m.gender) AS gender
+		WHERE d.cdSeq = m.gender) AS gender -->
 		, dob	
 		, agreeDT
 		, delNy
@@ -43,7 +44,7 @@
 		user AS m
 		WHERE 1=1
 		AND emailDomain = m.emailDomain
-		AND gender = m.gender
+		<!-- AND gender = m.gender -->
 		<if test="id != null and !id.equals('')">AND id LIKE CONCAT('%',#{id},'%')</if>
 		<if test="nickname != null and !nickname.equals('')">AND nickname LIKE CONCAT('%',#{nickname},'%')</if>
 		<if test="emailAccount != null and !emailAccount.equals('')">AND emailAccount LIKE CONCAT('%',#{emailAccount},'%')</if>

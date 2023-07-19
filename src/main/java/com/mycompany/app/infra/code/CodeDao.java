@@ -31,5 +31,8 @@ public class CodeDao {
 	
 	public int insert(Code dto) { return sqlSession.insert(namespace + ".insert", dto); }
 	
+	public List<Code> selectListCachedCodeArrayList() {
+		return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList", null);
+	}
 	
 }

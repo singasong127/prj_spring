@@ -90,5 +90,15 @@
     		, 0
     	)
     </insert>
-
+	
+	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+		SELECT
+			cdSeq
+			, cdName
+			, codeGroup_cgSeq
+		FROM code
+		WHERE 1=1
+		AND delNy = 0
+	</select>
+	
 </mapper>

@@ -93,6 +93,10 @@
 											</tr>
 										</c:when>
 										<c:otherwise>
+											<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"></c:set>
+											<c:forEach items="${listCodeGender }" var="list" varStatus="status">
+												<c:out value="${list.cdName }" />
+											</c:forEach>
 											<%-- ${list} 자바에서 넘겨준 객체 이름 --%>
 											<!-- var="list" jstl 블럭에서 사용할 변수 이름 -->
 											<c:forEach items="${list}" var="list" varStatus="status">
@@ -123,7 +127,10 @@
 													</a></td>
 													<td><a
 														href="/member?gender=<c:out value="${list.seq}"></c:out>">
-															<c:out value="${list.gender}"></c:out>
+															<%-- <c:out value="${list.gender}"></c:out> --%>
+															<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
+																<c:if test="${list.gender eq listGender.cdSeq}"><c:out value="${listGender.cdName }"></c:out></c:if>
+															</c:forEach>
 													</a></td>
 													<td><a
 														href="/member?age=<c:out value="${list.seq}"></c:out>">
@@ -142,6 +149,7 @@
 										</c:otherwise>
 									</c:choose>
 								</tbody>
+								
 								<tfoot>
 
 								</tfoot>

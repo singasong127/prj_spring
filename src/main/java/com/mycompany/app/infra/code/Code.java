@@ -1,11 +1,16 @@
 package com.mycompany.app.infra.code;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Code {
 	
 	private String cdSeq;
 	private String cdName;
 	private String codeGroup_cgSeq;
 	private int delNy;
+	
+	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
 	
 	public String getCdSeq() {
 		return cdSeq;
@@ -30,6 +35,12 @@ public class Code {
 	}
 	public void setDelNy(int delNy) {
 		this.delNy = delNy;
+	}
+	public static List<Code> getCachedCodeArrayList() {
+		return cachedCodeArrayList;
+	}
+	public static void setCachedCodeArrayList(List<Code> cachedCodeArrayList) {
+		Code.cachedCodeArrayList = cachedCodeArrayList;
 	}
 	
 	
