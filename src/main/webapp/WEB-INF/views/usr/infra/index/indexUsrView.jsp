@@ -11,20 +11,20 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 
-<title>project</title>
+<title>유저 메인</title>
 <%@ include file="../../include/includeView.jsp"%>
 <div id="left_content">
 	<div id="info">
 		<div id="search" class="mb-3">
-			<form autocomplete="off">
-				<input type="text" class="form-control" id="inputSearch"
-					placeholder="식당 이름을 입력해주세요">
+			<form autocomplete="off" onsubmit="searchPlaces(); return false;">
+				<input type="text" class="form-control" id="keyword"
+					placeholder="식당 이름을 입력해주세요" value="">
+				<button type="submit" id="btnSearch">
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</button>
 			</form>
-			<button type="button" id="btnSearch">
-				<i class="fa-solid fa-magnifying-glass"></i>
-			</button>
 		</div>
-		<div id="content">
+		<div id="main_content">
 			<div id="weather">
 				<h4>경기도 김포시</h4>
 				<ul id="weather_info">
@@ -39,6 +39,93 @@
 				<ul id="favorlist">
 					<li>맛있는 식당</li>
 				</ul>
+			</div>
+		</div>
+		<div id="list">
+			<div class="list_info">
+				<ul>
+					<li>맛있는 식당</li>
+					<li>서울특별시 마포구</li>
+					<li>4.7</li>
+					<li>리뷰  17건</li>
+					<li>영업시간</li>
+					<li>02-000-0000</li>
+				</ul>
+			</div>
+		</div>
+		<div id="list_detail">
+			<div id="detail_top">
+				<h4>맛있는 식당</h4>
+				<button type="button" class="btn" id="btnWait">대기하기</button>
+				<span class="rating"></span>
+			</div>
+			<div id="detail_img">
+				<ul>
+					<li>img1</li>
+					<li>img2</li>
+					<li>img3</li>
+					<li>img4</li>
+				</ul>
+			</div>
+			<div id="detail_tag">
+				<span class="tag">#</span>
+				<span class="tag">#</span>
+				<span class="tag">#</span>
+			</div>
+			<div id="detail_info">
+				<ul class="dinfo">
+					<li class="dinfo_label">영업 시간  </li>
+					<li class="dinfo_desc">AM 10:00 ~ PM 08:00</li>
+				</ul>
+				<ul class="dinfo">
+					<li class="dinfo_label">주소  </li>
+					<li class="dinfo_desc">서울특별시 마포구</li>
+				</ul>
+				<ul class="dinfo">
+					<li class="dinfo_label">전화번호  </li>
+					<li class="dinfo_desc">02-000-0000</li>
+				</ul>
+				<ul class="dinfo">
+					<li class="dinfo_label">현재 대기 번호  </li>
+					<li class="dinfo_desc"><div class="wait">0</div></li>
+				</ul>
+			</div>
+			<div id="detail_menu">
+				<div class="menu_list">
+					<div class="menu_img"></div>
+					<p class="menu_name">음식</p>
+					<p class="menu_desc">음식에 대한 설명</p>
+				</div>
+				<div class="menu_list">
+					<div class="menu_img"></div>
+					<p class="menu_name">음식</p>
+					<p class="menu_desc">음식에 대한 설명</p>
+				</div>
+				<div class="menu_list">
+					<div class="menu_img"></div>
+					<p class="menu_name">음식</p>
+					<p class="menu_desc">음식에 대한 설명</p>
+				</div>
+				<div class="menu_list">
+					<div class="menu_img"></div>
+					<p class="menu_name">음식</p>
+					<p class="menu_desc">음식에 대한 설명</p>
+				</div>
+			</div>
+			<div id="review">
+				<div class="review_list">
+					<div class="user_img"></div>
+					<div class="review_desc">
+						<span class="review_usrName">유저 이름</span>
+						<span class="review_rating">5.0</span>
+						<p>리뷰 내용</p>
+						<span class="review_time">00:00</span>
+					</div>
+				</div>
+				<div id="review_textarea">
+					<input type="text" name="rv_textarea" id="rv_textarea" placeholder="내용을 입력해주세요.">
+					<button type="button" class="btn btn-primary" id="btnReview">리뷰 남기기</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -58,7 +145,7 @@
 			</a>
 
 			<ul class="dropdown-menu">
-				<li><a href="./app-profile.html" class="dropdown-item"> <i
+				<li><a href="usr/infra/sub/profile.jsp" class="dropdown-item"> <i
 						class="icon-user"></i> <span class="ml-2">프로필 </span>
 				</a></li>
 				<li><a href="/user" class="dropdown-item" id="btnLogout"> <i
@@ -74,6 +161,21 @@
 <div id="btnChat">
 	<i class="fa-regular fa-comments"></i>
 </div>
+<div id="chat">
+	
+</div>
+<div id="waiting">
+	<a href="#" class="wait">0</a>
+	<div id="vw_waiting">
+		<label for="vw_img">맛있는 식당</label>
+		<div id="vw_img" class="imgDining"></div>
+		<p>영업 시간</p>
+		<p>AM 10:00 ~ PM 08:00</p>
+		<span>현재 대기 번호   </span>
+		<div class="wait">0</div>
+	</div>
+</div>
+
 
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54c60ae7f8e07cf5112b5b1d3980bd2d&libraries=services"></script>

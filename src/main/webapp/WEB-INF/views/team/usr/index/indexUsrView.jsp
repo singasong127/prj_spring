@@ -11,6 +11,8 @@
 	layout:decorator="board/layout/defaultLayout">
 <%@ include file="../include/head.jsp" %>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <body>
 <div>
     <%@ include file="../include/header.jsp" %>
@@ -21,6 +23,56 @@
             <%--FORM CONTENT STARTS FROM HERE!!--%>
 			<%--FORM CONTENT ENDS FROM HERE!!--%>
         	<%--FORM CONTENT ENDS FROM HERE!!--%>
+        	<div class="map_wrap">
+    			<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;">
+    				<!-- <ul id="category">
+				        <li id="BK9" data-order="0"> 
+				            <span class="category_bg bank"></span>
+				            은행
+				        </li>       
+				        <li id="MT1" data-order="1"> 
+				            <span class="category_bg mart"></span>
+				            마트
+				        </li>  
+				        <li id="PM9" data-order="2"> 
+				            <span class="category_bg pharmacy"></span>
+				            약국
+				        </li>  
+				        <li id="OL7" data-order="3"> 
+				            <span class="category_bg oil"></span>
+				            주유소
+				        </li>  
+				        <li id="CE7" data-order="4"> 
+				            <span class="category_bg cafe"></span>
+				            카페
+				        </li>  
+				        <li id="CS2" data-order="5"> 
+				            <span class="category_bg store"></span>
+				            편의점
+				        </li>      
+				    </ul> -->
+    			</div>
+
+			    <div id="menu_wrap" class="bg_white">
+			        <div class="option">
+			            <div>
+			                <form onsubmit="searchPlaces(); return false;" class="row g-3">
+			                    <div class="d-flex">
+			                    	<div class="col-auto">
+					                    <input type="text" value="장기동" id="keyword" size="15" class="form-control form-control-sm"> 
+			                    	</div>
+			                    	<div class="col-auto">
+					                    <button type="submit" class="btn btn-success btn-sm">검색하기</button> 
+			                    	</div>
+			                	</div>
+			                </form>
+			            </div>
+			        </div>
+			        <hr>
+			        <ul id="placesList"></ul>
+			        <div id="pagination"></div>
+			    </div>
+			</div>
 	
 	<th:block layout:fragment="title">
 		<title>Weather</title>
@@ -69,6 +121,11 @@
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54c60ae7f8e07cf5112b5b1d3980bd2d&libraries=services"></script>
+<script type="text/javascript" src="/resources/js/kakaomap.js"></script>
+
+
 
 <th:block layout:fragment="script">
 	<script th:inline="javascript"><script type="text/javascript">
@@ -128,7 +185,7 @@
 			}
 			$('#time').append(html);
 		});
-</script>
+	</script>
 </th:block>
 
 	

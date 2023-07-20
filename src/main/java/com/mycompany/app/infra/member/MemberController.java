@@ -80,8 +80,8 @@ public class MemberController {
 		
 		Member rtMember = service.selectOneLogin(vo);
 		
-		System.out.println(vo.getId());
-		System.out.println(vo.getPassword());
+		System.out.println("id: " + vo.getId());
+		System.out.println("password: " + vo.getPassword());
 		
 		if(rtMember != null) {
 			
