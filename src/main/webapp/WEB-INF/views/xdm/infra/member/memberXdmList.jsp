@@ -51,7 +51,7 @@
 									</div>
 									<div class="form-group col-md-3">
 										<select name="gender" class="form-control" id="gender">
-											<option value="" selected>--성별--</option>
+											<option value="0" selected>--성별--</option>
 											<option value="4">남성</option>
 											<option value="5">여성</option>
 											<option value="6">기타</option>

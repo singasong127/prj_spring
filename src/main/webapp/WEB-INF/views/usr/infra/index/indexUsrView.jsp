@@ -16,16 +16,17 @@
 <div id="left_content">
 	<div id="info">
 		<div id="search" class="mb-3">
-			<form autocomplete="off" onsubmit="searchPlaces(); return false;">
+			<form autocomplete="off" class="d-flex" onsubmit="searchPlaces(); return false;">
 				<input type="text" class="form-control" id="keyword"
-					placeholder="식당 이름을 입력해주세요" value="">
+					placeholder="식당 이름을 입력해주세요" value="장기동" onkeyup="valueCheck()">
 				<button type="submit" id="btnSearch">
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</button>
 			</form>
+			<div id="result" style="width:100px; height:40px;"></div>
 		</div>
 		<div id="main_content">
-			<div id="weather">
+			<div id="weather" style="display: none;">
 				<h4>경기도 김포시</h4>
 				<ul id="weather_info">
 					<li class="w_info">흐림</li>
@@ -34,26 +35,19 @@
 					<li class="w_info">미세먼지: 보통</li>
 				</ul>
 			</div>
-			<div id="favorites">
+			<div id="favorites" style="display: none;">
 				<h4>즐겨찾기</h4>
 				<ul id="favorlist">
 					<li>맛있는 식당</li>
 				</ul>
 			</div>
+			<div id="list" class="bg_white">
+		        <div class="option"></div>
+		        <ul id="placesList"></ul>
+		        <div id="pagination"></div>
+		    </div>
 		</div>
-		<div id="list">
-			<div class="list_info">
-				<ul>
-					<li>맛있는 식당</li>
-					<li>서울특별시 마포구</li>
-					<li>4.7</li>
-					<li>리뷰  17건</li>
-					<li>영업시간</li>
-					<li>02-000-0000</li>
-				</ul>
-			</div>
-		</div>
-		<div id="list_detail">
+		<!-- <div id="list_detail">
 			<div id="detail_top">
 				<h4>맛있는 식당</h4>
 				<button type="button" class="btn" id="btnWait">대기하기</button>
@@ -127,7 +121,7 @@
 					<button type="button" class="btn btn-primary" id="btnReview">리뷰 남기기</button>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 	<div id="bar">
 		<span id="infoToggleHide"><i class="fa-solid fa-caret-left"></i></span>
@@ -135,7 +129,7 @@
 	</div>
 </div>
 
-<div id="map"></div>
+<div id="map" style="width: 100%; height: 100%;"></div>
 <div id="login">
 	<c:choose>
 		<c:when test="${not empty sessionId }">
@@ -152,6 +146,25 @@
 						class="icon-key"></i> <span class="ml-2">로그아웃 </span>
 				</a></li>
 			</ul>
+			<a href="#" class="wait" id="waitNum" role="button" data-bs-toggle="dropdown" aria-expanded="false">0</a>
+			<ul class="dropdown-menu" id="waiting">
+				<li class="dropdown-item d-flex justify-content-center">
+					<span class="fs-5">맛있는 식당</span>
+				</li>
+				<li class="dropdown-item">
+					<img alt="" src="" id="vw_img">
+				</li>
+				<li class="dropdown-item">
+					<span class="fs-6">영업 시간</span>
+				</li>
+				<li class="dropdown-item">
+					<span class="fs-6">AM 10:00 ~ PM 08:00</span>
+				</li>
+				<li class="dropdown-item d-flex">
+					<span class="fs-6">현재 대기 번호 </span>
+					<div class="wait ml-3">0</div>
+				</li>
+			</ul>
 		</c:when>
 		<c:otherwise>
 			<button type="button" class="btn btn-primary" id="btnLogin">로그인</button>
@@ -164,17 +177,6 @@
 <div id="chat">
 	
 </div>
-<div id="waiting">
-	<a href="#" class="wait">0</a>
-	<div id="vw_waiting">
-		<label for="vw_img">맛있는 식당</label>
-		<div id="vw_img" class="imgDining"></div>
-		<p>영업 시간</p>
-		<p>AM 10:00 ~ PM 08:00</p>
-		<span>현재 대기 번호   </span>
-		<div class="wait">0</div>
-	</div>
-</div>
 
 
 <script type="text/javascript"
@@ -182,6 +184,14 @@
 <script type="text/javascript" src="/resources/js/kakaomap.js"></script>
 <script type="text/javascript">
 	// 기타 기능
+	
+	function valueCheck() {
+		const keyword = $("#keyword").val();
+		if(keyword == null && "") {
+			
+		}
+	}
+	
 	$("#infoToggleHide").on("click", function() {
 		$("#info").fadeOut();
 		$("#infoToggleHide").css("display", "none");

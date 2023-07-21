@@ -36,9 +36,10 @@
 			<exclude-mapping path="/cdlist" />
 			<exclude-mapping path="/cdform" />
 			<exclude-mapping path="/member" />
-			<exclude-mapping path="/loginusr" />
+			<exclude-mapping path="/login**" />
+			<!-- <exclude-mapping path="/loginusr" />
 			<exclude-mapping path="/loginxdm" />
-			<exclude-mapping path="/loginProc" />
+			<exclude-mapping path="/loginProc" /> -->
 			<exclude-mapping path="/logoutXdmProc" />
 			<beans:bean id="checkLoginSessionInterception" class="com.mycompany.app.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>

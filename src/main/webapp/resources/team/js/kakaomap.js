@@ -41,10 +41,9 @@
 	        return false;
 	    }
 	    
-		// 음식점만 검색되게 합니다
-		ps.keywordSearch(keyword, placesSearchCB, {
-			size: 5,
-			category_group_code: 'FD6',
+		// 특정 키워드만 검색되게 합니다
+		ps.keywordSearch(keyword + "체육관", placesSearchCB, {
+			size: 5
 		});
 	}
 	
@@ -125,9 +124,10 @@
 	    // 검색결과 항목들을 검색결과 목록 Element에 추가합니다
 	    listEl.appendChild(fragment);
 	    menuEl.scrollTop = 0;
-	
+	    
 	    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
 	    map.setBounds(bounds);
+	    
 	}
 	
 	// 검색결과 항목을 Element로 반환하는 함수입니다
@@ -150,9 +150,10 @@
 	
 	    el.innerHTML = itemStr;
 	    el.className = 'item';
-	
+	    
 	    return el;
 	}
+	
 	
 	// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 	function addMarker(position, idx, title) {
@@ -229,7 +230,7 @@
 	    }
 	}
    	
-   	// 주소-좌표 변환 객체를 생성합니다
+   	/*// 주소-좌표 변환 객체를 생성합니다
 	var geocoder = new kakao.maps.services.Geocoder();
 	
 	// 주소로 좌표를 검색합니다
@@ -255,7 +256,7 @@
 	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 	        map.setCenter(coords);
 	    } 
-	}); 
+	}); */
 	
 	
 	
