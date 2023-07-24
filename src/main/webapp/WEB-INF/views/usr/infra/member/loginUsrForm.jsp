@@ -83,7 +83,7 @@
 	    			"password" : $("#password").val()}
 	    		,success: function(response) {
 	    			if(response.rt == "success") {
-	    				alert(response.rtMember.nickname);
+	    				// alert(response.rtMember.nickname);
 	    				location.href = "/user";
 	    			} else {
 	    				alert("아이디 혹은 비밀번호를 확인해주세요.");

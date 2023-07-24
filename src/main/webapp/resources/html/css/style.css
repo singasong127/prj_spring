@@ -26,7 +26,7 @@ body {width: 100vw;
 
 #search {display: flex;
     margin: 5% 20%;}
-
+    
 #main_content {width: 95%;
     height: auto;
     margin: auto;
@@ -34,7 +34,17 @@ body {width: 100vw;
     border: 1px solid #000;
     background-color: #fff;
     box-sizing: border-box;
-   	}
+}
+
+#list_detail {width: 95%;
+	height: 90%;
+	display: flex;
+	flex-direction: column;
+	overflow-x: hidden;
+	overflow-y: auto;
+	margin: auto;
+	background-color: #fff;
+}	
 
 #btnSearch {width: 38px;
     height: 38px;

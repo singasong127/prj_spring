@@ -31,13 +31,36 @@
 	// 키워드로 장소를 검색합니다
 	searchPlaces();
 	
+	// input 값을 실시간으로 체크
+	$("#keyword").on("propertychange change keyup paste input", function() {
+		var oldVal;
+		
+		$("#weather").css('display', 'none');
+		$("#favorites").css('display', 'none');
+		
+		if(keyword == oldVal) {
+			return;
+		}
+		
+		oldVal = keyword;
+		
+		if(oldVal == null || oldVal == '') {
+			
+		} else {
+			$("#keyword").submit();
+		}
+		
+		// console.log(keyword);
+		
+	});
+	
 	// 키워드 검색을 요청하는 함수입니다
 	function searchPlaces() {
 	
 	    var keyword = document.getElementById('keyword').value;
 	
 	    if (!keyword.replace(/^\s+|\s+$/g, '')) {
-	        alert('키워드를 입력해주세요!');
+	        // alert('키워드를 입력해주세요!');
 	        return false;
 	    }
 	    
@@ -60,8 +83,7 @@
 	        displayPagination(pagination);
 	
 	    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-	
-	        alert('검색 결과가 존재하지 않습니다.');
+	        // alert('검색 결과가 존재하지 않습니다.');
 	        return;
 	
 	    } else if (status === kakao.maps.services.Status.ERROR) {
@@ -153,6 +175,7 @@
 	
 	    return el;
 	}
+	
 	
 	// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 	function addMarker(position, idx, title) {
