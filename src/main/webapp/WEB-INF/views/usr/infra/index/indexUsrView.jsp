@@ -24,7 +24,7 @@
 				</button> -->
 			</form>
 		</div>
-		<div id="main_content" style="display: none">
+		<div id="main_content" style="display: show">
 			<div id="weather">
 				<h4>경기도 김포시</h4>
 				<ul id="weather_info">
@@ -40,69 +40,73 @@
 					<li>맛있는 식당</li>
 				</ul>
 			</div>
-			<div id="list" class="bg_white" style="display: none">
+			<div id="list" class="bg_white" style="display: show">
 		        <div class="option"></div>
 		        <ul id="placesList"></ul>
 		        <div id="pagination"></div>
 		    </div>
 		</div>
-		<div id="list_detail">
+		<div id="list_detail" style="display: none">
 			<div id="detail_top">
 				<h4>맛있는 식당</h4>
-				<button type="button" class="btn btn-primary" id="btnWait">대기하기</button>
-				<span class="rating"></span>
+				<button type="button" class="btn-primary btn-sm" id="btnWait">대기하기</button>
 			</div>
+				<span class="rating" id="detail_rating">5.0</span>
 			<div id="detail_img">
 				<ul>
-					<li>img1</li>
-					<li>img2</li>
-					<li>img3</li>
-					<li>img4</li>
+					<li class="image">img1</li>
+					<li class="image">img2</li>
+					<li class="image">img3</li>
+					<li class="image">img4</li>
 				</ul>
 			</div>
 			<div id="detail_tag">
-				<span class="tag">#</span>
-				<span class="tag">#</span>
-				<span class="tag">#</span>
+				<span class="tag btn-sm btn-primary">#</span>
+				<span class="tag btn-sm btn-primary">#</span>
+				<span class="tag btn-sm btn-primary">#</span>
 			</div>
 			<div id="detail_info">
-				<ul class="dinfo">
-					<li class="dinfo_label">영업 시간  </li>
+				<ul class="dinfo d-flex">
+					<li class="dinfo_label mr-2">영업 시간  </li>
 					<li class="dinfo_desc">AM 10:00 ~ PM 08:00</li>
 				</ul>
 				<ul class="dinfo">
 					<li class="dinfo_label">주소  </li>
 					<li class="dinfo_desc">서울특별시 마포구</li>
 				</ul>
-				<ul class="dinfo">
-					<li class="dinfo_label">전화번호  </li>
+				<ul class="dinfo d-flex">
+					<li class="dinfo_label mr-2">전화번호  </li>
 					<li class="dinfo_desc">02-000-0000</li>
 				</ul>
-				<ul class="dinfo">
-					<li class="dinfo_label">현재 대기 번호  </li>
+				<ul class="dinfo d-flex">
+					<li class="dinfo_label" id="nowWaitLabel">현재 대기 번호  </li>
 					<li class="dinfo_desc"><div class="wait">0</div></li>
 				</ul>
 			</div>
 			<div id="detail_menu">
 				<div class="menu_list">
-					<div class="menu_img"></div>
-					<p class="menu_name">음식</p>
-					<p class="menu_desc">음식에 대한 설명</p>
+					<figure class="menu_img">
+						<img src="" alt="">
+						<figcaption class="menu_name">음식 이름</figcaption>
+					</figure>
 				</div>
 				<div class="menu_list">
-					<div class="menu_img"></div>
-					<p class="menu_name">음식</p>
-					<p class="menu_desc">음식에 대한 설명</p>
+					<figure class="menu_img">
+						<img src="" alt="">
+						<figcaption class="menu_name">음식 이름</figcaption>
+					</figure>
 				</div>
 				<div class="menu_list">
-					<div class="menu_img"></div>
-					<p class="menu_name">음식</p>
-					<p class="menu_desc">음식에 대한 설명</p>
+					<figure class="menu_img">
+						<img src="" alt="">
+						<figcaption class="menu_name">음식 이름</figcaption>
+					</figure>
 				</div>
 				<div class="menu_list">
-					<div class="menu_img"></div>
-					<p class="menu_name">음식</p>
-					<p class="menu_desc">음식에 대한 설명</p>
+					<figure class="menu_img">
+						<img src="" alt="">
+						<figcaption class="menu_name">음식 이름</figcaption>
+					</figure>
 				</div>
 			</div>
 			<div id="review">
