@@ -37,6 +37,8 @@
 		
 		$("#weather").css('display', 'none');
 		$("#favorites").css('display', 'none');
+		$('#main_content').css('display', 'block');
+		$('#list_detail').css('display', 'none');
 		
 		if(keyword == oldVal) {
 			return;
@@ -150,6 +152,8 @@
 	
 	    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
 	    map.setBounds(bounds);
+	    
+	    
 	}
 	
 	// 검색결과 항목을 Element로 반환하는 함수입니다
@@ -173,6 +177,15 @@
 	    el.innerHTML = itemStr;
 	    el.className = 'item';
 	
+		
+	   	$(el).on("click", function() {
+			$('#main_content').css('display', 'none');
+			$('#list_detail').css('display', 'block');
+			$('#diningName').html(places.place_name);
+			$('#diningAddress').html(places.address_name);
+			$('#diningPhone').html(places.phone);
+		});
+		
 	    return el;
 	}
 	

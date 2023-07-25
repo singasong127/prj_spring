@@ -57,7 +57,7 @@ body {width: 100vw;
 
 #list_detail {width: 95%;
 	height: 90%;
-	display: flex;
+	display: none;
 	flex-direction: column;
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -66,10 +66,17 @@ body {width: 100vw;
 	padding: 10px;
 }
 
-#detail_top {display: flex;
-	justify-content: space-evenly;
+#detail_top {width: 300px;
+	height: 30px;
+	display: flex;
+	justify-content: space-between;
 	align-items: baseline;
-	margin-bottom: 5px;}
+	margin-bottom: 5px;
+	margin: auto;}
+
+#diningName {font-weight: bold;
+	overflow: hidden;
+	text-overflow: ellipsis;}
 
 #detail_rating {margin-bottom: 8px;}
 
@@ -82,14 +89,17 @@ body {width: 100vw;
 	font-size: 24px;
 	margin-right: 7px;}
 
-.image {width: 120px;
-	height: 120px;
+.image {width: 360px;
+	height: 360px;
 	background-color: rgba(0,0,255,.1);
-	display: block;}
+	display: block;
+	box-sizing: border-box;}
 
 #detail_img {margin-bottom: 5px;}
 
-#detail_img ul li {float: left;}
+#detail_img ul {display: flex;
+	overflow-x: auto;
+}
 
 #detail_img .image:nth-of-type(2n-1) {margin: 0 7px 7px 0;}
 #detail_img .image:nth-of-type(2n) {margin-bottom: 7px;}

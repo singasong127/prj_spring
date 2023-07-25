@@ -24,7 +24,7 @@
 				</button> -->
 			</form>
 		</div>
-		<div id="main_content" style="display: show">
+		<div id="main_content">
 			<div id="weather">
 				<h4>경기도 김포시</h4>
 				<ul id="weather_info">
@@ -40,15 +40,15 @@
 					<li>맛있는 식당</li>
 				</ul>
 			</div>
-			<div id="list" class="bg_white" style="display: show">
+			<div id="list" class="bg_white">
 		        <div class="option"></div>
 		        <ul id="placesList"></ul>
 		        <div id="pagination"></div>
 		    </div>
 		</div>
-		<div id="list_detail" style="display: none">
+		<div id="list_detail">
 			<div id="detail_top">
-				<h4>맛있는 식당</h4>
+				<h5 id="diningName"></h5>
 				<button type="button" class="btn-primary btn-sm" id="btnWait">대기하기</button>
 			</div>
 				<span class="rating" id="detail_rating">5.0</span>
@@ -72,11 +72,11 @@
 				</ul>
 				<ul class="dinfo">
 					<li class="dinfo_label">주소  </li>
-					<li class="dinfo_desc">서울특별시 마포구</li>
+					<li class="dinfo_desc" id="diningAddress"></li>
 				</ul>
 				<ul class="dinfo d-flex">
 					<li class="dinfo_label mr-2">전화번호  </li>
-					<li class="dinfo_desc">02-000-0000</li>
+					<li class="dinfo_desc" id="diningPhone"></li>
 				</ul>
 				<ul class="dinfo d-flex">
 					<li class="dinfo_label" id="nowWaitLabel">현재 대기 번호  </li>
@@ -207,7 +207,6 @@
 		
 	}); */
 	
-		
 	
 	$("#infoToggleHide").on("click", function() {
 		$("#info").fadeOut();
