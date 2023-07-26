@@ -50,6 +50,7 @@
 			<div id="detail_top">
 				<h5 id="diningName"></h5>
 				<button type="button" class="btn-primary btn-sm" id="btnWait">대기하기</button>
+				<button type="button" class="btn-success btn-sm" id="btnToList">뒤로가기</button>
 			</div>
 				<span class="rating" id="detail_rating">5.0</span>
 			<div id="detail_img">
@@ -188,26 +189,11 @@
 <script type="text/javascript">
 	// 기타 기능
 	
-	/* // input 값을 실시간으로 체크
-	$("#keyword").on("propertychange change keyup paste input", function() {
-		var oldVal;
-		if(keyword == oldVal) {
-			return;
-		}
+	$("#btnToList").on("click", function() {
+		$('#list_detail').css('display', 'none');
+		$('#main_content').css('display', 'block');
+	});
 		
-		oldVal = keyword;
-		
-		if(oldVal == null || oldVal == '') {
-			return false;
-		} else {
-			$("#keyword").submit();
-		}
-		
-		console.log(oldVal);
-		
-	}); */
-	
-	
 	$("#infoToggleHide").on("click", function() {
 		$("#info").fadeOut();
 		$("#infoToggleHide").css("display", "none");

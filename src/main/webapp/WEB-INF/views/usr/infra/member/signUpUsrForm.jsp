@@ -23,7 +23,7 @@
 			</div>
 			<div class="card-body">
 				<div class="form-validation">
-					<form name="formSu" method="post">
+					<form name="formSu" method="post" enctype="multipart/form-data">
 						<div class="row w-75 mx-auto">
 							<div class="w-100 mx-auto">
 								<!-- profile -->
@@ -80,14 +80,12 @@
 
 									<input type="hidden" id="<c:out value="${name }"/>Type"
 										name="<c:out value="${name }"/>Type"
-										value="<c:out value="${type }"/>" />
-									<input type="hidden"
+										value="<c:out value="${type }"/>" /> <input type="hidden"
 										id="<c:out value="${name }"/>MaxNumber"
-										name="<c:out value="${name }"/>MaxNumber" value="0" /> 
-									<label
+										name="<c:out value="${name }"/>MaxNumber" value="0" /> <label
 										for="<c:out value="${name }"/>"
-										class="form-label input-file-button"><b>+</b></label> 
-									<input class="form-control form-control-sm"
+										class="form-label input-file-button"><b>+</b></label> <input
+										class="form-control form-control-sm"
 										id="<c:out value="${name }"/>"
 										name="<c:out value="${name }"/>" type="file"
 										multiple="multiple" style="display: none;"
@@ -178,14 +176,14 @@
 									<!-- #-> -->
 									<input type="hidden" id="<c:out value="${name }"/>Type"
 										name="<c:out value="${name }"/>Type"
-										value="<c:out value="${type }"/>" /> 
-									<input type="hidden" id="<c:out value="${name }"/>MaxNumber"
-										name="<c:out value="${name }"/>MaxNumber" value="0" /> 
-									<input type="hidden" id="<c:out value="${name }"/>DeleteSeq"
-										name="<c:out value="${name }"/>DeleteSeq" /> 
-									<input type="hidden" id="<c:out value="${name }"/>DeletePathFile"
-										name="<c:out value="${name }"/>DeletePathFile" /> 
-									<label for="uploadImg" class="form-label input-file-button">이미지첨부</label>
+										value="<c:out value="${type }"/>" /> <input type="hidden"
+										id="<c:out value="${name }"/>MaxNumber"
+										name="<c:out value="${name }"/>MaxNumber" value="0" /> <input
+										type="hidden" id="<c:out value="${name }"/>DeleteSeq"
+										name="<c:out value="${name }"/>DeleteSeq" /> <input
+										type="hidden" id="<c:out value="${name }"/>DeletePathFile"
+										name="<c:out value="${name }"/>DeletePathFile" /> <label
+										for="uploadImg" class="form-label input-file-button">이미지첨부</label>
 									<input class="form-control form-control-sm"
 										id="<c:out value="${name }"/>"
 										name="<c:out value="${name }"/>" type="file"
@@ -220,14 +218,14 @@
 									<!-- #-> -->
 									<input type="hidden" id="<c:out value="${name }"/>Type"
 										name="<c:out value="${name }"/>Type"
-										value="<c:out value="${type }"/>" /> 
-									<input type="hidden" id="<c:out value="${name }"/>MaxNumber"
-										name="<c:out value="${name }"/>MaxNumber" value="0" /> 
-									<input type="hidden" id="<c:out value="${name }"/>DeleteSeq"
-										name="<c:out value="${name }"/>DeleteSeq" /> 
-									<input type="hidden" id="<c:out value="${name }"/>DeletePathFile"
-										name="<c:out value="${name }"/>DeletePathFile" /> 
-									<label for="uploadFile" class="form-label input-file-button">파일첨부</label>
+										value="<c:out value="${type }"/>" /> <input type="hidden"
+										id="<c:out value="${name }"/>MaxNumber"
+										name="<c:out value="${name }"/>MaxNumber" value="0" /> <input
+										type="hidden" id="<c:out value="${name }"/>DeleteSeq"
+										name="<c:out value="${name }"/>DeleteSeq" /> <input
+										type="hidden" id="<c:out value="${name }"/>DeletePathFile"
+										name="<c:out value="${name }"/>DeletePathFile" /> <label
+										for="uploadFile" class="form-label input-file-button">파일첨부</label>
 									<input class="form-control form-control-sm"
 										id="<c:out value="${name }"/>"
 										name="<c:out value="${name }"/>" type="file"

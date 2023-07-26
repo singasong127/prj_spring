@@ -24,7 +24,6 @@
    	// 장소 검색 객체를 생성합니다
 	var ps = new kakao.maps.services.Places();  
 	
-	
 	// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
 	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 	
@@ -70,6 +69,8 @@
 		ps.keywordSearch(keyword, placesSearchCB, {
 			size: 5,
 			category_group_code: 'FD6',
+			useMapCenter: true,
+			useMapBounds: true
 		});
 	}
 	
@@ -117,10 +118,12 @@
 	        var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
 	            marker = addMarker(placePosition, i), 
 	            itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
-	
+				
+				
 	        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
 	        // LatLngBounds 객체에 좌표를 추가합니다
 	        bounds.extend(placePosition);
+	        // console.log(placePosition);
 	
 	        // 마커와 검색결과 항목에 mouseover 했을때
 	        // 해당 장소에 인포윈도우에 장소명을 표시합니다
@@ -144,7 +147,9 @@
 	        })(marker, places[i].place_name);
 	
 	        fragment.appendChild(itemEl);
+	        
 	    }
+	        // console.log(places.length);
 	
 	    // 검색결과 항목들을 검색결과 목록 Element에 추가합니다
 	    listEl.appendChild(fragment);
@@ -153,11 +158,15 @@
 	    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
 	    map.setBounds(bounds);
 	    
+	    /*console.log(map.getCenter());
 	    
+	    map.setCenter(new kakao.maps.LatLng(37.64387431729337, 126.62401281251134));
+	    
+	    console.log(map.getCenter());*/
 	}
 	
 	// 검색결과 항목을 Element로 반환하는 함수입니다
-	function getListItem(index, places) {
+	function getListItem(index, places, placePosition) {
 	
 	    var el = document.createElement('li'),
 	    itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
@@ -176,7 +185,8 @@
 	
 	    el.innerHTML = itemStr;
 	    el.className = 'item';
-	
+	    
+	    // var elPosition = new kakao.maps.LatLng();
 		
 	   	$(el).on("click", function() {
 			$('#main_content').css('display', 'none');
@@ -184,7 +194,13 @@
 			$('#diningName').html(places.place_name);
 			$('#diningAddress').html(places.address_name);
 			$('#diningPhone').html(places.phone);
+			
+			// map.setCenter(new kakao.maps.LatLng(37.64387431729337, 126.62401281251134));
+			// console.log(map.getCenter());
 		});
+		
+		
+		console.log(places.placePosition);
 		
 	    return el;
 	}
@@ -265,7 +281,7 @@
 	    }
 	}
    	
-   	// 주소-좌표 변환 객체를 생성합니다
+   	/*// 주소-좌표 변환 객체를 생성합니다
 	var geocoder = new kakao.maps.services.Geocoder();
 	
 	// 주소로 좌표를 검색합니다
@@ -290,8 +306,9 @@
 	
 	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 	        map.setCenter(coords);
+	        console.log(map.getCenter(coords));
 	    } 
-	}); 
+	}); */
 	
 	
 	
