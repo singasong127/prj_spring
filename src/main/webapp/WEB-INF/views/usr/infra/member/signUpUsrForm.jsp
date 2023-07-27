@@ -287,6 +287,9 @@
 <!-- Form validate init -->
 <script src="/resources/admin/js/plugins-init/jquery.validate-init.js"></script>
 <script src="/resources/js/validation.js"></script>
+<script src="/resources/js/commomXdm.js"></script>
+<script src="/resources/js/ConstantsXdm.js"></script>
+
 
 <script type="text/javascript">
 	
@@ -347,6 +350,10 @@
 //		memberImage: 2
 //		memberFile : 3
 
+		uploadFiles(dto.getUploadImgProfile(), dto, "infrMemberUploaded", dto.getUploadImgProfileType(), dto.getUploadImgProfileMaxNumber());
+    	uploadFiles(dto.getUploadImg(), dto, "infrMemberUploaded", dto.getUploadImgType(), dto.getUploadImgMaxNumber());
+    	uploadFiles(dto.getUploadFile(), dto, "infrMemberUploaded", dto.getUploadFileType(), dto.getUploadFileMaxNumber());
+    	
 //		uiType: 1 => 이미지형
 //		uiType: 2 => 파일형
 //		uiType: 3 => 프로필형

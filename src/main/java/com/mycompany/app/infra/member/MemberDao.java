@@ -39,4 +39,7 @@ public class MemberDao {
 		
 		return sqlSession.selectOne(namespace + ".idCheck", vo);
 	}
+	
+	public int insertUploaded(Member dto) { return sqlSession.insert(namespace + ".insertUploaded", dto); }
+	
 }

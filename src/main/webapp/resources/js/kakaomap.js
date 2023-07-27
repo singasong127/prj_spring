@@ -104,7 +104,9 @@
 	    menuEl = document.getElementById('list'),
 	    fragment = document.createDocumentFragment(), 
 	    bounds = new kakao.maps.LatLngBounds(), 
-	    listStr = '';
+	    listStr = '',
+	    i;
+	    
 	    
 	    // 검색 결과 목록에 추가된 항목들을 제거합니다
 	    removeAllChildNods(listEl);
@@ -112,7 +114,7 @@
 	    // 지도에 표시되고 있는 마커를 제거합니다
 	    removeMarker();
 	    
-	    for ( var i=0; i<places.length; i++ ) {
+	    for ( i=0; i<places.length; i++ ) {
 	
 	        // 마커를 생성하고 지도에 표시합니다
 	        var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
@@ -145,12 +147,13 @@
 	                infowindow.close();
 	            };
 	        })(marker, places[i].place_name);
-	
+			
+			// console.log(marker);
+			
 	        fragment.appendChild(itemEl);
 	        
 	    }
-	        // console.log(places.length);
-	
+		
 	    // 검색결과 항목들을 검색결과 목록 Element에 추가합니다
 	    listEl.appendChild(fragment);
 	    menuEl.scrollTop = 0;
@@ -158,15 +161,10 @@
 	    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
 	    map.setBounds(bounds);
 	    
-	    /*console.log(map.getCenter());
-	    
-	    map.setCenter(new kakao.maps.LatLng(37.64387431729337, 126.62401281251134));
-	    
-	    console.log(map.getCenter());*/
 	}
 	
 	// 검색결과 항목을 Element로 반환하는 함수입니다
-	function getListItem(index, places, placePosition) {
+	function getListItem(index, places) {
 	
 	    var el = document.createElement('li'),
 	    itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
@@ -185,22 +183,30 @@
 	
 	    el.innerHTML = itemStr;
 	    el.className = 'item';
-	    
-	    // var elPosition = new kakao.maps.LatLng();
 		
-	   	$(el).on("click", function() {
+				
+				
+	   	$(el).on("click", function(marker) {
 			$('#main_content').css('display', 'none');
 			$('#list_detail').css('display', 'block');
 			$('#diningName').html(places.place_name);
 			$('#diningAddress').html(places.address_name);
 			$('#diningPhone').html(places.phone);
 			
-			// map.setCenter(new kakao.maps.LatLng(37.64387431729337, 126.62401281251134));
-			// console.log(map.getCenter());
+			var getMarkerLatLng = marker.view.infowindow.n.toLatLng(); // 클릭한 item의 경위도값 받기 위한 변수 선언
+			var getMarkerLat = getMarkerLatLng.getLat(); // 클릭한 item의 위도값 받기 위한 변수 선언
+			var getMarkerLng = getMarkerLatLng.getLng(); // 클릭한 item의 경도값 받기 위한 변수 선언
+			
+			console.log(places.place_name + " / 위도: " + getMarkerLat, "경도: " + getMarkerLng);
+			
+			console.log(places);
+			
+			map.setCenter( new kakao.maps.LatLng(getMarkerLat, getMarkerLng) );
+			
+			console.log(map.getCenter());
+			
 		});
 		
-		
-		console.log(places.placePosition);
 		
 	    return el;
 	}

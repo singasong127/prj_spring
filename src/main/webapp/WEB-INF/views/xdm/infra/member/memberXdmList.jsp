@@ -42,11 +42,15 @@
 											placeholder="이메일 계정">
 									</div>
 									<div class="form-group col-md-3">
+										<c:set value="${vo.emailDomain }" var="listDomain"></c:set>
 										<select name="emailDomain" class="form-control" id="emailDomain">
-											<option value="0" selected>--이메일 도메인--</option>
-											<option value="<c:out value="1"/>">네이버</option>
+											<option value="" selected>--이메일 도메인--</option>
+											<option value="1" <c:if test="${listDomain eq 1 }">selected</c:if>>네이버</option>
+											<option value="2" <c:if test="${listDomain eq 2 }">selected</c:if>>구글</option>
+											<option value="3" <c:if test="${listDomain eq 3 }">selected</c:if>>다음</option>
+											<%-- <option value="<c:out value="1"/>">네이버</option>
 											<option value="<c:out value="2"/>">구글</option>
-											<option value="<c:out value="3"/>">다음</option>
+											<option value="<c:out value="3"/>">다음</option> --%>
 										</select>
 									</div>
 									<div class="form-group col-md-3">

@@ -76,8 +76,10 @@ body {width: 100vw;
 	margin-bottom: 5px;
 	margin: auto;}
 
-#diningName {font-weight: bold;
-	overflow: hidden;
+#diningName {width: 150px;
+	height: 20px;
+	font-weight: bold;
+	/* overflow: hidden; */
 	text-overflow: ellipsis;}
 
 #detail_rating {margin-bottom: 8px;}

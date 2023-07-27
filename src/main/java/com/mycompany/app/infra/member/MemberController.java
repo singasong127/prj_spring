@@ -47,6 +47,7 @@ public class MemberController {
 		Member member = service.selectOne(vo);
 		
 		model.addAttribute("item", member);
+		
   
 		return "usr/infra/member/signUpUsrForm"; 
 	}

@@ -133,6 +133,33 @@
 		WHERE 1=1
 		AND id = #{id}
 	</select>
-
+	
+	<!-- uploaded s -->
+	<insert id="insertUploaded">
+		INSERT INTO ${tableName} (
+			type
+			,defaultNy
+			,sort
+			,path
+			,originalName
+			,uuidName
+			,ext
+			,size
+			,ulDelNy
+			,userSeq
+		) values (
+			#{type}
+			,#{defaultNy}
+			,#{sort}
+			,#{path}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,0
+			,#{userSeq}
+		)
+	</insert>
+	
 </mapper>    
     
