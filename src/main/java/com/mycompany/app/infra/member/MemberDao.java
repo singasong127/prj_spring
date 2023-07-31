@@ -33,6 +33,10 @@ public class MemberDao {
 		return login;
 	}
 	
+	public Member loginXdm(MemberVo vo) { Member loginXdm = sqlSession.selectOne(namespace + ".loginXdm", vo); 
+		return loginXdm; 
+	}
+	
 	public int insert(Member dto) { return sqlSession.insert(namespace + ".insert", dto); }
 	
 	public int idCheck(MemberVo vo) {

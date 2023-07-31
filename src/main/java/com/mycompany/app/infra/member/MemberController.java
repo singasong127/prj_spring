@@ -99,6 +99,30 @@ public class MemberController {
 	}
 	
 	@ResponseBody
+	@RequestMapping("/loginXdmProc")
+	public Map<String, Object> loginXdmProc(MemberVo vo, HttpSession httpSession) {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		Member rtMember = service.loginXdm(vo);
+		
+		System.out.println("id: " + vo.getId());
+		System.out.println("password: " + vo.getPassword());
+		
+		if(rtMember != null) {
+			
+			httpSession.setMaxInactiveInterval(60*120);
+			httpSession.setAttribute("sessionId", vo.getId());
+			
+			returnMap.put("rtMember", rtMember);
+			returnMap.put("rt", "success");
+		} else {
+			returnMap.put("rt", "fail");
+		}
+		
+		return returnMap;
+	}
+	
+	@ResponseBody
 	@RequestMapping("/logoutUsrProc")
 	public Map<String, Object> logoutUsrProc(MemberVo vo, HttpSession httpSession) {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
@@ -115,6 +139,7 @@ public class MemberController {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		httpSession.invalidate();
+		
 		returnMap.put("rt", "success");
 		
 		return returnMap;
@@ -135,17 +160,6 @@ public class MemberController {
 		
 		return returnMap;
 	}
-	
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping("/signup/idCheck") public Member idCheck(MemberVo vo) {
-	 * 
-	 * Member chd = service.idCheck(vo);
-	 * 
-	 * return chd; }
-	 */
-	
 	
 	
 }

@@ -11,6 +11,8 @@ public interface MemberService {
 	
 	public Member selectOneLogin(MemberVo vo);
 	
+	public Member loginXdm(MemberVo vo);
+	
 	public int insert(Member dto);
 	
 	public int idCheck(MemberVo vo);

@@ -1,5 +1,6 @@
 package com.mycompany.app.infra.member;
 
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class Member {
@@ -14,6 +15,7 @@ public class Member {
 	private String dob;
 	private String agreeDT;
 	private String delNy;
+	private String userType;
 	
 	private MultipartFile[] uploadImg;
 	private Integer uploadImgType;	
@@ -95,6 +97,12 @@ public class Member {
 	}
 	public void setDelNy(String delNy) {
 		this.delNy = delNy;
+	}
+	public String getUserType() {
+		return userType;
+	}
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 	public MultipartFile[] getUploadImg() {
 		return uploadImg;

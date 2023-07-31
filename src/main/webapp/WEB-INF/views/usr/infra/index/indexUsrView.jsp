@@ -10,6 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
 <title>유저 메인</title>
 <%@ include file="../../include/includeView.jsp"%>
@@ -48,17 +49,26 @@
 		</div>
 		<div id="list_detail">
 			<div id="detail_top">
+				<button type="button" class="btn-success btn" id="btnToList"
+					style="color: #fff"><i class="fa-solid fa-bars"></i></button>
 				<h5 id="diningName"></h5>
 				<button type="button" class="btn-primary btn-sm" id="btnWait">대기하기</button>
-				<button type="button" class="btn-success btn-sm" id="btnToList">뒤로가기</button>
 			</div>
-				<span class="rating" id="detail_rating">5.0</span>
+				<span class="ratingScore" id="detail_rating">5.0</span>
 			<div id="detail_img">
 				<ul>
-					<li class="image">img1</li>
-					<li class="image">img2</li>
-					<li class="image">img3</li>
-					<li class="image">img4</li>
+					<li class="image">
+						<img alt="" src="">img1
+					</li>
+					<li class="image">
+						<img alt="" src="">img2
+					</li>
+					<li class="image">
+						<img alt="" src="">img3
+					</li>
+					<li class="image">
+						<img alt="" src="">img4
+					</li>
 				</ul>
 			</div>
 			<div id="detail_tag">
@@ -122,7 +132,8 @@
 				</div>
 				<div id="review_textarea">
 					<textarea name="rv_textarea" id="rv_textarea" class="form-control" placeholder="내용을 입력해주세요."></textarea>
-					<button type="button" class="btn btn-primary" id="btnReview">리뷰 남기기</button>
+					<!-- <button type="button" class="btn btn-primary" id="btnReview" 
+						data-bs-toggle="modal" data-bs-target="#staticBackdrop">리뷰 남기기</button> -->
 				</div>
 			</div>
 		</div>
@@ -143,7 +154,7 @@
 			</a>
 
 			<ul class="dropdown-menu">
-				<li><a href="usr/infra/sub/profile.jsp" class="dropdown-item"> <i
+				<li><a href="/profileusr" class="dropdown-item"> <i
 						class="icon-user"></i> <span class="ml-2">프로필 </span>
 				</a></li>
 				<li><a href="/user" class="dropdown-item" id="btnLogout"> <i
@@ -168,6 +179,10 @@
 					<span class="fs-6">현재 대기 번호 </span>
 					<div class="wait ml-3">0</div>
 				</li>
+				<li class="dropdown-item">
+					<button type="button" class="btn btn-primary mx-auto" id="btnReview" 
+						data-bs-toggle="modal" data-bs-target="#reviewModal">리뷰 남기기</button>
+				</li>
 			</ul>
 		</c:when>
 		<c:otherwise>
@@ -182,12 +197,77 @@
 	
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="reviewModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
+	aria-labelledby="reviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="reviewModalLabel">리뷰</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <div class="mb-3">
+            <label for="reviewText" class="col-form-label mx-auto">식당에 대한 리뷰를 남겨주세요!</label>
+            <div class="rating mx-auto my-2">
+            	<span class="rating_result"></span> 
+			    <i class="rating_star far fa-star"></i>
+			    <i class="rating_star far fa-star"></i>
+			    <i class="rating_star far fa-star"></i>
+			    <i class="rating_star far fa-star"></i>
+			    <i class="rating_star far fa-star"></i>
+			</div>
+            <textarea class="form-control" id="reviewText"></textarea>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">확인</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54c60ae7f8e07cf5112b5b1d3980bd2d&libraries=services"></script>
 <script type="text/javascript" src="/resources/js/kakaomap.js"></script>
 <script type="text/javascript">
 	// 기타 기능
+	
+	// 별점 소스
+	const ratingStars = [...document.getElementsByClassName("rating_star")];
+	
+	const ratingResult = document.querySelector(".rating_result");
+
+	printRatingResult(ratingResult);
+
+	function executeRating(stars, result) {
+	   const starClassActive = "rating_star fas fa-star";
+	   const starClassUnactive = "rating_star far fa-star";
+	   const starsLength = stars.length;
+	   let i;
+	   stars.map((star) => {
+	      star.onclick = () => {
+	         i = stars.indexOf(star);
+
+	         if (star.className.indexOf(starClassUnactive) !== -1) {
+	            printRatingResult(result, i + 1);
+	            for (i; i >= 0; --i) stars[i].className = starClassActive;
+	         } else {
+	            printRatingResult(result, i);
+	            for (i; i < starsLength; ++i) stars[i].className = starClassUnactive;
+	         }
+	      };
+	   });
+	}
+
+	function printRatingResult(result, num = 0) {
+	   result.textContent = `${num}/5`;
+	}
+
+	executeRating(ratingStars, ratingResult);
+	
 	
 	$("#btnToList").on("click", function() {
 		$('#list_detail').css('display', 'none');

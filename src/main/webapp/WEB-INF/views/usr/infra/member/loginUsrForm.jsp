@@ -23,6 +23,12 @@
                                 <div class="auth-form">
                                     <h4 class="text-center mb-4">로그인</h4>
                                     <form action="/xdmindex">
+                                    	<%-- <div class="form-group">
+                                    		<select name="userType" class="form-select" id="userType">
+                                    			<option value="0" <c:if test="${vo.userType eq 0}"/> >일반 사용자</option>
+                                    			<option value="1" <c:if test="${vo.userType eq 1}" /> >사업자</option>
+                                    		</select>
+                                    	</div> --%>
                                         <div class="form-group">
                                             <label><strong>아이디</strong></label>
                                             <input type="text" class="form-control" value="chicken" name="id" id="id">

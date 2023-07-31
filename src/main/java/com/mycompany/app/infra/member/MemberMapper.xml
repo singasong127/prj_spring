@@ -19,24 +19,10 @@
 		FROM code AS d
 		WHERE d.cdSeq = m.emailDomain) AS emailDomain
 		, gender
-		<!-- , (SELECT
-		CASE
-		WHEN gender = 4 THEN '남성'
-		WHEN gender = 5 THEN '여성'
-		ELSE '기타'
-		END
-		FROM code AS d
-		WHERE d.cdSeq = m.gender) AS gender -->
-		, dob	
+		, dob
 		, agreeDT
 		, delNy
-		<!-- , (SELECT
-		CASE
-		WHEN delNy = 1 THEN 'Y'
-		ELSE 'N'
-		END
-		FROM user AS m
-		WHERE seq = 1) -->
+		, userType
 	</sql>
 	
 	<sql id ="selectCommon">
@@ -77,6 +63,7 @@
 		, dob
 		, agreeDT
 		, delNy
+		, userType
 		FROM user AS m
 		WHERE 1=1
 		AND seq = #{seq}
@@ -88,6 +75,7 @@
 		AND gender = #{gender}
 		AND agreeDT = now()
 		AND delNy = 0
+		AND userType = #{userType}
 	</select>
 	
 	<select id="selectOneLogin" resultMap="resultMapObj">
@@ -96,10 +84,26 @@
 		, id
 		, password
 		, nickname
+		<!-- , userType -->
 		FROM user
 		WHERE 1=1
 		AND id = #{id}
 		AND password = #{password}
+		<!-- AND userType = #{userType} -->
+	</select>
+	
+	<select id="loginXdm" resultMap="resultMapObj">
+		SELECT
+		seq
+		, id
+		, password
+		, nickname
+		, userType
+		FROM user
+		WHERE 1=1
+		AND id = #{id}
+		AND password = #{password}
+		AND userType = 2
 	</select>
 
 	<select id="insert" resultMap="resultMapObj">
@@ -113,6 +117,7 @@
 		, dob
 		, agreeDT
 		, delNy
+		, userType
 		) values (
 		#{id}
 		, #{password}
@@ -123,6 +128,7 @@
 		, #{dob}
 		, now()
 		, 0
+		, #{userType}
 		)
 	</select>
 	

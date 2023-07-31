@@ -5,8 +5,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  	<link rel="stylesheet" href="/resources/demos/style.css">
+
     <!-- Custom Stylesheet -->
     <link href="/resources/admin/css/style.css" rel="stylesheet">
+    
     
 <!--*******************
         Preloader start

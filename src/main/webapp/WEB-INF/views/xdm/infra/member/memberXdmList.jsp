@@ -87,6 +87,7 @@
 										<th>생년월일</th>
 										<th>개인정보 동의 날짜</th>
 										<th>삭제 여부</th>
+										<th>회원 유형</th>
 									</tr>
 								</thead>
 								<tbody class="mb-3">
@@ -136,18 +137,25 @@
 																<c:if test="${list.gender eq listGender.cdSeq}"><c:out value="${listGender.cdName }"></c:out></c:if>
 															</c:forEach>
 													</a></td>
-													<td><a
-														href="/member?age=<c:out value="${list.seq}"></c:out>">
-															<c:out value="${list.dob}"></c:out>
-													</a></td>
-													<td><a
-														href="/member?agreeDT=<c:out value="${list.seq}"></c:out>">
-															<c:out value="${list.agreeDT}"></c:out>
-													</a></td>
-													<td><a
-														href="/member?del=<c:out value="${list.seq}"></c:out>">
-															<c:out value="${list.delNy}"></c:out>
-													</a></td>
+													<td>														
+														<c:out value="${list.dob}"></c:out>
+													</td>
+													<td>
+														<c:out value="${list.agreeDT}"></c:out>
+													</td>
+													<td>
+														<c:choose>
+															<c:when test="${list.delNy eq 1}">Y</c:when>
+															<c:otherwise>N</c:otherwise>
+														</c:choose>
+													</td>
+													<td>
+														<c:choose>
+															<c:when test="${list.userType eq 1}">사업자</c:when>
+															<c:when test="${list.userType eq 2}">관리자</c:when>
+															<c:otherwise>사용자</c:otherwise>
+														</c:choose>
+													</td>
 												</tr>
 											</c:forEach>
 										</c:otherwise>

@@ -79,16 +79,15 @@
 	    		,cache: false
 	    		,type: "post"
 	    		/* ,dataType:"json" */
-	    		,url: "/loginProc"
+	    		,url: "/loginXdmProc"
 	    		/* ,data : $("#formLogin").serialize() */
 	    		,data : { "id" : $("#id").val(),
 	    			"password" : $("#password").val()}
 	    		,success: function(response) {
 	    			if(response.rt == "success") {
-	    				alert(response.rtMember.nickname);
 	    				location.href = "/xdmindex";
 	    			} else {
-	    				alert("그런 회원 없습니다.");
+	    				alert("아이디 또는 비밀번호를 확인해주세요.");
 	    			}
 	    		}
 	    		,error : function(jqXHR, textStatus, errorThrown){

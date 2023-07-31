@@ -93,6 +93,18 @@
 										<c:out value="${type }"/>, 1, 1, 0, 0, 3);">
 								</div>
 								<div class="form-group row w-50">
+									<label class="col-lg-4 col-form-label" for="userType">회원 구분
+										<span class="text-danger">*</span>
+									</label>
+									<div class="col-lg-6">
+										<select class="form-control" id="userType" name="userType">
+											<option value="">--선택하세요--</option>
+											<option value="<c:out value='0'/>">일반 사용자</option>
+											<option value="<c:out value='1'/>">사업자</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group row w-50">
 									<label class="col-lg-4 col-form-label" for="id">아이디 <span
 										class="text-danger">*</span>
 									</label>
@@ -153,6 +165,16 @@
 											<option value="<c:out value='2'/>">gmail.com</option>
 											<option value="<c:out value='3'/>">daum.net</option>
 										</select>
+									</div>
+								</div>
+								<div class="form-group row w-50">
+									<label class="col-lg-4 col-form-label" for="dob">생년월일
+										<span class="text-danger">*</span>
+									</label>
+									<div class="col-lg-6">
+										<input type="text" class="form-control" id="dob"
+											name="dob" value="<c:out value='${item.dob}'/>"
+											placeholder="">
 									</div>
 								</div>
 								<div class="form-group row w-50">
@@ -289,7 +311,7 @@
 <script src="/resources/js/validation.js"></script>
 <script src="/resources/js/commomXdm.js"></script>
 <script src="/resources/js/ConstantsXdm.js"></script>
-
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <script type="text/javascript">
 	
@@ -322,6 +344,27 @@
 		
 	});
 	
+	$(function() {
+		$("#dob").datepicker({
+			dateFormat: 'yy-mm-dd'
+			,showOtherMonths: true
+			,showMonthAfterYear: true
+			,changeYear: true //option값 년 선택 가능
+			,changeMonth: true //option값  월 선택 가능                
+			,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+			,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+			,buttonImageOnly: true //버튼 이미지만 깔끔하게 보이게함
+			,buttonText: "선택" //버튼 호버 텍스트              
+			,yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
+			,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
+			,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
+			,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
+			,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
+			,yearRange: '1950:2023'
+		});
+		 $('#dob').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후
+	});
+	
 	checkId = function() {
 		var id = $("#id").val();
 		$.ajax({
@@ -350,9 +393,6 @@
 //		memberImage: 2
 //		memberFile : 3
 
-		uploadFiles(dto.getUploadImgProfile(), dto, "infrMemberUploaded", dto.getUploadImgProfileType(), dto.getUploadImgProfileMaxNumber());
-    	uploadFiles(dto.getUploadImg(), dto, "infrMemberUploaded", dto.getUploadImgType(), dto.getUploadImgMaxNumber());
-    	uploadFiles(dto.getUploadFile(), dto, "infrMemberUploaded", dto.getUploadFileType(), dto.getUploadFileMaxNumber());
     	
 //		uiType: 1 => 이미지형
 //		uiType: 2 => 파일형

@@ -84,17 +84,17 @@ body {width: 100vw;
 
 #detail_rating {margin-bottom: 8px;}
 
-.rating {display: flex;
+.ratingScore {display: flex;
 	justify-content: center;
 	font-size: 24px;}	
 
-.rating::before {content: '★';
+.ratingScore::before {content: '★';
 	color: yellow;
 	font-size: 24px;
 	margin-right: 7px;}
 
-.image {width: 360px;
-	height: 360px;
+.image img {width: 180px;
+	height: 180px;
 	background-color: rgba(0,0,255,.1);
 	display: block;
 	box-sizing: border-box;}
@@ -105,8 +105,7 @@ body {width: 100vw;
 	overflow-x: auto;
 }
 
-#detail_img .image:nth-of-type(2n-1) {margin: 0 7px 7px 0;}
-#detail_img .image:nth-of-type(2n) {margin-bottom: 7px;}
+#detail_img .image {margin: 0 7px;}
 
 #detail_tag {margin-bottom: 15px;}
 
@@ -129,7 +128,7 @@ body {width: 100vw;
     box-sizing: border-box;
     box-shadow: 5px 0 5px 0 #aaa;
     cursor: pointer;
-    }
+}
 
 #infoToggleShow {background-color: #fff;
     width: 30px;
@@ -210,7 +209,41 @@ body {width: 100vw;
     z-index: 999;
 }
 
+.rating {
+   position: relative;
+   width: 180px;
+   background: transparent;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: .3em;
+   padding: 5px;
+   overflow: hidden;
+   border-radius: 20px;
+   box-shadow: 0 0 2px #b3acac;
+}
 
+.rating_result {
+   position: absolute;
+   top: 0;
+   left: 0;
+   transform: translateY(-10px) translateX(-5px);
+   z-index: -9;
+   font: 3em Arial, Helvetica, sans-serif;
+   color: #ebebeb8e;
+   pointer-events: none;
+}
+
+.rating_star {
+   font-size: 1.3em;
+   cursor: pointer;
+   color: #dabd18b2;
+   transition: filter linear .3s;
+}
+
+.rating_star:hover {
+   filter: drop-shadow(1px 1px 4px gold);
+}
 
 
 /* 로그인 페이지 */
