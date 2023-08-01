@@ -52,7 +52,11 @@
 				<button type="button" class="btn-success btn" id="btnToList"
 					style="color: #fff"><i class="fa-solid fa-bars"></i></button>
 				<h5 id="diningName"></h5>
-				<button type="button" class="btn-primary btn-sm" id="btnWait">대기하기</button>
+				<c:choose>
+					<c:when test="${not empty sessionId }" >
+						<button type="button" class="btn-primary btn-sm" id="btnWait">대기하기</button>
+					</c:when>
+				</c:choose>
 			</div>
 				<span class="ratingScore" id="detail_rating">5.0</span>
 			<div id="detail_img">
@@ -83,6 +87,7 @@
 				</ul>
 				<ul class="dinfo">
 					<li class="dinfo_label">주소  </li>
+					<li class="dinfo_desc" id="diningRoadAddress"></li>
 					<li class="dinfo_desc" id="diningAddress"></li>
 				</ul>
 				<ul class="dinfo d-flex">

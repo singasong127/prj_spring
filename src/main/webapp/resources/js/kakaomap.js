@@ -191,6 +191,7 @@
 			$('#list_detail').css('display', 'block');
 			$('#diningName').html(places.place_name);
 			$('#diningAddress').html(places.address_name);
+			$('#diningRoadAddress').html(places.road_address_name);
 			$('#diningPhone').html(places.phone);
 			
 			var getMarkerLatLng = marker.view.infowindow.n.toLatLng(); // 클릭한 item의 경위도값 받기 위한 변수 선언
