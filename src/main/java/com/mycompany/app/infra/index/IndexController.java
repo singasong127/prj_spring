@@ -127,7 +127,7 @@ public class IndexController {
 			model.addAllAttributes(header);
 			model.addAllAttributes(body);
 		
-		return "testCorona";
+		return "test/testCorona";
 	}
 }
 
