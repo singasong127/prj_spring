@@ -42,12 +42,32 @@ public class IndexController {
 	
 	
 	@RequestMapping(value="/user")
-	public ModelAndView user() {
-		ModelAndView mav = new ModelAndView();
+	public String user() throws Exception {
 		
-		mav.setViewName("usr/infra/index/indexUsrView");
+		String apiUrl = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=b%2BIIc8uynU4kozxcKc4cqsrVam5GEW4NpYgDvXjQZqrJEUXXUVb9yKBUncl1i6nr%2FRT5G1BVbopgGeEdpoGiew%3D%3D&numOfRows=10&dataType=JSON&pageNo=1&base_date=20230801&base_time=0500&nx=55&ny=127";
 		
-		return mav;
+		URL url = new URL(apiUrl);
+		HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+		httpURLConnection.setRequestMethod("GET");
+		
+		BufferedReader bufferedReader;
+		if (httpURLConnection.getResponseCode() >= 200 && httpURLConnection.getResponseCode() <= 300) {
+			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+		} else {
+			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getErrorStream()));
+		}
+		
+		StringBuilder stringBuilder = new StringBuilder();
+		String line;
+		while ((line = bufferedReader.readLine()) != null) {
+			System.out.println("line: " + line);
+			stringBuilder.append(line);
+		}
+		
+		bufferedReader.close();
+		httpURLConnection.disconnect();
+		
+		return "usr/infra/index/indexUsrView";
 	}
 	
 		
