@@ -17,5 +17,6 @@ public interface MemberService {
 	
 	public int idCheck(MemberVo vo);
 	
+	public int insertUploaded(Member dto);
 
 }

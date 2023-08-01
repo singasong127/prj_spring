@@ -142,7 +142,7 @@
 	
 	<!-- uploaded s -->
 	<insert id="insertUploaded">
-		INSERT INTO ${tableName} (
+		INSERT INTO userUploaded (
 			type
 			,defaultNy
 			,sort

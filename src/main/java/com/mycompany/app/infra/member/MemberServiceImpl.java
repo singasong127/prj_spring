@@ -43,10 +43,6 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int insert(Member dto) {
 		
-		// uploadFiles(dto.getUploadImgProfile(), dto, "infrMemberUploaded", dto.getUploadImgProfileType(), dto.getUploadImgProfileMaxNumber());
-    	// uploadFiles(dto.getUploadImg(), dto, "userUploaded", dto.getUploadImgType(), dto.getUploadImgMaxNumber());
-    	// uploadFiles(dto.getUploadFile(), dto, "infrMemberUploaded", dto.getUploadFileType(), dto.getUploadFileMaxNumber());
-		
 		return dao.insert(dto);
 	}
 
@@ -68,45 +64,65 @@ public class MemberServiceImpl implements MemberService {
 		return dao.loginXdm(vo);
 	}
 	
+	@Override
+	public int insertUploaded(Member dto) {
+		
+		// uploadFiles(dto.getUploadImgProfile(), dto, "userUploaded", dto.getUploadImgProfileType(), dto.getUploadImgProfileMaxNumber());
+		// uploadFiles(dto.getUploadImg(), dto, "userUploaded", dto.getUploadImgType(), dto.getUploadImgMaxNumber());
+		// uploadFiles(dto.getUploadFile(), dto, "infrMemberUploaded", dto.getUploadFileType(), dto.getUploadFileMaxNumber());
+		
+		return dao.insertUploaded(dto);
+	}
 	
-	  public void uploadFiles(MultipartFile[] multipartFiles, Member dto, String tableName, int type, int maxNumber) throws Exception {
+	public static String nowString() throws Exception {
+		LocalDateTime localDateTime = LocalDateTime.now();
+		String localDateTimeString = localDateTime.format(DateTimeFormatter.ofPattern(Constants.DATETIME_FORMAT_BASIC));
+		return localDateTimeString;
+	}
+	
+  public void uploadFiles(MultipartFile[] multipartFiles, Member dto, String userUploaded, int type, int maxNumber) throws Exception {
+  
+	  for(int i=0; i<multipartFiles.length; i++) {
 	  
-		  for(int i=0; i<multipartFiles.length; i++) {
+		  if(!multipartFiles[i].isEmpty()) {
 		  
-			  if(!multipartFiles[i].isEmpty()) {
-			  
-			  String className = dto.getClass().getSimpleName().toString().toLowerCase();
-			  String fileName = multipartFiles[i].getOriginalFilename(); 
-			  String ext = fileName.substring(fileName.lastIndexOf(".") + 1); 
-			  String uuid = UUID.randomUUID().toString(); 
-			  String uuidFileName = uuid + "." + ext; 
-			  String pathModule = className; 
-			  //String pathDate = nowString.substring(0,4) + "/" + nowString.substring(5,7) + "/" + nowString.substring(8,10); 
-			  //String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
-			  //String pathForView = Constants.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
-			  
-			  //File uploadPath = new File(path);
+		  String className = dto.getClass().getSimpleName().toString().toLowerCase();
+		  String fileName = multipartFiles[i].getOriginalFilename(); 
+		  String ext = fileName.substring(fileName.lastIndexOf(".") + 1); 
+		  String uuid = UUID.randomUUID().toString(); 
+		  String uuidFileName = uuid + "." + ext; 
+		  String pathModule = className; 
+		  String pathDate = nowString().substring(0,4) + "/" + nowString().substring(5,7) + "/" + nowString().substring(8,10); 
+		  String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
+		  String pathForView = Constants.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
 		  
-			  //if (!uploadPath.exists()) {
-				//  uploadPath.mkdir(); 
-			  //} else { 
+		  File uploadPath = new File(path);
+	  
+			  if (!uploadPath.exists()) {
+				  uploadPath.mkdir(); 
+			  } else { 
 				  // by pass 
 			  }
-		  }
-	  
-		  //multipartFiles[i].transferTo(new File(path + uuidFileName));
 		  
-		  //dto.setPath(pathForView); dto.setOriginalName(fileName);
-		  //dto.setUuidName(uuidFileName); dto.setExt(ext);
-		  //dto.setSize(multipartFiles[i].getSize());
+  
+		  multipartFiles[i].transferTo(new File(path + uuidFileName));
 		  
-		  dto.setTableName(tableName); dto.setType(type); // dto.setDefaultNy();
-		  //dto.setSort(maxNumber + i); dto.setUserSeq(dto.getUlSeq());
+		  dto.setPath(pathForView); dto.setOriginalName(fileName);
+		  dto.setUuidName(uuidFileName); dto.setExt(ext);
+		  dto.setSize(multipartFiles[i].getSize());
+		  dto.setUserUploaded(userUploaded); dto.setType(type); // dto.setDefaultNy();
+		  dto.setSort(maxNumber + i); 
+		  dto.setUserSeq(dto.getUlSeq());
 		  
 		  dao.insertUploaded(dto);
-	  
-  		} 
-	  
+  
+		  } 
+  
+	  }
+
+  }
+
+
 }
 	 
 

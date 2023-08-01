@@ -29,6 +29,21 @@ public class MemberVo {
 	private Integer RNUM;
 
 	private int startRnumForMysql = 0;
+	
+//	uploaded
+	private String userUploaded;
+	
+	private String ulSeq;
+	private Integer type;
+	private Integer defaultNy;
+	private Integer sort;
+	private String path;
+	private String originalName;
+	private String uuidName;
+	private String ext;
+	private long size;
+	private Integer ulDelNy;
+	private String userSeq;
 
 	public String getSeq() {
 		return seq;
@@ -196,6 +211,102 @@ public class MemberVo {
 
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
+	}
+
+	public String getUserUploaded() {
+		return userUploaded;
+	}
+
+	public void setUserUploaded(String userUploaded) {
+		this.userUploaded = userUploaded;
+	}
+
+	public String getUlSeq() {
+		return ulSeq;
+	}
+
+	public void setUlSeq(String ulSeq) {
+		this.ulSeq = ulSeq;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
+
+	public Integer getDefaultNy() {
+		return defaultNy;
+	}
+
+	public void setDefaultNy(Integer defaultNy) {
+		this.defaultNy = defaultNy;
+	}
+
+	public Integer getSort() {
+		return sort;
+	}
+
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public String getOriginalName() {
+		return originalName;
+	}
+
+	public void setOriginalName(String originalName) {
+		this.originalName = originalName;
+	}
+
+	public String getUuidName() {
+		return uuidName;
+	}
+
+	public void setUuidName(String uuidName) {
+		this.uuidName = uuidName;
+	}
+
+	public String getExt() {
+		return ext;
+	}
+
+	public void setExt(String ext) {
+		this.ext = ext;
+	}
+
+	public long getSize() {
+		return size;
+	}
+
+	public void setSize(long size) {
+		this.size = size;
+	}
+
+	public Integer getUlDelNy() {
+		return ulDelNy;
+	}
+
+	public void setUlDelNy(Integer ulDelNy) {
+		this.ulDelNy = ulDelNy;
+	}
+
+	public String getUserSeq() {
+		return userSeq;
+	}
+
+	public void setUserSeq(String userSeq) {
+		this.userSeq = userSeq;
 	}
 
 	public void setParamsPaging(int totalRows) {

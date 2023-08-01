@@ -42,6 +42,7 @@
 			<exclude-mapping path="/loginProc" />
 			<exclude-mapping path="/logoutXdmProc" />
 			<exclude-mapping path="/signup" />
+			<exclude-mapping path="/publicCorona1List" />
 			<beans:bean id="checkLoginSessionInterception" class="com.mycompany.app.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
 	</interceptors>
