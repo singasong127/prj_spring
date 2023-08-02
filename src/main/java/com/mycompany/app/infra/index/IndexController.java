@@ -19,18 +19,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Controller
 public class IndexController {
 	
-	/*
-	 * @RequestMapping(value="/") public String home(String href) {
-	 * 
-	 * // 여기에서 서버단에서 필요한 작업을 수행한다.
-	 * 
-	 * href="/resources/assets/css/style.css"; href="/resources/assets/js/main.js";
-	 * href="/resources/assets/img/portfolio_bg.png"; href=
-	 * "/resources/assets/img/vector-flat-illustration-software-developer-cyber-program-security_776789-207.avif";
-	 * 
-	 * // 아래의 jsp 파일 호출 return "home"; }
-	 */
-	
 	@RequestMapping(value="/")
 	public ModelAndView home() {
 		ModelAndView mav = new ModelAndView();
@@ -42,9 +30,9 @@ public class IndexController {
 	
 	
 	@RequestMapping(value="/user")
-	public String user() throws Exception {
+	public String user(Model model) throws Exception {
 		
-		String apiUrl = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=b%2BIIc8uynU4kozxcKc4cqsrVam5GEW4NpYgDvXjQZqrJEUXXUVb9yKBUncl1i6nr%2FRT5G1BVbopgGeEdpoGiew%3D%3D&numOfRows=10&dataType=JSON&pageNo=1&base_date=20230801&base_time=0500&nx=55&ny=127";
+		String apiUrl = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=b%2BIIc8uynU4kozxcKc4cqsrVam5GEW4NpYgDvXjQZqrJEUXXUVb9yKBUncl1i6nr%2FRT5G1BVbopgGeEdpoGiew%3D%3D&numOfRows=10&dataType=JSON&pageNo=1&base_date=20230802&base_time=0800&nx=55&ny=128";
 		
 		URL url = new URL(apiUrl);
 		HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -60,12 +48,54 @@ public class IndexController {
 		StringBuilder stringBuilder = new StringBuilder();
 		String line;
 		while ((line = bufferedReader.readLine()) != null) {
-			System.out.println("line: " + line);
+//			System.out.println("line: " + line);
 			stringBuilder.append(line);
 		}
 		
 		bufferedReader.close();
 		httpURLConnection.disconnect();
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+	      
+		Map<String, Object> map = objectMapper.readValue(stringBuilder.toString(), Map.class);
+      
+//		System.out.println("######## Map");
+//		for (String key : map.keySet()) {
+//			String value = String.valueOf(map.get(key));	// ok
+//			System.out.println("[key]:" + key + ", [value]:" + value);
+//		}
+		
+		Map<String, Object> response = new HashMap<String, Object>();
+		response = (Map<String, Object>) map.get("response");
+		
+				
+//		System.out.println("######## Response");
+//		for (String key : response.keySet()) {
+//			String value = String.valueOf(response.get(key));	// ok
+//			System.out.println("[key]:" + key + ", [value]:" + value);
+//		}
+		
+//		System.out.println("response.get(\"header\"): " + response.get("header"));
+//		System.out.println("response.get(\"body\"): " + response.get("body"));
+		
+		Map<String, Object> body = new HashMap<String, Object>();
+		body = (Map<String, Object>) response.get("body");
+		
+		Map<String, Object> items = new HashMap<String, Object>();
+		items = (Map<String, Object>) body.get("items");
+		
+		List<Weather> item = new ArrayList<Weather>();
+		item = (List<Weather>) items.get("item");
+		
+		System.out.println("items: " + item);
+		
+		System.out.println("item.size(): " + item.size());
+
+		model.addAllAttributes(response);
+//		model.addAllAttributes(header);
+		model.addAllAttributes(body);
+		model.addAllAttributes(items);
+		
 		
 		return "usr/infra/index/indexUsrView";
 	}

@@ -27,12 +27,35 @@
 		</div>
 		<div id="main_content">
 			<div id="weather">
-				<h4>경기도 김포시</h4>
+				<h4 id="location_name"></h4>
 				<ul id="weather_info">
-					<li class="w_info">흐림</li>
-					<li class="w_info">30℃</li>
-					<li class="w_info">어제보다 0℃ 낮아요</li>
-					<li class="w_info">미세먼지: 보통</li>
+					<!-- 하늘 상태 -->
+					<li class="w_info" id="weather_sky">
+						<c:choose>
+							<c:when test="${item[5].category eq 'SKY' }">
+								<c:if test="${item[5].fcstValue eq 1}">맑음</c:if>
+								<c:if test="${item[5].fcstValue eq 3}">구름많음</c:if>
+								<c:if test="${item[5].fcstValue eq 4}">흐림</c:if>
+							</c:when>
+						</c:choose>
+					</li>
+					<!-- 1시간 기온 -->
+					<li class="w_info" id="weather_tmp">
+						현재 기온: 
+						<c:out value="${item[0].fcstValue }" />℃
+					</li>
+					<!-- 강수 형태 -->
+					<li class="w_info" id="weather_pty">
+						<c:choose>
+							<c:when test="${item[6].category eq 'PTY' }">
+								<c:if test="${item[6].fcstValue eq 0}">강수 없음</c:if>
+								<c:if test="${item[6].fcstValue eq 1}">비</c:if>
+								<c:if test="${item[6].fcstValue eq 2}">비/눈</c:if>
+								<c:if test="${item[6].fcstValue eq 3}">눈</c:if>
+								<c:if test="${item[6].fcstValue eq 4}">소나기</c:if>
+							</c:when>
+						</c:choose>
+					</li>
 				</ul>
 			</div>
 			<div id="favorites">
@@ -239,6 +262,47 @@
 <script type="text/javascript" src="/resources/js/kakaomap.js"></script>
 <script type="text/javascript">
 	// 기타 기능
+	
+	map.getLevel();
+	map.getCenter();
+		
+	var getLevel = map.getLevel();
+	var getCenter = map.getCenter();
+	
+	$(window).on("load", function() {
+		var regionCode = function(result, status) {
+	    	if (status === kakao.maps.services.Status.OK) {
+	
+		        console.log('지역 명칭 : ' + result[0].address_name);
+		        console.log('행정구역 코드 : ' + result[0].code);
+		        var arrAddress = result[0].address_name.split(" ");
+		        $("#location_name").html(arrAddress);
+		    }
+		};
+		geocoder.coord2RegionCode(getCenter.getLng(), getCenter.getLat(), regionCode);
+	});
+	
+	kakao.maps.event.addListener(map, 'center_changed', function() {
+		
+		console.log(getLevel);
+		console.log(getCenter);
+			
+		var regionCode = function(result, status) {
+	    	if (status === kakao.maps.services.Status.OK) {
+	
+		        console.log('지역 명칭 : ' + result[0].address_name);
+		        console.log('행정구역 코드 : ' + result[0].code);
+		        var arrAddress = result[0].address_name.split(" ");
+		        $("#location_name").html(arrAddress);
+		    }
+		};
+		
+		geocoder.coord2RegionCode(getCenter.getLng(), getCenter.getLat(), regionCode);
+			
+	});
+	
+	
+	
 	
 	// 별점 소스
 	const ratingStars = [...document.getElementsByClassName("rating_star")];
