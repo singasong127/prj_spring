@@ -22,7 +22,7 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
                                     <h4 class="text-center mb-4">로그인</h4>
-                                    <form action="/xdmindex">
+                                    <form action="/user">
                                     	<%-- <div class="form-group">
                                     		<select name="userType" class="form-select" id="userType">
                                     			<option value="0" <c:if test="${vo.userType eq 0}"/> >일반 사용자</option>
