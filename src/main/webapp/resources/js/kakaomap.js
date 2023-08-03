@@ -201,15 +201,18 @@
 			var getMarkerLat = getMarkerLatLng.getLat(); // 클릭한 item의 위도값 받기 위한 변수 선언
 			var getMarkerLng = getMarkerLatLng.getLng(); // 클릭한 item의 경도값 받기 위한 변수 선언
 			
-			console.log(getMarkerLatLng);
-			
+			// console.log(getMarkerLatLng);
 			// console.log(places.place_name + " / 위도: " + getMarkerLat, "경도: " + getMarkerLng);
+			// console.log(map.getCenter());
 			
 			console.log(places);
 			
 			map.setCenter( new kakao.maps.LatLng(getMarkerLat, getMarkerLng) );
-			
-			// console.log(map.getCenter());
+			map.setLevel(2, {
+				animate: {
+					duration: 500
+				}
+			})
 			
 		});
 		

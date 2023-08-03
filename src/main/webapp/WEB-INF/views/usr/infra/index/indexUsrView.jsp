@@ -17,6 +17,7 @@
 <div id="left_content">
 	<div id="info">
 		<div id="search" class="mb-3">
+			<span class="btn-success"><i class="fa-solid fa-house"></i></span>
 			<form autocomplete="on" class="d-flex" onsubmit="searchPlaces(); return false;">
 				<input type="text" class="form-control" id="keyword"
 					placeholder="식당 이름을 입력해주세요" value="" >
@@ -75,6 +76,8 @@
 				<button type="button" class="btn-success btn" id="btnToList"
 					style="color: #fff"><i class="fa-solid fa-bars"></i></button>
 				<h5 id="diningName"></h5>
+				<input type="checkbox" name="favorites_star" id="favorites_star" style="display: none">
+				<label for="favorites_star"><i class="rating_star far fa-star"></i></label>
 				<c:choose>
 					<c:when test="${not empty sessionId }" >
 						<button type="button" class="btn-primary btn-sm" id="btnWait">대기하기</button>
@@ -158,11 +161,6 @@
 						<span class="review_time">00:00</span>
 					</div>
 				</div>
-				<div id="review_textarea">
-					<textarea name="rv_textarea" id="rv_textarea" class="form-control" placeholder="내용을 입력해주세요."></textarea>
-					<!-- <button type="button" class="btn btn-primary" id="btnReview" 
-						data-bs-toggle="modal" data-bs-target="#staticBackdrop">리뷰 남기기</button> -->
-				</div>
 			</div>
 		</div>
 	</div>
@@ -239,11 +237,21 @@
             <label for="reviewText" class="col-form-label mx-auto">식당에 대한 리뷰를 남겨주세요!</label>
             <div class="rating mx-auto my-2">
             	<span class="rating_result"></span> 
+			   	<!--  <i class="rating_star far fa-star"></i>
 			    <i class="rating_star far fa-star"></i>
 			    <i class="rating_star far fa-star"></i>
 			    <i class="rating_star far fa-star"></i>
-			    <i class="rating_star far fa-star"></i>
-			    <i class="rating_star far fa-star"></i>
+			    <i class="rating_star far fa-star"></i> -->
+			    <input type="radio" name="review_stars1" id="review_stars1" value="1.0" style="display: none">
+			    <label for="review_stars1"><i class="rating_star far fa-star"></i></label>
+			    <input type="radio" name="review_stars2" id="review_stars2" value="2.0" style="display: none">
+			    <label for="review_stars2"><i class="rating_star far fa-star"></i></label>
+			    <input type="radio" name="review_stars3" id="review_stars3" value="3.0" style="display: none">
+			    <label for="review_stars3"><i class="rating_star far fa-star"></i></label>
+			    <input type="radio" name="review_stars4" id="review_stars4" value="4.0" style="display: none">
+			    <label for="review_stars4"><i class="rating_star far fa-star"></i></label>
+			    <input type="radio" name="review_stars5" id="review_stars5" value="5.0" style="display: none">
+			    <label for="review_stars5"><i class="rating_star far fa-star"></i></label>
 			</div>
             <textarea class="form-control" id="reviewText"></textarea>
           </div>
@@ -272,33 +280,35 @@
 	$(window).on("load", function() {
 		var regionCode = function(result, status) {
 	    	if (status === kakao.maps.services.Status.OK) {
-	
+				
+		        $("#location_name").html(result[0].address_name);
+		    }
 		        console.log('지역 명칭 : ' + result[0].address_name);
 		        console.log('행정구역 코드 : ' + result[0].code);
-		        var arrAddress = result[0].address_name.split(" ");
-		        $("#location_name").html(arrAddress);
-		    }
 		};
 		geocoder.coord2RegionCode(getCenter.getLng(), getCenter.getLat(), regionCode);
 	});
 	
 	kakao.maps.event.addListener(map, 'center_changed', function() {
 		
-		console.log(getLevel);
-		console.log(getCenter);
+		map.getLevel();
+		map.getCenter();
+		
+		var re_getLevel = map.getLevel();
+		var re_getCenter = map.getCenter();
 			
 		var regionCode = function(result, status) {
 	    	if (status === kakao.maps.services.Status.OK) {
-	
+		        $("#location_name").html(result[0].address_name);
+		    }
 		        console.log('지역 명칭 : ' + result[0].address_name);
 		        console.log('행정구역 코드 : ' + result[0].code);
-		        var arrAddress = result[0].address_name.split(" ");
-		        $("#location_name").html(arrAddress);
-		    }
 		};
 		
-		geocoder.coord2RegionCode(getCenter.getLng(), getCenter.getLat(), regionCode);
-			
+		geocoder.coord2RegionCode(re_getCenter.getLng(), re_getCenter.getLat(), regionCode);
+		
+		console.log(re_getLevel);
+		
 	});
 	
 	
