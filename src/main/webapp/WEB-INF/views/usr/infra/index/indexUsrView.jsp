@@ -17,7 +17,7 @@
 <div id="left_content">
 	<div id="info">
 		<div id="search" class="mb-3">
-			<span class="btn-success"><i class="fa-solid fa-house"></i></span>
+			<span class="btn-success" id="btnHome"><i class="fa-solid fa-house"></i></span>
 			<form autocomplete="on" class="d-flex" onsubmit="searchPlaces(); return false;">
 				<input type="text" class="form-control" id="keyword"
 					placeholder="식당 이름을 입력해주세요" value="" >
@@ -65,6 +65,7 @@
 					<li>맛있는 식당</li>
 				</ul>
 			</div>
+			<!-- 검색어 입력 시 목록 보여주는 영역 -->
 			<div id="list" class="bg_white">
 		        <div class="option"></div>
 		        <ul id="placesList"></ul>
@@ -347,10 +348,18 @@
 
 	executeRating(ratingStars, ratingResult);
 	
+	$("#btnHome").on("click", function() {
+		$('#list').css('display', 'none');
+		$('#list_detail').css('display', 'none');
+		$('#main_content').css('display', 'block');
+		$('#weather').css('display', 'block');
+		$('#favorites').css('display', 'block');
+	});
 	
 	$("#btnToList").on("click", function() {
 		$('#list_detail').css('display', 'none');
 		$('#main_content').css('display', 'block');
+		$('#list').css('display', 'block');
 	});
 		
 	$("#infoToggleHide").on("click", function() {

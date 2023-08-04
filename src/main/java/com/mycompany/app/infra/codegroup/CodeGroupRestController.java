@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,18 +36,22 @@ public class CodeGroupRestController {
 		return item;
 	}
 	
-	@RequestMapping(value = "/{cgSeq}/insert", method = RequestMethod.POST)
-//	@PostMapping("")
-	public String insert(@RequestBody CodeGroup dto) throws Exception {
+	@RequestMapping(value = "", method = RequestMethod.POST)
+//	@PostMapping("/insert")
+	public String insert(CodeGroup dto) throws Exception {
+		System.out.println("getCgName : " + dto.getCgName());
+		System.out.println("getDelNy : " + dto.getDelNy());
+		
 		service.insert(dto);
+		
 		return dto.getCgSeq();
 	}
 	
 	
-	@RequestMapping(value = "/{cgSeq}/put", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{cgSeq}", method = RequestMethod.PUT)
 //	@PatchMapping("/{cgSeq}")
 //	@PutMapping("/{cgSeq}")
-	public void update(@PathVariable String cgSeq, @RequestBody CodeGroup dto) throws Exception {
+	public void update(@PathVariable String cgSeq, CodeGroup dto) throws Exception {
 		dto.setCgSeq(cgSeq);
 		service.update(dto);
 	}
