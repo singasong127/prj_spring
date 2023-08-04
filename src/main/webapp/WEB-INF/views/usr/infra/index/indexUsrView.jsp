@@ -59,12 +59,16 @@
 					</li>
 				</ul>
 			</div>
-			<div id="favorites">
-				<h4>즐겨찾기</h4>
-				<ul id="favorlist">
-					<li>맛있는 식당</li>
-				</ul>
-			</div>
+			<c:choose>
+				<c:when test="${not empty sessionId }">
+					<div id="favorites">
+						<h4>즐겨찾기</h4>
+						<ul id="favorlist">
+							<li>맛있는 식당</li>
+						</ul>
+					</div>
+				</c:when>
+			</c:choose>
 			<!-- 검색어 입력 시 목록 보여주는 영역 -->
 			<div id="list" class="bg_white">
 		        <div class="option"></div>
@@ -308,7 +312,7 @@
 		
 		geocoder.coord2RegionCode(re_getCenter.getLng(), re_getCenter.getLat(), regionCode);
 		
-		console.log(re_getLevel);
+		// console.log(re_getLevel);
 		
 	});
 	

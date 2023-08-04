@@ -37,11 +37,6 @@
 	$("#keyword").on("propertychange change keyup paste input", function() {
 		var oldVal;
 		
-		$('#list').css('display', 'block');
-		$("#weather").css('display', 'none');
-		$("#favorites").css('display', 'none');
-		$('#list_detail').css('display', 'none');
-		
 		if(keyword == oldVal) {
 			return;
 		}
@@ -54,6 +49,11 @@
 			$("#keyword").submit();
 		}
 		
+		$("#weather").css('display', 'none');
+		$("#favorites").css('display', 'none');
+		$('#list_detail').css('display', 'none');
+		$('#main_content').css('display', 'block');
+		$('#list').css('display', 'block');
 		// console.log(keyword);
 		
 	});
