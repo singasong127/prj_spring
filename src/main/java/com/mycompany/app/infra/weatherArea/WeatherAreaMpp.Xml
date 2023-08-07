@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycompany.app.infra.weatherArea.WeatherAreaMpp">
+	
+	<resultMap type="com.mycompany.app.infra.weatherArea.WeatherArea" id="resultMapObj"></resultMap>
+	
+	<sql id="selectAll">
+		seq
+		, country
+		, areacode
+		, step1
+		, step2
+		, step3
+		, gridX
+		, gridY
+		, longitudeHour
+		, longitudeMin
+		, longitudeSec
+		, latitudeHour
+		, latitudeMin
+		, latitudeSec
+		, longitudeMs
+		, latitudeMs
+	</sql>
+	
+	<select id="selectList">
+		SELECT
+			<include refid="selectAll"></include>
+		FROM
+			weatherArea
+	</select>
+
+</mapper>

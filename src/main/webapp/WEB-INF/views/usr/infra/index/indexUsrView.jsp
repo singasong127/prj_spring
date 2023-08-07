@@ -316,7 +316,13 @@
 		
 	});
 	
+	let item = {
+			baseDate: 20230806
+	}
 	
+	let itemJson = JSON.stringify(item);
+	
+	console.log(itemJson);
 	
 	
 	// 별점 소스

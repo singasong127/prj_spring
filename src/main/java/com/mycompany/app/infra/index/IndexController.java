@@ -30,9 +30,11 @@ public class IndexController {
 	}
 	
 	@RequestMapping(value="/user")
-	public String user(Model model, CurrentDateTime dateTime) throws Exception {
+	public String user(Model model, CurrentDateTime datetime) throws Exception {
 		
-		String apiUrl = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=b%2BIIc8uynU4kozxcKc4cqsrVam5GEW4NpYgDvXjQZqrJEUXXUVb9yKBUncl1i6nr%2FRT5G1BVbopgGeEdpoGiew%3D%3D&numOfRows=10&dataType=JSON&pageNo=1&base_date=20230803&base_time=0800&nx=55&ny=128";
+		System.out.println(datetime.getNowDate());
+		
+		String apiUrl = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=b%2BIIc8uynU4kozxcKc4cqsrVam5GEW4NpYgDvXjQZqrJEUXXUVb9yKBUncl1i6nr%2FRT5G1BVbopgGeEdpoGiew%3D%3D&numOfRows=10&dataType=JSON&pageNo=1&base_date="+ datetime.getNowDate() +"&base_time=0800&nx=55&ny=128";
 		
 		URL url = new URL(apiUrl);
 		HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -87,7 +89,7 @@ public class IndexController {
 		List<Weather> item = new ArrayList<Weather>();
 		item = (List<Weather>) items.get("item");
 		
-		System.out.println("items: " + item);
+//		System.out.println("items: " + item);
 		
 		System.out.println("item.size(): " + item.size());
 
