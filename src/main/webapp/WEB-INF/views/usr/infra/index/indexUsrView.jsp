@@ -24,6 +24,9 @@
 				<!-- <button type="submit" id="btnSearch">
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</button> -->
+					<input type="hidden" value="<c:out value='${vo.step1 }' />" name="step1" id="step1">
+					<input type="hidden" value="<c:out value='${vo.step2 }' />" name="step2" id="step2">
+					<input type="hidden" value="<c:out value='${vo.step3 }' />" name="step3" id="step3">
 			</form>
 		</div>
 		<div id="main_content">
@@ -290,6 +293,15 @@
 		    }
 		        console.log('지역 명칭 : ' + result[0].address_name);
 		        console.log('행정구역 코드 : ' + result[0].code);
+		        var addressStep = result[0].address_name.split(' ');
+		        
+		        console.log(addressStep[0]);
+		        console.log(addressStep[1]);
+		        console.log(addressStep[2]);
+		        
+		        $("#step1").val() = ${list}.setStep1();
+		        $("#step2").val() = ${list}.setStep2();
+		        $("#step3").val() = ${list}.setStep3();
 		};
 		geocoder.coord2RegionCode(getCenter.getLng(), getCenter.getLat(), regionCode);
 	});
@@ -308,6 +320,14 @@
 		    }
 		        console.log('지역 명칭 : ' + result[0].address_name);
 		        console.log('행정구역 코드 : ' + result[0].code);
+		        var addressStep = result[0].address_name.split(' ');
+		        
+		        //console.log(addressStep);
+		        
+		        $("#step1").val() = addressStep[0];
+		        $("#step2").val() = addressStep[1];
+		        $("#step3").val() = addressStep[2];
+		        
 		};
 		
 		geocoder.coord2RegionCode(re_getCenter.getLng(), re_getCenter.getLat(), regionCode);
@@ -316,13 +336,6 @@
 		
 	});
 	
-	let item = {
-			baseDate: 20230806
-	}
-	
-	let itemJson = JSON.stringify(item);
-	
-	console.log(itemJson);
 	
 	
 	// 별점 소스

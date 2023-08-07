@@ -11,14 +11,19 @@ import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mycompany.app.infra.weatherArea.WeatherArea;
+import com.mycompany.app.infra.weatherArea.WeatherAreaServImpl;
+import com.mycompany.app.infra.weatherArea.WeatherAreaVo;
 
 @Controller
 public class IndexController {
 	
+	WeatherAreaServImpl service;
 	
 	@RequestMapping(value="/")
 	public ModelAndView home() {
@@ -30,7 +35,17 @@ public class IndexController {
 	}
 	
 	@RequestMapping(value="/user")
-	public String user(Model model, CurrentDateTime datetime) throws Exception {
+	public String user(Model model, CurrentDateTime datetime, WeatherAreaVo vo) throws Exception {
+		
+//		List<WeatherArea> list = service.selectList(vo);
+//		model.addAttribute("list", list);
+		
+//		WeatherArea area = service.selectOne(vo);
+//		model.addAttribute("area", area);
+		
+		System.out.println(vo.getStep1());
+		System.out.println(vo.getStep2());
+		System.out.println(vo.getStep3());
 		
 		System.out.println(datetime.getNowDate());
 		

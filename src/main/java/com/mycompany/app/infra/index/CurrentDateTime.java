@@ -7,7 +7,7 @@ public class CurrentDateTime {
 	
 	Date now = new Date();
 	SimpleDateFormat formatDate = new SimpleDateFormat("yyyyMMdd");
-	SimpleDateFormat formatTime = new SimpleDateFormat("HHmm");
+	SimpleDateFormat formatTime = new SimpleDateFormat("HH00");
 	String nowDate = formatDate.format(now);
 	String nowTime = formatTime.format(now);
 	

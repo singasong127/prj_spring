@@ -31,6 +31,22 @@
 			<include refid="selectAll"></include>
 		FROM
 			weatherArea
+		WHERE 1=1
+		<if test="step1 != null || step1.equals('')">AND step1 LIKE CONCAT('%','${step1}','%')</if>
+		<if test="step2 != null || step2.equals('')">AND step2 LIKE CONCAT('%','${step2}','%')</if>
+		<if test="step3 != null || step3.equals('')">AND step3 LIKE CONCAT('%','${step3}','%')</if>
+		<!-- <if test="longitudeMs != null || longitudeMs.equals('')">AND longitudeMs LIKE CONCAT('%','${longitudeMs}','%')</if>
+		<if test="latitudeMs != null || latitudeMs.equals('')">AND latitudeMs LIKE CONCAT('%','${latitudeMs}','%')</if> -->
+	</select>
+	
+	<select id="selectOne">
+		SELECT
+			<include refid="selectAll"></include>
+		FROM weatherArea
+		WHERE 1=1
+		AND step1 = ${step1}
+		AND step2 = ${step2}
+		AND step3 = ${step3}
 	</select>
 
 </mapper>
