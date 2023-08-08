@@ -18,18 +18,26 @@
 	<div id="info">
 		<div id="search" class="mb-3">
 			<span class="btn-success" id="btnHome"><i class="fa-solid fa-house"></i></span>
-			<form autocomplete="on" class="d-flex" onsubmit="searchPlaces(); return false;">
+			<form autocomplete="on" method="post" name="formMain" class="d-flex" onsubmit="searchPlaces(); return false;">
 				<input type="text" class="form-control" id="keyword"
 					placeholder="식당 이름을 입력해주세요" value="" >
 				<!-- <button type="submit" id="btnSearch">
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</button> -->
-					<input type="hidden" value="<c:out value='${vo.step1 }' />" name="step1" id="step1">
-					<input type="hidden" value="<c:out value='${vo.step2 }' />" name="step2" id="step2">
-					<input type="hidden" value="<c:out value='${vo.step3 }' />" name="step3" id="step3">
+					<input type="hidden" value="<c:out value='${vo.step1 eq addressStep[0] }' />" name="step1" id="step1">
+					<input type="hidden" value="<c:out value='${vo.step2 eq addressStep[1] }' />" name="step2" id="step2">
+					<input type="hidden" value="<c:out value='${vo.step3 eq addressStep[2] }' />" name="step3" id="step3">
 			</form>
 		</div>
 		<div id="main_content">
+			<c:choose>
+				<c:when test="${fn:length(list) eq 0 }">
+					<span>데이터가 없습니다.</span>
+				</c:when>
+				<c:otherwise>
+					
+				</c:otherwise>
+			</c:choose>
 			<div id="weather">
 				<h4 id="location_name"></h4>
 				<ul id="weather_info">
@@ -298,10 +306,9 @@
 		        console.log(addressStep[0]);
 		        console.log(addressStep[1]);
 		        console.log(addressStep[2]);
+				
+		        $('form[name=formMain]').attr('action', '/user').submit();
 		        
-		        $("#step1").val() = ${list}.setStep1();
-		        $("#step2").val() = ${list}.setStep2();
-		        $("#step3").val() = ${list}.setStep3();
 		};
 		geocoder.coord2RegionCode(getCenter.getLng(), getCenter.getLat(), regionCode);
 	});
@@ -324,9 +331,9 @@
 		        
 		        //console.log(addressStep);
 		        
-		        $("#step1").val() = addressStep[0];
+		        /* $("#step1").val() = addressStep[0];
 		        $("#step2").val() = addressStep[1];
-		        $("#step3").val() = addressStep[2];
+		        $("#step3").val() = addressStep[2]; */
 		        
 		};
 		

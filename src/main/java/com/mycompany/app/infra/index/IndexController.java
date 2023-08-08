@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,6 +23,7 @@ import com.mycompany.app.infra.weatherArea.WeatherAreaVo;
 @Controller
 public class IndexController {
 	
+	@Autowired
 	WeatherAreaServImpl service;
 	
 	@RequestMapping(value="/")
@@ -37,11 +38,11 @@ public class IndexController {
 	@RequestMapping(value="/user")
 	public String user(Model model, CurrentDateTime datetime, WeatherAreaVo vo) throws Exception {
 		
-//		List<WeatherArea> list = service.selectList(vo);
-//		model.addAttribute("list", list);
+		List<WeatherArea> list = service.selectList(vo);
+		model.addAttribute("list", list);
 		
-//		WeatherArea area = service.selectOne(vo);
-//		model.addAttribute("area", area);
+		WeatherArea area = service.selectOne(vo);
+		model.addAttribute("area", area);
 		
 		System.out.println(vo.getStep1());
 		System.out.println(vo.getStep2());

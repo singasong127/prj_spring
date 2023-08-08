@@ -15,10 +15,10 @@ public class WeatherAreaDao {
 	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
 	
-	public String namespace = "com.mycompany.app.infra.weatherArea.WeatherAreaMpp";
+	private static String namespace = "com.mycompany.app.infra.weatherArea.WeatherAreaMpp";
 	
 	public List<WeatherArea> selectList(WeatherAreaVo vo) {return sqlSession.selectList(namespace + ".selectList", vo);}
 	
-	public WeatherArea selectOne(WeatherAreaVo vo) {return sqlSession.selectOne(namespace + ".selectOne", vo);}
+	public WeatherArea selectOne(WeatherAreaVo vo) { WeatherArea area = sqlSession.selectOne(namespace + ".selectOne", vo); return area; }
 	
 }
