@@ -15,7 +15,7 @@ public class WeatherAreaDao {
 	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
 	
-	private static String namespace = "com.mycompany.app.infra.weatherArea.WeatherAreaMpp";
+	private static String namespace = "com.mycompany.app.infra.weatherArea.WeatherAreaMapper";
 	
 	public List<WeatherArea> selectList(WeatherAreaVo vo) {return sqlSession.selectList(namespace + ".selectList", vo);}
 	

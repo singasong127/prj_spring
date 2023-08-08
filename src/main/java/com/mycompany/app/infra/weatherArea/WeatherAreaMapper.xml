@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.mycompany.app.infra.weatherArea.WeatherAreaMpp">
+<mapper namespace="com.mycompany.app.infra.weatherArea.WeatherAreaMapper">
 	
 	<resultMap type="com.mycompany.app.infra.weatherArea.WeatherArea" id="resultMapObj"></resultMap>
 	
@@ -32,9 +32,9 @@
 		FROM
 			weatherArea
 		WHERE 1=1
-		<if test="step1 != null and !step1.equals('')">AND step1 LIKE CONCAT('%',${step1},'%')</if>
-		<if test="step2 != null and !step2.equals('')">AND step2 LIKE CONCAT('%',${step2},'%')</if>
-		<if test="step3 != null and !step3.equals('')">AND step3 LIKE CONCAT('%',${step3},'%')</if>
+		<if test="step1 != null and !step1.equals('')">AND step1 LIKE CONCAT('%',#{step1},'%')</if>
+		<if test="step2 != null and !step2.equals('')">AND step2 LIKE CONCAT('%',#{step2},'%')</if>
+		<if test="step3 != null and !step3.equals('')">AND step3 LIKE CONCAT('%',#{step3},'%')</if>
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
@@ -48,9 +48,9 @@
 			, gridY
 		FROM weatherArea
 		WHERE 1=1
-		AND step1 = ${step1}
-		AND step2 = ${step2}
-		AND step3 = ${step3}
+		AND step1 = #{step1}
+		AND step2 = #{step2}
+		AND step3 = #{step3}
 		<!-- <if test="longitudeMs != null || longitudeMs.equals('')">AND longitudeMs LIKE CONCAT('%','${longitudeMs}','%')</if>
 		<if test="latitudeMs != null || latitudeMs.equals('')">AND latitudeMs LIKE CONCAT('%','${latitudeMs}','%')</if> -->
 	</select>

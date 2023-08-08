@@ -24,9 +24,11 @@
 				<!-- <button type="submit" id="btnSearch">
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</button> -->
-					<input type="hidden" value="<c:out value='${vo.step1 eq addressStep[0] }' />" name="step1" id="step1">
-					<input type="hidden" value="<c:out value='${vo.step2 eq addressStep[1] }' />" name="step2" id="step2">
-					<input type="hidden" value="<c:out value='${vo.step3 eq addressStep[2] }' />" name="step3" id="step3">
+					<input type="hidden" value="<c:out value='${vo.step1 }' />" name="step1" id="step1">
+					<input type="hidden" value="<c:out value='${vo.step2 }' />" name="step2" id="step2">
+					<input type="hidden" value="<c:out value='${vo.step3 }' />" name="step3" id="step3">
+					<input type="hidden" value="<c:out value='${vo.longitudeMs }' />" name="longitudeMs" id="longitudeMs">
+					<input type="hidden" value="<c:out value='${vo.latitudeMs }' />" name="latitudeMs" id="latitudeMs">
 			</form>
 		</div>
 		<div id="main_content">
@@ -307,6 +309,8 @@
 		        console.log(addressStep[1]);
 		        console.log(addressStep[2]);
 				
+		        $("#step1").val(addressStep[0]);
+		        
 		        $('form[name=formMain]').attr('action', '/user').submit();
 		        
 		};

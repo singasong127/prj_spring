@@ -47,6 +47,10 @@ public class IndexController {
 		System.out.println(vo.getStep1());
 		System.out.println(vo.getStep2());
 		System.out.println(vo.getStep3());
+		System.out.println(vo.getGridX());
+		System.out.println(vo.getGridY());
+		System.out.println(vo.getLongitudeMs());
+		System.out.println(vo.getLatitudeMs());
 		
 		System.out.println(datetime.getNowDate());
 		
