@@ -24,11 +24,11 @@
 				<!-- <button type="submit" id="btnSearch">
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</button> -->
-					<input type="hidden" value="<c:out value='${vo.step1 }' />" name="step1" id="step1">
-					<input type="hidden" value="<c:out value='${vo.step2 }' />" name="step2" id="step2">
-					<input type="hidden" value="<c:out value='${vo.step3 }' />" name="step3" id="step3">
-					<input type="hidden" value="<c:out value='${vo.longitudeMs }' />" name="longitudeMs" id="longitudeMs">
-					<input type="hidden" value="<c:out value='${vo.latitudeMs }' />" name="latitudeMs" id="latitudeMs">
+					<input type="hidden" value="<c:out value="${vo.step1 }" />" name="step1" id="step1">
+					<input type="hidden" value="<c:out value="${vo.step2 }" />" name="step2" id="step2">
+					<input type="hidden" value="<c:out value="${vo.step3 }" />" name="step3" id="step3">
+					<input type="hidden" value="<c:out value="${vo.longitudeMs }" />" name="longitudeMs" id="longitudeMs">
+					<input type="hidden" value="<c:out value="${vo.latitudeMs }" />" name="latitudeMs" id="latitudeMs">
 			</form>
 		</div>
 		<div id="main_content">
@@ -305,11 +305,13 @@
 		        console.log('행정구역 코드 : ' + result[0].code);
 		        var addressStep = result[0].address_name.split(' ');
 		        
-		        console.log(addressStep[0]);
-		        console.log(addressStep[1]);
-		        console.log(addressStep[2]);
-				
-		        $("#step1").val(addressStep[0]);
+		        $("step1").val(addressStep[0]);
+		        
+		        console.log($("#step1").val());
+		        console.log($("#step2").val());
+		        console.log($("#step3").val());
+		        console.log($("#longitudeMs").val());
+		        console.log($("#latitudeMs").val());
 		        
 		        $('form[name=formMain]').attr('action', '/user').submit();
 		        
@@ -332,13 +334,7 @@
 		        console.log('지역 명칭 : ' + result[0].address_name);
 		        console.log('행정구역 코드 : ' + result[0].code);
 		        var addressStep = result[0].address_name.split(' ');
-		        
-		        //console.log(addressStep);
-		        
-		        /* $("#step1").val() = addressStep[0];
-		        $("#step2").val() = addressStep[1];
-		        $("#step3").val() = addressStep[2]; */
-		        
+				        
 		};
 		
 		geocoder.coord2RegionCode(re_getCenter.getLng(), re_getCenter.getLat(), regionCode);

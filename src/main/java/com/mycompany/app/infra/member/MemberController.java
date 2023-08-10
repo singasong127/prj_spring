@@ -34,6 +34,7 @@ public class MemberController {
 //			by pass
 		}
 		
+		System.out.println("nickname: " + vo.getNickname());
 		System.out.println("emain: " + vo.getEmailDomain());
 		System.out.println("gender: " + vo.getGender());
 		

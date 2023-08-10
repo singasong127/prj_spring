@@ -12,6 +12,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,7 +37,10 @@ public class IndexController {
 	}
 	
 	@RequestMapping(value="/user")
-	public String user(Model model, CurrentDateTime datetime, WeatherAreaVo vo) throws Exception {
+	public String user(@ModelAttribute("vo") WeatherAreaVo vo, Model model, CurrentDateTime datetime) throws Exception {
+		
+		service.selectList(vo);
+		service.selectOne(vo);
 		
 		List<WeatherArea> list = service.selectList(vo);
 		model.addAttribute("list", list);
@@ -44,13 +48,14 @@ public class IndexController {
 		WeatherArea area = service.selectOne(vo);
 		model.addAttribute("area", area);
 		
-		System.out.println(vo.getStep1());
-		System.out.println(vo.getStep2());
-		System.out.println(vo.getStep3());
-		System.out.println(vo.getGridX());
-		System.out.println(vo.getGridY());
-		System.out.println(vo.getLongitudeMs());
-		System.out.println(vo.getLatitudeMs());
+		
+//		System.out.println(vo.getStep1());
+//		System.out.println(vo.getStep2());
+//		System.out.println(vo.getStep3());
+//		System.out.println(vo.getGridX());
+//		System.out.println(vo.getGridY());
+//		System.out.println(vo.getLongitudeMs());
+//		System.out.println(vo.getLatitudeMs());
 		
 		System.out.println(datetime.getNowDate());
 		
