@@ -73,6 +73,24 @@
 		AND delNy = 0
 	</select>
 	
+	<select id="selectOneProfile" resultMap="resultMapObj">
+		SELECT
+		seq
+		, id
+		, password
+		, nickname
+		, emailAccount
+		, emailDomain
+		, gender
+		, dob
+		, agreeDT
+		, delNy
+		, userType
+		FROM user
+		WHERE 1=1
+		AND id = #{id}
+	</select>
+	
 	<select id="selectOneLogin" resultMap="resultMapObj">
 		SELECT
 		seq
@@ -135,9 +153,26 @@
 		AND id = #{id}
 	</select>
 	
+	<select id="selectListUpload" resultMap="resultMapObj">
+		SELECT
+			type
+			 , path
+			 , originalName
+			 , uuidName
+			 , ext
+			 , size
+			 , ulDelNy
+			 , ulSeq
+		FROM
+			userUploaded
+		WHERE 1=1
+		  AND path LIKE CONCAT('%user%')
+		  AND ulSeq = #{ulSeq}
+	</select>
+	
 	<!-- uploaded s -->
 	<insert id="insertUploaded">
-		INSERT INTO userUploaded (
+		INSERT INTO ${tableName} (
 			type
 			,defaultNy
 			,sort

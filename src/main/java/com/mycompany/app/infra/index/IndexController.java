@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -42,12 +43,11 @@ public class IndexController {
 		service.selectList(vo);
 		service.selectOne(vo);
 		
-		List<WeatherArea> list = service.selectList(vo);
-		model.addAttribute("list", list);
-		
-		WeatherArea area = service.selectOne(vo);
-		model.addAttribute("area", area);
-		
+//		List<WeatherArea> list = service.selectList(vo);
+//		model.addAttribute("list", list);
+//		
+//		WeatherArea area = service.selectOne(vo);
+//		model.addAttribute("area", area);
 		
 //		System.out.println(vo.getStep1());
 //		System.out.println(vo.getStep2());
@@ -116,7 +116,7 @@ public class IndexController {
 		
 //		System.out.println("items: " + item);
 		
-		System.out.println("item.size(): " + item.size());
+//		System.out.println("item.size(): " + item.size());
 
 		model.addAllAttributes(response);
 //		model.addAllAttributes(header);
@@ -127,15 +127,6 @@ public class IndexController {
 		return "usr/infra/index/indexUsrView";
 	}
 	
-		
-	@RequestMapping("/team")
-	public ModelAndView team() {
-		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("team/usr/index/indexUsrView");
-		
-		return mav;
-	}
 	
 	@RequestMapping("/publicCorona1List")
 	public String publicCorona1List(Model model) throws Exception {

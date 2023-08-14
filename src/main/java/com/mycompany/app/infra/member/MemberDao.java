@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -27,6 +28,12 @@ public class MemberDao {
 		return member;
 	}
 	
+	public Member selectOneProfile(String id) throws Exception {
+		Member member = sqlSession.selectOne(namespace + ".selectOneProfile", id);
+		
+		return member; 
+	}
+	
 	public Member selectOneLogin(MemberVo vo) {
 		Member login = sqlSession.selectOne(namespace + ".selectOneLogin", vo);
 		
@@ -43,6 +50,8 @@ public class MemberDao {
 		
 		return sqlSession.selectOne(namespace + ".idCheck", vo);
 	}
+	
+	public List<Member> selectListUpload(Member dto) { return sqlSession.selectList(namespace + ".selectListUpload", dto); }
 	
 	public int insertUploaded(Member dto) { return sqlSession.insert(namespace + ".insertUploaded", dto); }
 	

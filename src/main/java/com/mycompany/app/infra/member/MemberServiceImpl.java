@@ -16,10 +16,6 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	MemberDao dao;
 	
-	public static final String UPLOAD_PATH_PREFIX_EXTERNAL = "D://factory/ws_sts4_4181/prj_spring/src/main/webapp";
-	public static final String UPLOAD_PATH_PREFIX = "D://factory/ws_sts4_4181/prj_spring/src/main/webapp/resources/uploaded";
-	public static final String UPLOAD_PATH_PREFIX_FOR_VIEW = "/resources/uploaded";
-	
 	@Override
 	public int selectOneCount(MemberVo vo) {
 		
@@ -47,6 +43,20 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public Member selectOneProfile(String id) {
+		Member member = null;
+		try {
+			member = dao.selectOneProfile(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println(member);
+		
+		return member;
+	}
+	
+	@Override
 	public Member selectOneLogin(MemberVo vo) {
 		
 		return dao.selectOneLogin(vo);
@@ -64,15 +74,6 @@ public class MemberServiceImpl implements MemberService {
 		return dao.loginXdm(vo);
 	}
 	
-	@Override
-	public int insertUploaded(Member dto) {
-		
-		// uploadFiles(dto.getUploadImgProfile(), dto, "userUploaded", dto.getUploadImgProfileType(), dto.getUploadImgProfileMaxNumber());
-		// uploadFiles(dto.getUploadImg(), dto, "userUploaded", dto.getUploadImgType(), dto.getUploadImgMaxNumber());
-		// uploadFiles(dto.getUploadFile(), dto, "infrMemberUploaded", dto.getUploadFileType(), dto.getUploadFileMaxNumber());
-		
-		return dao.insertUploaded(dto);
-	}
 	
 	public static String nowString() throws Exception {
 		LocalDateTime localDateTime = LocalDateTime.now();
@@ -80,7 +81,7 @@ public class MemberServiceImpl implements MemberService {
 		return localDateTimeString;
 	}
 	
-  public void uploadFiles(MultipartFile[] multipartFiles, Member dto, String userUploaded, int type, int maxNumber) throws Exception {
+  public void uploadFiles(MultipartFile[] multipartFiles, Member dto, String tableName, int type, int maxNumber) throws Exception {
   
 	  for(int i=0; i<multipartFiles.length; i++) {
 	  
@@ -110,7 +111,7 @@ public class MemberServiceImpl implements MemberService {
 		  dto.setPath(pathForView); dto.setOriginalName(fileName);
 		  dto.setUuidName(uuidFileName); dto.setExt(ext);
 		  dto.setSize(multipartFiles[i].getSize());
-		  dto.setUserUploaded(userUploaded); dto.setType(type); // dto.setDefaultNy();
+		  dto.setTableName(tableName); dto.setType(type); // dto.setDefaultNy();
 		  dto.setSort(maxNumber + i); 
 		  dto.setUserSeq(dto.getUlSeq());
 		  
@@ -121,6 +122,12 @@ public class MemberServiceImpl implements MemberService {
 	  }
 
   }
+
+	@Override
+	public List<Member> selectListUpload(Member dto) {
+		return dao.selectListUpload(dto);
+	}
+
 
 
 }

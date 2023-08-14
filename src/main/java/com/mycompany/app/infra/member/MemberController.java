@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 
 @Controller
 public class MemberController {
@@ -41,7 +42,24 @@ public class MemberController {
 		return "xdm/infra/member/memberXdmList";
 	}
 	
-	
+	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+	public String profile(Member dto, Model model, HttpSession session, HttpServletRequest request) throws Exception {
+		session = request.getSession();
+		
+		Member member = new Member();
+		member.setId((String) session.getAttribute("id"));
+		
+//		String id = member.getId();
+		member = service.selectOneProfile(member.getId());
+		model.addAttribute("member", member);
+		
+		System.out.println("id: " + member);
+		
+//		List<Member> uploadList = service.selectListUpload(dto);
+//		model.addAttribute("listUploaded",uploadList);
+		
+		return "usr/infra/member/profileUsrForm";
+	}
 	
 	@RequestMapping(value="/signup")
   	public String signUp(@ModelAttribute("vo") MemberVo vo, Model model) { 

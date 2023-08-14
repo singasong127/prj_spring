@@ -24,11 +24,11 @@
 				<!-- <button type="submit" id="btnSearch">
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</button> -->
-					<input type="hidden" value="<c:out value="${vo.step1 }" />" name="step1" id="step1">
+					<%-- <input type="hidden" value="<c:out value="${vo.step1 }" />" name="step1" id="step1">
 					<input type="hidden" value="<c:out value="${vo.step2 }" />" name="step2" id="step2">
 					<input type="hidden" value="<c:out value="${vo.step3 }" />" name="step3" id="step3">
 					<input type="hidden" value="<c:out value="${vo.longitudeMs }" />" name="longitudeMs" id="longitudeMs">
-					<input type="hidden" value="<c:out value="${vo.latitudeMs }" />" name="latitudeMs" id="latitudeMs">
+					<input type="hidden" value="<c:out value="${vo.latitudeMs }" />" name="latitudeMs" id="latitudeMs"> --%>
 			</form>
 		</div>
 		<div id="main_content">
@@ -198,7 +198,7 @@
 			</a>
 
 			<ul class="dropdown-menu">
-				<li><a href="/profileusr" class="dropdown-item"> <i
+				<li><a href="/profile" class="dropdown-item"> <i
 						class="icon-user"></i> <span class="ml-2">프로필 </span>
 				</a></li>
 				<li><a href="/user" class="dropdown-item" id="btnLogout"> <i
