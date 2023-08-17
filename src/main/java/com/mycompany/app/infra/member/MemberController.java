@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import com.mycompany.app.infra.index.CurrentDateTime;
 
 @Controller
 public class MemberController {
@@ -43,22 +47,29 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String profile(Member dto, Model model, HttpSession session, HttpServletRequest request) throws Exception {
-		session = request.getSession();
+	public String profile(MemberVo vo, Member dto, Model model, HttpSession session) throws Exception {
+		vo.setId((String)session.getAttribute("sessionId"));
 		
-		Member member = new Member();
-		member.setId((String) session.getAttribute("id"));
+		System.out.println("sessionId: " + vo.getId());
 		
-//		String id = member.getId();
-		member = service.selectOneProfile(member.getId());
-		model.addAttribute("member", member);
+		Member member = service.selectOneProfile(vo);
+		model.addAttribute("mem", member);
 		
-		System.out.println("id: " + member);
-		
-//		List<Member> uploadList = service.selectListUpload(dto);
-//		model.addAttribute("listUploaded",uploadList);
+		List<Member> uploadList = service.selectListUpload(dto);
+		model.addAttribute("listUploaded",uploadList);
 		
 		return "usr/infra/member/profileUsrForm";
+	}
+	
+	@RequestMapping(value = "/profile/update", method = RequestMethod.POST)
+	public String updtProfile(Member dto, MemberVo vo) {
+		System.out.println("update password: " + vo.getPassword());
+		
+		dto.setPassword(vo.getPassword());
+		
+		service.updtProfile(dto);
+		
+		return "redirect:/user";
 	}
 	
 	@RequestMapping(value="/signup")
@@ -66,15 +77,14 @@ public class MemberController {
 		Member member = service.selectOne(vo);
 		
 		model.addAttribute("item", member);
-		
   
 		return "usr/infra/member/signUpUsrForm"; 
 	}
 	 
 	
 	@RequestMapping(value="/signupins")
-	public String signUpIns(Member dto) {
-		
+	public String signUpIns(Member dto, CurrentDateTime dt) {
+		dto.setAgreeDT(dt.getNowDt());
 		service.insert(dto);
 		
 		System.out.println("inserted");

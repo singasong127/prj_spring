@@ -40,8 +40,8 @@ public class IndexController {
 	@RequestMapping(value="/user")
 	public String user(@ModelAttribute("vo") WeatherAreaVo vo, Model model, CurrentDateTime datetime) throws Exception {
 		
-		service.selectList(vo);
-		service.selectOne(vo);
+//		service.selectList(vo);
+//		service.selectOne(vo);
 		
 //		List<WeatherArea> list = service.selectList(vo);
 //		model.addAttribute("list", list);

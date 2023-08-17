@@ -12,7 +12,9 @@ public interface MemberService {
 	
 	public Member selectOne(MemberVo vo);
 	
-	public Member selectOneProfile(String id);
+	public Member selectOneProfile(MemberVo vo);
+	
+	public int updtProfile(Member dto);
 	
 	public Member selectOneLogin(MemberVo vo);
 	

@@ -11,6 +11,7 @@ public class MemberVo {
 	private String dob;
 	private String delNy;
 	private String userType;
+	private String agreeDT;
 
 	private int thisPage = 1; // 현재 페이지
 //	private int rowNumToShow = Constants.ROW_NUM_TO_SHOW;		// 화면에 보여줄 데이터 줄 갯수 - 오라클
@@ -44,7 +45,7 @@ public class MemberVo {
 	private long size;
 	private Integer ulDelNy;
 	private String userSeq;
-
+	
 	public String getSeq() {
 		return seq;
 	}
@@ -123,6 +124,14 @@ public class MemberVo {
 
 	public void setUserType(String userType) {
 		this.userType = userType;
+	}
+
+	public String getAgreeDT() {
+		return agreeDT;
+	}
+
+	public void setAgreeDT(String agreeDT) {
+		this.agreeDT = agreeDT;
 	}
 
 	public int getThisPage() {
@@ -359,5 +368,6 @@ public class MemberVo {
 		System.out.println("getStartRnumForMysql(): " + getStartRnumForMysql());
 
 	}
+
 
 }

@@ -24,7 +24,7 @@ public class Member {
 	private String[] uploadImgDeletePathFile;	
 	
 //	uploaded
-	private String tableName;
+	private String userUploaded;
 	
 	private String ulSeq;
 	private Integer type;
@@ -135,11 +135,11 @@ public class Member {
 		this.uploadImgDeletePathFile = uploadImgDeletePathFile;
 	}
 	
-	public String getTableName() {
-		return tableName;
+	public String getUserUploaded() {
+		return userUploaded;
 	}
-	public void setTableName(String tableName) {
-		this.tableName = tableName;
+	public void setUserUploaded(String userUploaded) {
+		this.userUploaded = userUploaded;
 	}
 	public String getUlSeq() {
 		return ulSeq;

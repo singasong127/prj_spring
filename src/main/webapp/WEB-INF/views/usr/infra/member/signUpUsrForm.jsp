@@ -26,72 +26,6 @@
 					<form name="formSu" method="post" enctype="multipart/form-data">
 						<div class="row w-75 mx-auto">
 							<div class="w-100 mx-auto">
-								<!-- profile -->
-								<div class="col-sm-12 text-center">
-
-									<c:set var="type" value="1" />
-									<!-- #-> -->
-									<c:set var="name" value="uploadImgProfile" />
-									<!-- #-> -->
-									<c:choose>
-										<c:when test="${seq eq 0 }">
-											<img id="<c:out value="${name }"/>Preview" src=""
-												class="rounded-circle mx-auto d-block" width="100"
-												height="100">
-										</c:when>
-										<c:otherwise>
-											<c:choose>
-												<c:when test="${fn:length(listUploaded) eq 0 }">
-													<img id="<c:out value="${name }"/>Preview"
-														src="/resources/xdmin/image/default_100_100.png"
-														class="rounded-circle mx-auto d-block" width="100"
-														height="100">
-												</c:when>
-												<c:otherwise>
-													<c:set var="GetNy" value="0" />
-													<c:forEach items="${listUploaded}" var="listUploaded"
-														varStatus="statusUploaded">
-														<c:if test="${listUploaded.type eq type }">
-															<input type="hidden"
-																id="<c:out value="${name }"/>DeleteSeq"
-																name="<c:out value="${name }"/>DeleteSeq"
-																value="<c:out value="${listUploaded.seq }"/>" />
-															<input type="hidden"
-																id="<c:out value="${name }"/>DeletePathFile"
-																name="<c:out value="${name }"/>DeletePathFile"
-																value="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" />
-															<img id="<c:out value="${name }"/>Preview"
-																src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>"
-																class="rounded-circle mx-auto d-block" width="100"
-																height="100">
-															<c:set var="GetNy" value="1" />
-														</c:if>
-													</c:forEach>
-													<c:if test="${GetNy eq 0 }">
-														<img id="<c:out value="${name }"/>Preview"
-															src="/resources/xdmin/image/default_100_100.png"
-															class="rounded-circle mx-auto d-block" width="100"
-															height="100">
-													</c:if>
-												</c:otherwise>
-											</c:choose>
-										</c:otherwise>
-									</c:choose>
-
-									<input type="hidden" id="<c:out value="${name }"/>Type"
-										name="<c:out value="${name }"/>Type"
-										value="<c:out value="${type }"/>" /> <input type="hidden"
-										id="<c:out value="${name }"/>MaxNumber"
-										name="<c:out value="${name }"/>MaxNumber" value="0" /> <label
-										for="<c:out value="${name }"/>"
-										class="form-label input-file-button"><b>+</b></label> <input
-										class="form-control form-control-sm"
-										id="<c:out value="${name }"/>"
-										name="<c:out value="${name }"/>" type="file"
-										multiple="multiple" style="display: none;"
-										onChange="upload('<c:out value="${name }"/>', 
-										<c:out value="${type }"/>, 1, 1, 0, 0, 3);">
-								</div>
 								<div class="form-group row w-50">
 									<label class="col-lg-4 col-form-label" for="userType">회원 구분
 										<span class="text-danger">*</span>
@@ -190,91 +124,6 @@
 										</select>
 									</div>
 								</div>
-								<div class="form-group d-flex">
-									<!-- 이미지 첨부 -->
-									<div class="col-sm-6 mt-3 mt-sm-0">
-										<c:set var="type" value="2" />
-										<!-- #-> -->
-										<c:set var="name" value="uploadImg" />
-										<!-- #-> -->
-										<input type="hidden" id="<c:out value="${name }"/>Type"
-											name="<c:out value="${name }"/>Type"
-											value="<c:out value="${type }"/>" /> 
-										<input type="hidden" id="<c:out value="${name }"/>MaxNumber"
-											name="<c:out value="${name }"/>MaxNumber" value="0" /> 
-										<input type="hidden" id="<c:out value="${name }"/>DeleteSeq"
-											name="<c:out value="${name }"/>DeleteSeq" /> 
-										<input type="hidden" id="<c:out value="${name }"/>DeletePathFile"
-											name="<c:out value="${name }"/>DeletePathFile" /> 
-										<label for="uploadImg" class="form-label input-file-button" style="background-color: #ccc; border-radius: 10px;">이미지첨부</label>
-										<input class="form-control form-control-sm"
-											id="<c:out value="${name }"/>"
-											name="<c:out value="${name }"/>" type="file"
-											multiple="multiple" style="display: none;"
-											onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 0, 1, 0, 0, 1);">
-										<div id="<c:out value="${name }"/>Preview" class="addScroll">
-											<c:forEach items="${listUploaded}" var="listUploaded"
-												varStatus="statusUploaded">
-												<c:if test="${listUploaded.type eq type }">
-													<div id="imgDiv_<c:out value="${type }"/>_<c:out value="${listUploaded.sort }"/>"
-														style="display: inline-block; height: 95px;">
-														<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>"
-															class="rounded" width="85px" height="85px"
-															style="cursor: pointer;"
-															onClick="openViewer(<c:out value="${listUploaded.type }"/>, <c:out value="${listUploaded. sort }"/>);">
-														<div style="position: relative; top: -85px; left: 5px">
-															<span style="color: red; cursor: pointer;"
-																onClick="delImgDiv('<c:out value="${name }"/>', <c:out value="${type }"/>,<c:out value="${listUploaded.sort }"/>, <c:out value="${listUploaded.seq }"/>, '<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>')">X</span>
-														</div>
-													</div>
-												</c:if>
-											</c:forEach>
-										</div>
-									</div>
-									<!-- 파일 첨부 -->
-									<div class="col-sm-6 mt-3 mt-sm-0">
-										<c:set var="type" value="3" />
-										<!-- #-> -->
-										<c:set var="name" value="uploadFile" />
-										<!-- #-> -->
-										<input type="hidden" id="<c:out value="${name }"/>Type"
-											name="<c:out value="${name }"/>Type"
-											value="<c:out value="${type }"/>" /> 
-										<input type="hidden" id="<c:out value="${name }"/>MaxNumber"
-											name="<c:out value="${name }"/>MaxNumber" value="0" /> 
-										<input type="hidden" id="<c:out value="${name }"/>DeleteSeq"
-											name="<c:out value="${name }"/>DeleteSeq" /> 
-										<input type="hidden" id="<c:out value="${name }"/>DeletePathFile"
-											name="<c:out value="${name }"/>DeletePathFile" /> 
-										<label for="uploadFile" class="form-label input-file-button" style="background-color: #ccc; border-radius: 10px;">파일첨부</label>
-										<input class="form-control form-control-sm"
-											id="<c:out value="${name }"/>"
-											name="<c:out value="${name }"/>" type="file"
-											multiple="multiple" style="display: none;"
-											onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 0, 2, 0, 0, 2);">
-										<div class="addScroll">
-											<ul id="<c:out value="${name }"/>Preview" class="list-group">
-												<c:forEach items="${listUploaded}" var="listUploaded"
-													varStatus="statusUploaded">
-													<c:if test="${listUploaded.type eq type }">
-														<li id="li_<c:out value="${type }"/>_<c:out value="${listUploaded.sort }"/>"
-															class="list-group-item d-flex justify-content-between align-items-center">
-															<a href="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>"
-															download="<c:out value="${listUploaded.originalName }"/>"
-															class="text-decoration-none"><c:out
-																	value="${listUploaded.originalName }" />
-															</a> 
-															<span class="badge bg-danger rounded-pill"
-															onClick="delLi('<c:out value="${name }"/>', <c:out value="${type }"/>,<c:out value="${listUploaded.sort }"/>, <c:out value="${listUploaded.seq }"/>, '<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>')"><i
-																class="fa-solid fa-x" style="cursor: pointer;"></i>
-															</span>
-														</li>
-													</c:if>
-												</c:forEach>
-											</ul>
-										</div>
-									</div>
-								</div>
 								<div class="form-group row w-50">
 									<label class="css-control css-control-primary css-checkbox"
 										for="agreeCheck"> <input type="checkbox"
@@ -282,6 +131,7 @@
 										name="agreeCheck" value="1"> <span
 										class="css-control-indicator"></span> 개인정보 수집 동의
 									</label>
+									<input type="hidden" name="agreeDT" value="<c:out value='${dt.nowDt }' />">
 								</div>
 								<div class="form-group row">
 									<div class="col-lg-8 ml-auto">

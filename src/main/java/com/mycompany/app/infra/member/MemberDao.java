@@ -28,10 +28,14 @@ public class MemberDao {
 		return member;
 	}
 	
-	public Member selectOneProfile(String id) throws Exception {
-		Member member = sqlSession.selectOne(namespace + ".selectOneProfile", id);
+	public Member selectOneProfile(MemberVo vo) {
+		Member member = sqlSession.selectOne(namespace + ".selectOneProfile", vo);
 		
-		return member; 
+		return member;
+	}
+	
+	public int updtProfile(Member dto) {
+		return sqlSession.update(namespace + ".updtProfile", dto); 
 	}
 	
 	public Member selectOneLogin(MemberVo vo) {

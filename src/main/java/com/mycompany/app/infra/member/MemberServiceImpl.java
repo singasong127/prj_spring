@@ -41,19 +41,15 @@ public class MemberServiceImpl implements MemberService {
 		
 		return dao.insert(dto);
 	}
+	
+	@Override
+	public Member selectOneProfile(MemberVo vo) {
+		return dao.selectOneProfile(vo);
+	}
 
 	@Override
-	public Member selectOneProfile(String id) {
-		Member member = null;
-		try {
-			member = dao.selectOneProfile(id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		System.out.println(member);
-		
-		return member;
+	public int updtProfile(Member dto) {
+		return dao.updtProfile(dto);
 	}
 	
 	@Override
@@ -81,7 +77,7 @@ public class MemberServiceImpl implements MemberService {
 		return localDateTimeString;
 	}
 	
-  public void uploadFiles(MultipartFile[] multipartFiles, Member dto, String tableName, int type, int maxNumber) throws Exception {
+  public void uploadFiles(MultipartFile[] multipartFiles, Member dto, String userUploaded, int type, int maxNumber) throws Exception {
   
 	  for(int i=0; i<multipartFiles.length; i++) {
 	  
@@ -111,7 +107,8 @@ public class MemberServiceImpl implements MemberService {
 		  dto.setPath(pathForView); dto.setOriginalName(fileName);
 		  dto.setUuidName(uuidFileName); dto.setExt(ext);
 		  dto.setSize(multipartFiles[i].getSize());
-		  dto.setTableName(tableName); dto.setType(type); // dto.setDefaultNy();
+		  dto.setUserUploaded(userUploaded); 
+		  dto.setType(type); // dto.setDefaultNy();
 		  dto.setSort(maxNumber + i); 
 		  dto.setUserSeq(dto.getUlSeq());
 		  
@@ -127,6 +124,7 @@ public class MemberServiceImpl implements MemberService {
 	public List<Member> selectListUpload(Member dto) {
 		return dao.selectListUpload(dto);
 	}
+
 
 
 

@@ -60,8 +60,9 @@
 		, emailAccount
 		, emailDomain
 		, gender
+		, agreeDT
 		, delNy
-		FROM user AS m
+		FROM user
 		WHERE 1=1
 		AND seq = #{seq}
 		AND id = #{id}
@@ -70,26 +71,36 @@
 		AND emailAccount = #{emailAccount}
 		AND emailDomain = #{emailDomain}
 		AND gender = #{gender}
+		AND agreeDT = #{agreeDT}
 		AND delNy = 0
 	</select>
 	
 	<select id="selectOneProfile" resultMap="resultMapObj">
 		SELECT
-		seq
-		, id
-		, password
-		, nickname
-		, emailAccount
-		, emailDomain
-		, gender
-		, dob
-		, agreeDT
-		, delNy
-		, userType
-		FROM user
+			seq
+			, id
+			, password
+			, nickname
+			, emailAccount
+			, (SELECT
+				cdName
+				FROM code AS d
+				WHERE d.cdSeq = m.emailDomain) AS emailDomain
+			, gender
+			, delNy
+		FROM user AS m
+		WHERE 1=1
+			AND id = #{id}
+			AND delNy = 0
+	</select>
+	
+	<update id="updtProfile">
+		UPDATE user
+		SET
+		password = #{password}
 		WHERE 1=1
 		AND id = #{id}
-	</select>
+	</update>
 	
 	<select id="selectOneLogin" resultMap="resultMapObj">
 		SELECT
@@ -139,7 +150,7 @@
 		, #{emailDomain}
 		, #{gender}
 		, #{dob}
-		, now()
+		, #{agreeDT}
 		, 0
 		, #{userType}
 		)
@@ -166,13 +177,13 @@
 		FROM
 			userUploaded
 		WHERE 1=1
-		  AND path LIKE CONCAT('%user%')
+		  AND path LIKE CONCAT('%id%')
 		  AND ulSeq = #{ulSeq}
 	</select>
 	
 	<!-- uploaded s -->
 	<insert id="insertUploaded">
-		INSERT INTO ${tableName} (
+		INSERT INTO userUploaded (
 			type
 			,defaultNy
 			,sort
@@ -193,7 +204,7 @@
 			,#{ext}
 			,#{size}
 			,0
-			,#{userSeq}
+			,#{seq}
 		)
 	</insert>
 	
