@@ -27,7 +27,7 @@
 								      		<c:set var="type" value="1"/>		<!-- #-> -->
 								        	<c:set var="name" value="uploadImgProfile"/>		<!-- #-> -->
 											<c:choose>
-												<c:when test="${ulSeq eq 0 }">
+												<c:when test="${seq eq 0 }">
 													<img id="<c:out value="${name }"/>Preview" src="/resources/xdmin/image/default_100_100.png" class="rounded-circle mx-auto d-block" width="100" height="100">
 												</c:when>
 												<c:otherwise>
@@ -66,7 +66,7 @@
                                         <div class="form-group">
                                             <label><strong>비밀번호</strong></label>
                                             <div class="d-flex">
-	                                            <input type="password" class="form-control" value="${mem.password }" readonly>
+	                                            <input type="password" id="pwd" class="form-control" value="${mem.password }" readonly>
 	                                            <button type="button" class="btn btn-sm btn-primary" id="btnChPwd">변경</button>
                                             </div>
                                             <div id="newPwdWrap" style="display: none">
@@ -143,9 +143,13 @@
 		}
 	    
 		$("#btnUpdt").on("click", function() {
-			if(pwd === confirmPwd) {
-				$("form[name=formProfile]").attr("action", "/profile/update").submit();
-				alert("성공적으로 변경됐습니다!")
+			if(pwd == confirmPwd) {
+				if(pwd == null || pwd == "") {
+					$("form[name=formProfile]").attr("action", "/profile/update").submit();
+				} else {
+					$("form[name=formProfile]").attr("action", "/profile/update").submit();
+					alert("성공적으로 변경됐습니다!");
+				}
 			} else {
 				alert("새 비밀번호를 확인해주세요.");
 				$("#newPwd").focus();

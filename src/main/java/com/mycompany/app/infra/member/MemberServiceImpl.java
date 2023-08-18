@@ -54,7 +54,7 @@ public class MemberServiceImpl implements MemberService {
 		dao.updtProfile(dto);
 		dao.deleteUpload(dto);
 		
-		uploadFiles(dto.getUploadImgProfile(), dto, "uploadList", dto.getUploadImgProfileType(), dto.getUploadImgProfileMaxNumber());
+		uploadFiles(dto.getUploadImgProfile(), dto, "userUploaded", dto.getUploadImgProfileType(), dto.getUploadImgProfileMaxNumber());
 		//UPLOAD IMG
 		
 		return 1;

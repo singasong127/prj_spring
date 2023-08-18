@@ -177,7 +177,7 @@
 		FROM
 			userUploaded
 		WHERE 1=1
-		  AND path LIKE CONCAT('%user%')
+		  AND path LIKE CONCAT('%member%')
 		  AND pseq = #{seq}
 	</select>
 	
@@ -208,10 +208,10 @@ s			,#{path}
 	
 	<!--DELETE UPLOADED PROFILE IMG-->
 	<delete id="deleteUpload">
-		DELETE FROM uploadList
+		DELETE FROM userUploaded
 		WHERE 1=1
 		  AND pseq = #{seq}
-		  AND path LIKE CONCAT('%user%')
+		  AND path LIKE CONCAT('%member%')
 	</delete>
 	<!--DELETE UPLOADED PROFILE IMG-->
 	

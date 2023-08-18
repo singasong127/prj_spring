@@ -60,9 +60,12 @@ public class MemberController {
 	
 	@RequestMapping(value = "/profile/update", method = RequestMethod.POST)
 	public String updtProfile(Member dto, MemberVo vo) throws Exception {
+		if(vo.getId() == null) {
+			vo.setId(dto.getId());
+		} else {
+			dto.setPassword(vo.getPassword());
+		}
 		System.out.println("update password: " + vo.getPassword());
-		
-		dto.setPassword(vo.getPassword());
 		
 		service.updtProfile(dto);
 		

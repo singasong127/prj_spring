@@ -24,24 +24,14 @@
 				<!-- <button type="submit" id="btnSearch">
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</button> -->
-					<%-- <input type="hidden" value="<c:out value="${vo.step1 }" />" name="step1" id="step1">
-					<input type="hidden" value="<c:out value="${vo.step2 }" />" name="step2" id="step2">
-					<input type="hidden" value="<c:out value="${vo.step3 }" />" name="step3" id="step3">
-					<input type="hidden" value="<c:out value="${vo.longitudeMs }" />" name="longitudeMs" id="longitudeMs">
-					<input type="hidden" value="<c:out value="${vo.latitudeMs }" />" name="latitudeMs" id="latitudeMs"> --%>
 			</form>
 		</div>
 		<div id="main_content">
-			<c:choose>
-				<c:when test="${fn:length(list) eq 0 }">
-					<span>데이터가 없습니다.</span>
-				</c:when>
-				<c:otherwise>
-					
-				</c:otherwise>
-			</c:choose>
 			<div id="weather">
 				<h4 id="location_name"></h4>
+				<input type="hidden" name="step1" id="step1" value="<c:out value='${vo.step1 }' />" >
+				<input type="hidden" name="step2" id="step2" value="<c:out value='${vo.step2 }' />" >
+				<input type="hidden" name="step3" id="step3" value="<c:out value='${vo.step3 }' />" >
 				<ul id="weather_info">
 					<!-- 하늘 상태 -->
 					<li class="w_info" id="weather_sky">
@@ -294,6 +284,7 @@
 		
 	var getLevel = map.getLevel();
 	var getCenter = map.getCenter();
+	var getAddress;
 	
 	$(window).on("load", function() {
 		var regionCode = function(result, status) {
@@ -305,13 +296,7 @@
 		        console.log('행정구역 코드 : ' + result[0].code);
 		        var addressStep = result[0].address_name.split(' ');
 		        
-		        $("step1").val(addressStep[0]);
-		        
-		        console.log($("#step1").val());
-		        console.log($("#step2").val());
-		        console.log($("#step3").val());
-		        console.log($("#longitudeMs").val());
-		        console.log($("#latitudeMs").val());
+				getAddress = addressStep;
 		        
 		        $('form[name=formMain]').attr('action', '/user').submit();
 		        
@@ -343,6 +328,24 @@
 		
 	});
 	
+	$("#step1").on(
+			"change", 
+			function() {
+				$ajax({
+					async : true,
+					cache : false,
+					type : "post",
+					url : "/user",
+					data : {getAddress},
+					success : function(response) {
+						
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						alert("ajaxUpdate " + jqXHR.textStatus + " : "
+								+ jqXHR.errorThrown);
+					}
+				});
+			});
 	
 	
 	// 별점 소스
@@ -409,6 +412,7 @@
 		location.href = "/loginusr";
 
 	});
+	
 
 	$("#btnLogout").on(
 			"click",

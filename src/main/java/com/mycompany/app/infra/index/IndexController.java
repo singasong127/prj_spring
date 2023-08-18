@@ -38,28 +38,18 @@ public class IndexController {
 	}
 	
 	@RequestMapping(value="/user")
-	public String user(@ModelAttribute("vo") WeatherAreaVo vo, Model model, CurrentDateTime datetime) throws Exception {
+	public String user(@ModelAttribute("vo") WeatherAreaVo vo, WeatherArea area, Model model, CurrentDateTime datetime) throws Exception {
 		
-//		service.selectList(vo);
-//		service.selectOne(vo);
+		area = service.selectOne(vo);
+		model.addAttribute("area", area);
 		
-//		List<WeatherArea> list = service.selectList(vo);
-//		model.addAttribute("list", list);
-//		
-//		WeatherArea area = service.selectOne(vo);
-//		model.addAttribute("area", area);
+		vo.setStep1( (String)model.getAttribute("step1") );
 		
-//		System.out.println(vo.getStep1());
-//		System.out.println(vo.getStep2());
-//		System.out.println(vo.getStep3());
-//		System.out.println(vo.getGridX());
-//		System.out.println(vo.getGridY());
-//		System.out.println(vo.getLongitudeMs());
-//		System.out.println(vo.getLatitudeMs());
+		System.out.println("step1: " + vo.getStep1());
 		
 		System.out.println(datetime.getNowDate());
 		
-		String apiUrl = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=b%2BIIc8uynU4kozxcKc4cqsrVam5GEW4NpYgDvXjQZqrJEUXXUVb9yKBUncl1i6nr%2FRT5G1BVbopgGeEdpoGiew%3D%3D&numOfRows=10&dataType=JSON&pageNo=1&base_date="+ datetime.getNowDate() +"&base_time=0800&nx=55&ny=128";
+		String apiUrl = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=b%2BIIc8uynU4kozxcKc4cqsrVam5GEW4NpYgDvXjQZqrJEUXXUVb9yKBUncl1i6nr%2FRT5G1BVbopgGeEdpoGiew%3D%3D&numOfRows=10&dataType=JSON&pageNo=1&base_date="+ datetime.getNowDate() +"&base_time=0800&nx=55&ny=127";
 		
 		URL url = new URL(apiUrl);
 		HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
