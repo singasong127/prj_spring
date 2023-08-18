@@ -296,7 +296,14 @@
 		        console.log('행정구역 코드 : ' + result[0].code);
 		        var addressStep = result[0].address_name.split(' ');
 		        
-				getAddress = addressStep;
+		        var getStep1 = $("#step1").val();
+		        var getStep2 = $("#step2").val();
+		        var getStep3 = $("#step3").val();
+		        getStep1 = addressStep[0];
+		        getStep2 = addressStep[1];
+		        getStep3 = addressStep[2];
+		        
+				getAddress = {"step1" : getStep1};
 		        
 		        $('form[name=formMain]').attr('action', '/user').submit();
 		        
