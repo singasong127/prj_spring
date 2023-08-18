@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -58,5 +57,7 @@ public class MemberDao {
 	public List<Member> selectListUpload(Member dto) { return sqlSession.selectList(namespace + ".selectListUpload", dto); }
 	
 	public int insertUploaded(Member dto) { return sqlSession.insert(namespace + ".insertUploaded", dto); }
+	
+	public int deleteUpload(Member dto) { return sqlSession.delete(namespace + ".deleteUpload", dto); }
 	
 }

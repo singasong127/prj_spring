@@ -50,8 +50,14 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int updtProfile(Member dto) {
-		return dao.updtProfile(dto);
+	public int updtProfile(Member dto) throws Exception {
+		dao.updtProfile(dto);
+		dao.deleteUpload(dto);
+		
+		uploadFiles(dto.getUploadImgProfile(), dto, "uploadList", dto.getUploadImgProfileType(), dto.getUploadImgProfileMaxNumber());
+		//UPLOAD IMG
+		
+		return 1;
 	}
 	
 	@Override
@@ -79,58 +85,61 @@ public class MemberServiceImpl implements MemberService {
 		return localDateTimeString;
 	}
 	
-  public void uploadFiles(MultipartFile[] multipartFiles, Member dto, String tableName, int type, int maxNumber) throws Exception {
-  
-	  for(int i=0; i<multipartFiles.length; i++) {
+	  public void uploadFiles(MultipartFile[] multipartFiles, Member dto, String tableName, int type, int maxNumber) throws Exception {
 	  
-		  if(!multipartFiles[i].isEmpty()) {
+		  for(int i=0; i<multipartFiles.length; i++) {
 		  
-		  String className = dto.getClass().getSimpleName().toString().toLowerCase();
-		  String fileName = multipartFiles[i].getOriginalFilename(); 
-		  String ext = fileName.substring(fileName.lastIndexOf(".") + 1); 
-		  String uuid = UUID.randomUUID().toString(); 
-		  String uuidFileName = uuid + "." + ext; 
-		  String pathModule = className; 
-		  String pathDate = nowString().substring(0,4) + "/" + nowString().substring(5,7) + "/" + nowString().substring(8,10); 
-		  String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
-		  String pathForView = Constants.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
+			  if(!multipartFiles[i].isEmpty()) {
+			  
+			  String className = dto.getClass().getSimpleName().toString().toLowerCase();
+			  String fileName = multipartFiles[i].getOriginalFilename(); 
+			  String ext = fileName.substring(fileName.lastIndexOf(".") + 1); 
+			  String uuid = UUID.randomUUID().toString(); 
+			  String uuidFileName = uuid + "." + ext; 
+			  String pathModule = className; 
+			  String pathDate = nowString().substring(0,4) + "/" + nowString().substring(5,7) + "/" + nowString().substring(8,10); 
+			  String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
+			  String pathForView = Constants.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
+			  
+			  File uploadPath = new File(path);
 		  
-		  File uploadPath = new File(path);
+				  if (!uploadPath.exists()) {
+					  uploadPath.mkdir(); 
+				  } else { 
+					  // by pass 
+				  }
+			  
 	  
-			  if (!uploadPath.exists()) {
-				  uploadPath.mkdir(); 
-			  } else { 
-				  // by pass 
-			  }
-		  
-  
-			multipartFiles[i].transferTo(new File(path + uuidFileName));
-		  
-		  	dto.setPath(pathForView);
-			dto.setOriginalName(fileName);
-			dto.setUuidName(uuidFileName);
-			dto.setExt(ext);
-			dto.setSize(multipartFiles[i].getSize());
-
-			dto.setTableName(tableName);
-			dto.setType(type);
-			dto.setDefaultNy(dto.getDefaultNy());
-			dto.setPseq(dto.getPseq());
-		  
-			dao.insertUploaded(dto);
-  
-		  } 
-  
+				multipartFiles[i].transferTo(new File(path + uuidFileName));
+			  
+			  	dto.setPath(pathForView);
+				dto.setOriginalName(fileName);
+				dto.setUuidName(uuidFileName);
+				dto.setExt(ext);
+				dto.setSize(multipartFiles[i].getSize());
+	
+				dto.setTableName(tableName);
+				dto.setType(type);
+				dto.setDefaultNy(dto.getDefaultNy());
+				dto.setPseq(dto.getPseq());
+			  
+				dao.insertUploaded(dto);
+	  
+			  } 
+	  
+		  }
+	
 	  }
-
-  }
 
 	@Override
 	public List<Member> selectListUpload(Member dto) {
 		return dao.selectListUpload(dto);
 	}
 
-
+	@Override
+	public int deleteUpload(Member dto) {
+		return dao.deleteUpload(dto);
+	}
 
 
 }

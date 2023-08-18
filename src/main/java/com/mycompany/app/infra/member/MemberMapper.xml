@@ -206,5 +206,14 @@ s			,#{path}
 		)
 	</insert>
 	
+	<!--DELETE UPLOADED PROFILE IMG-->
+	<delete id="deleteUpload">
+		DELETE FROM uploadList
+		WHERE 1=1
+		  AND pseq = #{seq}
+		  AND path LIKE CONCAT('%user%')
+	</delete>
+	<!--DELETE UPLOADED PROFILE IMG-->
+	
 </mapper>    
     

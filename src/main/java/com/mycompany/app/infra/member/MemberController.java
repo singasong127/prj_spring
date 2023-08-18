@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.mycompany.app.infra.index.CurrentDateTime;
 
@@ -62,7 +59,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/profile/update", method = RequestMethod.POST)
-	public String updtProfile(Member dto, MemberVo vo) {
+	public String updtProfile(Member dto, MemberVo vo) throws Exception {
 		System.out.println("update password: " + vo.getPassword());
 		
 		dto.setPassword(vo.getPassword());

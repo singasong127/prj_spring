@@ -14,7 +14,7 @@ public interface MemberService {
 	
 	public Member selectOneProfile(MemberVo vo);
 	
-	public int updtProfile(Member dto);
+	public int updtProfile(Member dto) throws Exception;
 	
 	public Member selectOneLogin(MemberVo vo);
 	
@@ -27,5 +27,7 @@ public interface MemberService {
 	List<Member> selectListUpload(Member dto);
 	
 	void uploadFiles(MultipartFile[] multipartFiles, Member dto, String tableName, int type, int maxNumber) throws Exception;
+	
+	int deleteUpload(Member dto);
 
 }
