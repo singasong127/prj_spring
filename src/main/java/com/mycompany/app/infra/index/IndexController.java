@@ -13,8 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -40,12 +43,9 @@ public class IndexController {
 	@RequestMapping(value="/user")
 	public String user(@ModelAttribute("vo") WeatherAreaVo vo, WeatherArea area, Model model, CurrentDateTime datetime) throws Exception {
 		
-		area = service.selectOne(vo);
-		model.addAttribute("area", area);
-		
-		vo.setStep1( (String)model.getAttribute("step1") );
-		
-		System.out.println("step1: " + vo.getStep1());
+//		System.out.println("step1: " + vo.getStep1());
+//		System.out.println("step2: " + vo.getStep2());
+//		System.out.println("step3: " + vo.getStep3());
 		
 		System.out.println(datetime.getNowDate());
 		
@@ -117,6 +117,34 @@ public class IndexController {
 		return "usr/infra/index/indexUsrView";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/user/getarea", method=RequestMethod.POST)
+	public Map<String, Object> getArea(WeatherAreaVo vo, Model model,
+			@RequestParam String step1,
+			@RequestParam String step2,
+			@RequestParam String step3) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		WeatherArea area = service.selectOne(vo);
+		
+		vo.setStep1(step1);
+		vo.setStep2(step2);
+		vo.setStep3(step3);
+		
+		System.out.println(vo.getStep1());
+		System.out.println(vo.getStep2());
+		System.out.println(vo.getStep3());
+		
+		if(area != null) {
+			model.addAttribute("area", area);
+			
+			returnMap.put("rtArea", area);
+			returnMap.put("rt", "success");
+		} else {
+			returnMap.put("rt", "fail");
+		}
+		
+		return returnMap;
+	}
 	
 	@RequestMapping("/publicCorona1List")
 	public String publicCorona1List(Model model) throws Exception {

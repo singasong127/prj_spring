@@ -289,7 +289,6 @@
 	$(window).on("load", function() {
 		var regionCode = function(result, status) {
 	    	if (status === kakao.maps.services.Status.OK) {
-				
 		        $("#location_name").html(result[0].address_name);
 		    }
 		        console.log('지역 명칭 : ' + result[0].address_name);
@@ -299,13 +298,28 @@
 		        var getStep1 = $("#step1").val();
 		        var getStep2 = $("#step2").val();
 		        var getStep3 = $("#step3").val();
-		        getStep1 = addressStep[0];
-		        getStep2 = addressStep[1];
-		        getStep3 = addressStep[2];
 		        
-				getAddress = {"step1" : getStep1};
-		        
-		        $('form[name=formMain]').attr('action', '/user').submit();
+				// getAddress = {"step1" : getStep1, "step2" : getStep2, "step3" : getStep3}
+				
+				$.ajax({
+					async : true,
+					cache : false,
+					type : "post",
+					url : "/user/getarea",
+					dataType : "text",
+					data : {"step1" : getStep1,
+							"step2" : getStep2,
+							"step3" : getStep3},
+					success : function() {
+						getStep1 = addressStep[0];
+				        getStep2 = addressStep[1];
+				        getStep3 = addressStep[2];
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						alert("ajaxUpdate " + jqXHR.textStatus + " : "
+								+ jqXHR.errorThrown);
+					}
+				});
 		        
 		};
 		geocoder.coord2RegionCode(getCenter.getLng(), getCenter.getLat(), regionCode);
@@ -334,25 +348,6 @@
 		// console.log(re_getLevel);
 		
 	});
-	
-	$("#step1").on(
-			"change", 
-			function() {
-				$ajax({
-					async : true,
-					cache : false,
-					type : "post",
-					url : "/user",
-					data : {getAddress},
-					success : function(response) {
-						
-					},
-					error : function(jqXHR, textStatus, errorThrown) {
-						alert("ajaxUpdate " + jqXHR.textStatus + " : "
-								+ jqXHR.errorThrown);
-					}
-				});
-			});
 	
 	
 	// 별점 소스
