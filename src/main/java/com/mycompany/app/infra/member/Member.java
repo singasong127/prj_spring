@@ -17,26 +17,56 @@ public class Member {
 	private String delNy;
 	private String userType;
 	
-	private MultipartFile[] uploadImg;
-	private Integer uploadImgType;	
-	private Integer uploadImgMaxNumber;
-	private String[] uploadImgDeleteSeq;
-	private String[] uploadImgDeletePathFile;	
 	
 //	uploaded
-	private String userUploaded;
-	
-	private String ulSeq;
+	private String tableName;
 	private Integer type;
-	private Integer defaultNy;
-	private Integer sort;
+	private String defaultNy;
 	private String path;
 	private String originalName;
 	private String uuidName;
 	private String ext;
 	private long size;
-	private Integer ulDelNy;
-	private String userSeq;
+	private String pseq;
+	private MultipartFile[] uploadImg;
+	private MultipartFile[] uploadImgProfile;
+	private Integer uploadImgType;
+	
+	public Integer getUploadImgProfileType() {
+		return uploadImgProfileType;
+	}
+	public void setUploadImgProfileType(Integer uploadImgProfileType) {
+		this.uploadImgProfileType = uploadImgProfileType;
+	}
+	public Integer getUploadImgMaxNumber() {
+		return uploadImgMaxNumber;
+	}
+	public void setUploadImgMaxNumber(Integer uploadImgMaxNumber) {
+		this.uploadImgMaxNumber = uploadImgMaxNumber;
+	}
+	public Integer getUploadImgProfileMaxNumber() {
+		return uploadImgProfileMaxNumber;
+	}
+	public void setUploadImgProfileMaxNumber(Integer uploadImgProfileMaxNumber) {
+		this.uploadImgProfileMaxNumber = uploadImgProfileMaxNumber;
+	}
+	public String[] getUploadImgDeleteSeq() {
+		return uploadImgDeleteSeq;
+	}
+	public void setUploadImgDeleteSeq(String[] uploadImgDeleteSeq) {
+		this.uploadImgDeleteSeq = uploadImgDeleteSeq;
+	}
+	public String[] getUploadImgDeletePathFile() {
+		return uploadImgDeletePathFile;
+	}
+	public void setUploadImgDeletePathFile(String[] uploadImgDeletePathFile) {
+		this.uploadImgDeletePathFile = uploadImgDeletePathFile;
+	}
+	private Integer uploadImgProfileType;
+	private Integer uploadImgMaxNumber;
+	private Integer uploadImgProfileMaxNumber;
+	private String[] uploadImgDeleteSeq;
+	private String[] uploadImgDeletePathFile;
 	
 	public String getSeq() {
 		return seq;
@@ -116,36 +146,11 @@ public class Member {
 	public void setUploadImgType(Integer uploadImgType) {
 		this.uploadImgType = uploadImgType;
 	}
-	public Integer getUploadImgMaxNumber() {
-		return uploadImgMaxNumber;
+	public String getTableName() {
+		return tableName;
 	}
-	public void setUploadImgMaxNumber(Integer uploadImgMaxNumber) {
-		this.uploadImgMaxNumber = uploadImgMaxNumber;
-	}
-	public String[] getUploadImgDeleteSeq() {
-		return uploadImgDeleteSeq;
-	}
-	public void setUploadImgDeleteSeq(String[] uploadImgDeleteSeq) {
-		this.uploadImgDeleteSeq = uploadImgDeleteSeq;
-	}
-	public String[] getUploadImgDeletePathFile() {
-		return uploadImgDeletePathFile;
-	}
-	public void setUploadImgDeletePathFile(String[] uploadImgDeletePathFile) {
-		this.uploadImgDeletePathFile = uploadImgDeletePathFile;
-	}
-	
-	public String getUserUploaded() {
-		return userUploaded;
-	}
-	public void setUserUploaded(String userUploaded) {
-		this.userUploaded = userUploaded;
-	}
-	public String getUlSeq() {
-		return ulSeq;
-	}
-	public void setUlSeq(String ulSeq) {
-		this.ulSeq = ulSeq;
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
 	}
 	public Integer getType() {
 		return type;
@@ -153,17 +158,11 @@ public class Member {
 	public void setType(Integer type) {
 		this.type = type;
 	}
-	public Integer getDefaultNy() {
+	public String getDefaultNy() {
 		return defaultNy;
 	}
-	public void setDefaultNy(Integer defaultNy) {
+	public void setDefaultNy(String defaultNy) {
 		this.defaultNy = defaultNy;
-	}
-	public Integer getSort() {
-		return sort;
-	}
-	public void setSort(Integer sort) {
-		this.sort = sort;
 	}
 	public String getPath() {
 		return path;
@@ -195,18 +194,21 @@ public class Member {
 	public void setSize(long size) {
 		this.size = size;
 	}
-	public Integer getUlDelNy() {
-		return ulDelNy;
+	public String getPseq() {
+		return pseq;
 	}
-	public void setUlDelNy(Integer ulDelNy) {
-		this.ulDelNy = ulDelNy;
+	public void setPseq(String pseq) {
+		this.pseq = pseq;
 	}
-	public String getUserSeq() {
-		return userSeq;
+	public MultipartFile[] getUploadImgProfile() {
+		return uploadImgProfile;
 	}
-	public void setUserSeq(String userSeq) {
-		this.userSeq = userSeq;
+	public void setUploadImgProfile(MultipartFile[] uploadImgProfile) {
+		this.uploadImgProfile = uploadImgProfile;
 	}
+	
+	
+	
 	
 	
 	

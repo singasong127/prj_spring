@@ -172,39 +172,37 @@
 			 , uuidName
 			 , ext
 			 , size
-			 , ulDelNy
-			 , ulSeq
+			 , delNy
+			 , pseq
 		FROM
 			userUploaded
 		WHERE 1=1
-		  AND path LIKE CONCAT('%id%')
-		  AND ulSeq = #{ulSeq}
+		  AND path LIKE CONCAT('%user%')
+		  AND pseq = #{seq}
 	</select>
 	
 	<!-- uploaded s -->
 	<insert id="insertUploaded">
-		INSERT INTO userUploaded (
+		INSERT INTO ${tableName} (
 			type
 			,defaultNy
-			,sort
 			,path
 			,originalName
 			,uuidName
 			,ext
 			,size
-			,ulDelNy
-			,userSeq
+			,delNy
+			,pseq
 		) values (
 			#{type}
 			,#{defaultNy}
-			,#{sort}
-			,#{path}
+s			,#{path}
 			,#{originalName}
 			,#{uuidName}
 			,#{ext}
 			,#{size}
 			,0
-			,#{seq}
+			,#{pseq}
 		)
 	</insert>
 	

@@ -55,7 +55,7 @@
 									            
 												<input type="hidden" id="<c:out value="${name }"/>Type" name="<c:out value="${name }"/>Type" value="<c:out value="${type }"/>"/>
 												<input type="hidden" id="<c:out value="${name }"/>MaxNumber" name="<c:out value="${name }"/>MaxNumber" value="0"/>
-												<label for="<c:out value="${name }"/>" class="form-label input-file-button"><b>+</b></label>
+												<label for="<c:out value="${name }"/>" class="form-label input-file-button"><b>변경</b></label>
 									 			<input class="form-control form-control-sm" id="<c:out value="${name }"/>" name="<c:out value="${name }"/>" type="file" multiple="multiple" style="display: none;" onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 1, 1, 0, 0, 3);">
 									        </div>
                                         <div class="form-group">

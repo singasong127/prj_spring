@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.mycompany.app.infra.upload.Constants;
+
 @Service
 public class MemberServiceImpl implements MemberService {
 	
@@ -77,7 +79,7 @@ public class MemberServiceImpl implements MemberService {
 		return localDateTimeString;
 	}
 	
-  public void uploadFiles(MultipartFile[] multipartFiles, Member dto, String userUploaded, int type, int maxNumber) throws Exception {
+  public void uploadFiles(MultipartFile[] multipartFiles, Member dto, String tableName, int type, int maxNumber) throws Exception {
   
 	  for(int i=0; i<multipartFiles.length; i++) {
 	  
@@ -102,17 +104,20 @@ public class MemberServiceImpl implements MemberService {
 			  }
 		  
   
-		  multipartFiles[i].transferTo(new File(path + uuidFileName));
+			multipartFiles[i].transferTo(new File(path + uuidFileName));
 		  
-		  dto.setPath(pathForView); dto.setOriginalName(fileName);
-		  dto.setUuidName(uuidFileName); dto.setExt(ext);
-		  dto.setSize(multipartFiles[i].getSize());
-		  dto.setUserUploaded(userUploaded); 
-		  dto.setType(type); // dto.setDefaultNy();
-		  dto.setSort(maxNumber + i); 
-		  dto.setUserSeq(dto.getUlSeq());
+		  	dto.setPath(pathForView);
+			dto.setOriginalName(fileName);
+			dto.setUuidName(uuidFileName);
+			dto.setExt(ext);
+			dto.setSize(multipartFiles[i].getSize());
+
+			dto.setTableName(tableName);
+			dto.setType(type);
+			dto.setDefaultNy(dto.getDefaultNy());
+			dto.setPseq(dto.getPseq());
 		  
-		  dao.insertUploaded(dto);
+			dao.insertUploaded(dto);
   
 		  } 
   
