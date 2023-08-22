@@ -29,9 +29,9 @@
 		<div id="main_content">
 			<div id="weather">
 				<h4 id="location_name"></h4>
-				<input type="hidden" name="step1" id="step1" value="<c:out value='${vo.step1 }' />" >
-				<input type="hidden" name="step2" id="step2" value="<c:out value='${vo.step2 }' />" >
-				<input type="hidden" name="step3" id="step3" value="<c:out value='${vo.step3 }' />" >
+				<input type="hidden" name="step1" id="step1" value="<c:out value='${area.step1 }' />" >
+				<input type="hidden" name="step2" id="step2" value="<c:out value='${area.step2 }' />" >
+				<input type="hidden" name="step3" id="step3" value="<c:out value='${area.step3 }' />" >
 				<ul id="weather_info">
 					<!-- 하늘 상태 -->
 					<li class="w_info" id="weather_sky">
@@ -295,9 +295,9 @@
 		        console.log('행정구역 코드 : ' + result[0].code);
 		        var addressStep = result[0].address_name.split(' ');
 		        
-		        var getStep1 = $("#step1").val();
-		        var getStep2 = $("#step2").val();
-		        var getStep3 = $("#step3").val();
+		        var getStep1 = addressStep[0];
+		        var getStep2 = addressStep[1];
+		        var getStep3 = addressStep[2];
 		        
 				// getAddress = {"step1" : getStep1, "step2" : getStep2, "step3" : getStep3}
 				
@@ -310,10 +310,8 @@
 					data : {"step1" : getStep1,
 							"step2" : getStep2,
 							"step3" : getStep3},
-					success : function() {
-						getStep1 = addressStep[0];
-				        getStep2 = addressStep[1];
-				        getStep3 = addressStep[2];
+					success : function(data) {
+						
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
 						alert("ajaxUpdate " + jqXHR.textStatus + " : "
@@ -325,7 +323,7 @@
 		geocoder.coord2RegionCode(getCenter.getLng(), getCenter.getLat(), regionCode);
 	});
 	
-	kakao.maps.event.addListener(map, 'center_changed', function() {
+	kakao.maps.event.addListener(map, 'dragend', function() {
 		
 		map.getLevel();
 		map.getCenter();
@@ -337,9 +335,31 @@
 	    	if (status === kakao.maps.services.Status.OK) {
 		        $("#location_name").html(result[0].address_name);
 		    }
-		        console.log('지역 명칭 : ' + result[0].address_name);
-		        console.log('행정구역 코드 : ' + result[0].code);
+//		        console.log('지역 명칭 : ' + result[0].address_name);
+//		        console.log('행정구역 코드 : ' + result[0].code);
 		        var addressStep = result[0].address_name.split(' ');
+		        
+		        var getStep1 = addressStep[0];
+		        var getStep2 = addressStep[1];
+		        var getStep3 = addressStep[2];
+		        
+				$.ajax({
+					async : true,
+					cache : false,
+					type : "post",
+					url : "/user/getarea",
+					dataType : "text",
+					data : {"step1" : getStep1,
+							"step2" : getStep2,
+							"step3" : getStep3},
+					success : function(data) {
+						
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						alert("ajaxUpdate " + jqXHR.textStatus + " : "
+								+ jqXHR.errorThrown);
+					}
+				});
 				        
 		};
 		

@@ -9,11 +9,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,16 +41,19 @@ public class IndexController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/user")
-	public String user(@ModelAttribute("vo") WeatherAreaVo vo, WeatherArea area, Model model, CurrentDateTime datetime) throws Exception {
+	@RequestMapping(value="/user", method=RequestMethod.GET)
+	public String user(@ModelAttribute WeatherAreaVo vo, WeatherArea area, Model model, CurrentDateTime datetime) throws Exception {
 		
-//		System.out.println("step1: " + vo.getStep1());
-//		System.out.println("step2: " + vo.getStep2());
-//		System.out.println("step3: " + vo.getStep3());
+		area = service.selectOne(vo);
 		
-		System.out.println(datetime.getNowDate());
 		
-		String apiUrl = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=b%2BIIc8uynU4kozxcKc4cqsrVam5GEW4NpYgDvXjQZqrJEUXXUVb9yKBUncl1i6nr%2FRT5G1BVbopgGeEdpoGiew%3D%3D&numOfRows=10&dataType=JSON&pageNo=1&base_date="+ datetime.getNowDate() +"&base_time=0800&nx=55&ny=127";
+		System.out.println("step1: " + vo.getStep1());
+		System.out.println("step2: " + vo.getStep2());
+		System.out.println("step3: " + vo.getStep3());
+		
+//		System.out.println(datetime.getNowDate());
+		
+		String apiUrl = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=b%2BIIc8uynU4kozxcKc4cqsrVam5GEW4NpYgDvXjQZqrJEUXXUVb9yKBUncl1i6nr%2FRT5G1BVbopgGeEdpoGiew%3D%3D&numOfRows=10&dataType=JSON&pageNo=1&base_date="+ datetime.getNowDate() +"&base_time=0800&nx=55&ny=128";
 		
 		URL url = new URL(apiUrl);
 		HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -113,7 +117,6 @@ public class IndexController {
 		model.addAllAttributes(body);
 		model.addAllAttributes(items);
 		
-		
 		return "usr/infra/index/indexUsrView";
 	}
 	
@@ -133,6 +136,12 @@ public class IndexController {
 		System.out.println(vo.getStep1());
 		System.out.println(vo.getStep2());
 		System.out.println(vo.getStep3());
+		System.out.println(area.getGridX());
+		System.out.println(area.getGridY());
+		
+		String nowStep1 = vo.getStep1();
+		String nowStep2 = vo.getStep2();
+		String nowStep3 = vo.getStep3();
 		
 		if(area != null) {
 			model.addAttribute("area", area);

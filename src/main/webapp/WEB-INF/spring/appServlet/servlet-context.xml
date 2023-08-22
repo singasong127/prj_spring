@@ -29,7 +29,7 @@
 			<mapping path="/**"/>
 			<exclude-mapping path="/resources/**" />
 			<exclude-mapping path="/" />
-			<exclude-mapping path="/user" />
+			<exclude-mapping path="/user/**" />
 			<exclude-mapping path="/xdmindex" />
 			<exclude-mapping path="/cglist" />
 			<exclude-mapping path="/cgform" />
