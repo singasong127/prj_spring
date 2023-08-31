@@ -126,7 +126,8 @@
 								        </div>
 								    </div>
 								</div>
-								<div class="row mx-auto d-flex justify-content-end">
+								<div class="row mx-auto d-flex justify-content-between">
+									<button type="button" class="btn btn-success" id="btnExcel" style="color: #fff">다운로드</button>
 									<button type="button" class="btn btn-primary" id="btnInsert">추가</button>
 								</div>
 							</div>
@@ -178,6 +179,10 @@
 	// 	$("form[name=formList]").attr("method","get");
 		$("form[name=formList]").attr("action", "/cglist").submit();
 	
+	});
+	
+	$("#btnExcel").click(function() {
+		$("form[name=formList]").attr("action", "/excelDownload").submit();
 	});
 	
 	$("#btnInsert").on("click", function() {

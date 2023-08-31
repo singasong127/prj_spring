@@ -198,6 +198,9 @@
 									</div>
 								</div>
 							</div>
+							<div class="row mx-auto d-flex justify-content-start">
+								<button type="button" class="btn btn-success" id="btnExcel" style="color: #fff">다운로드</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -247,6 +250,10 @@
 
 		$("form[name=formMem]").attr("action", "/member").submit();
 
+	});
+	
+	$("#btnExcel").click(function() {
+		$("form[name=formMem]").attr("action", "/excelDownload").submit();
 	});
 	
 	goList = function(thisPage) {
