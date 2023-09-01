@@ -44,8 +44,11 @@ public class IndexController {
 	@RequestMapping(value="/user", method=RequestMethod.GET)
 	public String user(@ModelAttribute WeatherAreaVo vo, WeatherArea area, Model model, CurrentDateTime datetime) throws Exception {
 		
-		area = service.selectOne(vo);
+		model.getAttribute("area");
 		
+		vo.setStep1(area.getStep1());
+		vo.setStep2(area.getStep2());
+		vo.setStep3(area.getStep3());
 		
 		System.out.println("step1: " + vo.getStep1());
 		System.out.println("step2: " + vo.getStep2());
@@ -129,9 +132,9 @@ public class IndexController {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		WeatherArea area = service.selectOne(vo);
 		
-		vo.setStep1(step1);
-		vo.setStep2(step2);
-		vo.setStep3(step3);
+		vo.setStep1(area.getStep1());
+		vo.setStep2(area.getStep2());
+		vo.setStep3(area.getStep3());
 		
 		System.out.println(vo.getStep1());
 		System.out.println(vo.getStep2());

@@ -40,6 +40,8 @@
 			<exclude-mapping path="/loginusr" />
 			<exclude-mapping path="/loginxdm" />
 			<exclude-mapping path="/loginProc" />
+			<exclude-mapping path="/loginXdmProc" />
+			<exclude-mapping path="/logoutProc" />
 			<exclude-mapping path="/logoutXdmProc" />
 			<exclude-mapping path="/signup/**" />
 			<exclude-mapping path="/publicCorona1List" />
